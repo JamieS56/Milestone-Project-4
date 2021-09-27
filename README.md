@@ -23,6 +23,10 @@
 
 ## UX
 
+### Design:
+* The colour scheme is going to be yellow and black as those are the club colours.
+* I want the website to be modern, have a robust feel about it, so using sharp lines and blocked structure.
+
 ## Features
 
 ## Technologies Used
