@@ -14,6 +14,9 @@
 
     {% block corecss %}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -25,16 +28,42 @@
   <body>
     <nav>
         <ul class="nav justify-content-center">
-            <li class="nav-item menu-item">
+            <li class="nav-item menu-item d-flex align-items-center justify-content-center">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-            <li class="nav-item menu-item">
+            <li class="nav-item menu-item d-flex align-items-center justify-content-center">
               <a class="nav-link" href="#">Players</a>
             </li>
-            <li class="nav-item menu-item">
-              <a class="nav-link" href="#">Link</a>
+            <li class="nav-item menu-item d-flex align-items-center justify-content-center">
+              <a class="nav-link" href="#">Fixtures</a>
+            </li>
+            <li class="nav-item menu-item d-flex align-items-center justify-content-center">
+              <a class="nav-link" href="#">Club</a>
+            </li>
+            <li class="nav-item menu-item d-flex align-items-center justify-content-center">
+              <a class="nav-link" href="#">Book Tickets</a>
             </li>
           </ul>
+          <div id="triangle-bottomright"></div>
+          <ul id="login-list" class="nav justify-content-center">
+            {% if session.user %}
+              <li class="nav-item login-item d-flex align-items-center justify-content-center">
+                <a class="nav-link" href="#">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item login-item d-flex align-items-center justify-content-center">
+                <a class="nav-link" href="#">Login</a>
+              </li>
+
+              <li class="nav-item login-item d-flex align-items-center justify-content-center">
+                <a class="nav-link" href="#">Create Account</a>
+              </li>
+            {% endif %} 
+
+          </ul>
+
+
+
     </nav>
     <h1>Hello</h1>
 

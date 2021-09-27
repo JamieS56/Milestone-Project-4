@@ -1,9 +1,52 @@
+nav{
+  display: inline-flex;
+  /* background: black; */
+  float: right;
+}
 .menu-item {
-    width: 150px;
-    height: 100px;
-    transform: skew(20deg);
+    width: 100px;
+    height: 70px;
+    transform: skew(-25deg);
     background: black;
-    border: 1px solid black ;
+    border: 0.5px solid rgb(31, 29, 29);
     color: white;
-  }
+    text-align: center;
+    transition: background-color .5s;
 
+  }
+.login-item{
+  width: 100px;
+  height: 70px;
+  background: black;
+  border: 0.5px solid black;
+  color: white;
+  text-align: center;
+  transition: background-color .5s;
+}
+
+.menu-item:hover, .login-item:hover{
+    background-color: yellow;
+    border: none;
+  }
+.menu-item > .nav-link{
+  transform: skew(25deg);
+}
+.nav-link {
+      color: white;
+
+      font-family: 'Roboto', sans-serif;
+  }
+.menu-item:hover > a, .login-item:hover > a {
+    color: black;
+  }
+#triangle-bottomright {
+  width: 0;
+  height: 0;
+  border-bottom: 70px solid black;
+  border-left: 33px solid transparent;
+  margin-left: -16.5px;
+  margin-right: -16px;
+}
+#login-list{
+  padding-left:16px
+}
