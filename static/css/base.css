@@ -2,10 +2,8 @@
     width: 150px;
     height: 100px;
     transform: skew(20deg);
-    background: red;
+    background: black;
     border: 1px solid black ;
+    color: white;
   }
 
-  h1{
-      color:green;
-  }
