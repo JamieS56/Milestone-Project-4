@@ -1,31 +1,37 @@
-nav{
+body{
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffe344;
+}
+/* Nav bar stylings */
+nav {
   display: inline-flex;
-  /* background: black; */
   float: right;
+  height: 0;
+  width: auto;
+  border-bottom: 80px solid black;
+  border-left: 37px solid transparent;
 }
 .menu-item {
-    width: 100px;
-    height: 70px;
+    width: 9.5vw;
+    height: 80px;
     transform: skew(-25deg);
     background: black;
     border: 0.5px solid rgb(31, 29, 29);
     color: white;
     text-align: center;
     transition: background-color .5s;
-
   }
 .login-item{
-  width: 100px;
-  height: 70px;
+  width: 9.5vw;
+  height: 80px;
   background: black;
   border: 0.5px solid black;
   color: white;
   text-align: center;
   transition: background-color .5s;
 }
-
 .menu-item:hover, .login-item:hover{
-    background-color: yellow;
+    background-color: #ffe344e5;
     border: none;
   }
 .menu-item > .nav-link{
@@ -33,20 +39,69 @@ nav{
 }
 .nav-link {
       color: white;
-
-      font-family: 'Roboto', sans-serif;
   }
 .menu-item:hover > a, .login-item:hover > a {
     color: black;
   }
-#triangle-bottomright {
-  width: 0;
-  height: 0;
-  border-bottom: 70px solid black;
-  border-left: 33px solid transparent;
-  margin-left: -16.5px;
-  margin-right: -16px;
-}
+
 #login-list{
   padding-left:16px
+}
+.trapezoid {
+  height: 0;
+  width: 11vw;
+  transform: skew(0deg);
+  background: transparent;
+  margin-left: -19px;
+  margin-right: -17px;
+  border-bottom: 79px solid black;
+  border-left: 37px solid transparent;
+  transition: border .5s;
+}
+.trapezoid > .trapezoid-text{
+  transform: skew(0deg);
+  margin-top: 73px;
+}
+.trapezoid:hover{
+  border-bottom: 79px solid #ffe344e5;
+  border-left: 37px solid transparent;
+  background: transparent;
+}
+
+/* footer stylings */
+footer{
+  background-color: black;
+  color:white;
+  padding: 10px;
+}
+.social-links{
+  float: right;
+  padding-right: 25px;
+  font-size: 20px;
+}
+.fab{
+  padding:5px;
+}
+.social-links > span:hover{
+  color:#ffe344;
+}
+#footer-email{
+  padding-left: 20px;
+}
+
+/* Club Badge Stylings */
+
+.club-logo{
+  width: 10vw;
+  margin: 10px;
+}
+#club-title{
+  font-size: 30px;
+  font-weight: bold;
+  margin-top:10px;
+}
+.club-badge{
+  float:left;
+  width:30vw;
+
 }
