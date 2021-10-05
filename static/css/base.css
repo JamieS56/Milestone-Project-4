@@ -2,6 +2,7 @@ body{
   font-family: 'Roboto', sans-serif;
   background-color: #ffe344;
 }
+
 /* Nav bar stylings */
 nav {
   display: inline-flex;
@@ -20,6 +21,7 @@ nav {
     color: white;
     text-align: center;
     transition: background-color .5s;
+
   }
 .login-item{
   width: 9.5vw;
@@ -29,6 +31,7 @@ nav {
   color: white;
   text-align: center;
   transition: background-color .5s;
+
 }
 .menu-item:hover, .login-item:hover{
     background-color: #ffe344e5;
@@ -94,6 +97,7 @@ footer{
 .club-logo{
   width: 10vw;
   margin: 10px;
+  margin-left: 9vw;
 }
 #club-title{
   font-size: 30px;

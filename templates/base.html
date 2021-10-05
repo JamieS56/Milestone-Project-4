@@ -34,10 +34,10 @@
 <body>
 
 
-      <img class="club-logo" src="../media/ma-badge.png">
+  <img class="club-logo" src="../media/ma-badge.png">
       <!-- <span id="club-title" class="align-top">MESSI ANKLES</span> -->
   <nav>
-
+    
     <ul class="nav justify-content-center">
       <li class="nav-item menu-item d-flex align-items-center justify-content-center">
         <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -80,11 +80,16 @@
   </nav>
 
 
+  {% block page_header %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
 
 
 
 
-  <footer class="fixed-bottom">
+  <footer class="page-footer">
 
     <span id="footer-email">messiankles@gmail.com</span>
     <div class="social-links float-right">
