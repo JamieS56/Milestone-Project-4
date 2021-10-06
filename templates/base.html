@@ -34,11 +34,14 @@
 
 <body>
 
-<div class="row">
-  <img class="club-logo col-2" src="../media/ma-badge.png">
-  <span id="club-title" class="align-top col-2">MESSI ANKLES</span>
-
-  <nav class="col-12">
+<div class="row top-row">
+  <div class="col-2 align-right">
+   <img class="club-logo" src="../media/ma-badge.png">
+  </div>
+  <div class="col-2">
+  <span id="club-title" class="align-middle">MESSI ANKLES</span>
+</div>
+  <nav class="col-8">
     
     <ul class="nav justify-content-center">
       <li class="nav-item menu-item d-flex align-items-center justify-content-center">
@@ -81,13 +84,14 @@
 
   </nav>
 </div>
-
+<div class="container">
   {% block page_header %}
   {% endblock %}
-
+</div>
+<div class="container"> 
   {% block content %}
   {% endblock %}
-
+</div>
 
 
 

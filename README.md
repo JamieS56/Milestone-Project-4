@@ -37,3 +37,5 @@
 ## Deployment
 
 ## Acknowledgements/ Links
+
+CSS Shapes - https://css-tricks.com/the-shapes-of-css/

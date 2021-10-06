@@ -1,15 +1,7 @@
 #hero-image{
-    width: 95vw;
+    width: 100%;
     border: 4px solid black;
     --bs-gutter-x: 0;
-    margin: 10px;
 }
-#hero-image-outer{
-    width: 100vw;
-    overflow: hidden;
-    text-align: center;
-    max-height: 800px;
-    margin: 10px;
 
-}
 

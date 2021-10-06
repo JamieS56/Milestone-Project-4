@@ -1,6 +1,6 @@
 body{
   font-family: 'Roboto', sans-serif;
-  background-color: #ffe344;
+  /* background-color: #ffe344; */
 }
 .no-gutters {
   margin-right: 0;
@@ -12,16 +12,26 @@ body{
     padding-left: 0;
   }
 
+  .center{
+    justify-content: center;
+  }
+  .align-right{
+    text-align:right;
+  }
 
 /* Nav bar stylings */
 nav {
   display: inline-flex;
   float: right;
   height: 0;
-  width: auto !important;
+  /* width: auto !important; */
   border-bottom: 80px solid black;
   border-left: 37px solid transparent;
   inline-size: auto;
+}
+.top-row{
+  background-color: #ffe344;
+  align-items: center;
 }
 .menu-item {
     width: 8vw;
@@ -85,14 +95,13 @@ nav {
 /* Club Badge Stylings */
 
 .club-logo{
-  width: 8vw;
+  width: 7vw;
   margin: 10px;
   margin-left: 1vw;
 }
 #club-title{
   font-size: 30px;
   font-weight: bold;
-  margin-top:40px;
 }
 .club-badge{
   float:left;
