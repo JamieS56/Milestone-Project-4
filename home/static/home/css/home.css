@@ -1,5 +1,5 @@
 #hero-image{
-    width: 90vw;
+    width: 95vw;
     border: 4px solid black;
     --bs-gutter-x: 0;
     margin: 10px;
@@ -12,3 +12,4 @@
     margin: 10px;
 
 }
+

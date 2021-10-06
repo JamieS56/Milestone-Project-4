@@ -1,4 +1,5 @@
 {% load static %}
+
 <!doctype html>
 <html lang="en">
 
@@ -33,10 +34,11 @@
 
 <body>
 
+<div class="row">
+  <img class="club-logo col-2" src="../media/ma-badge.png">
+  <span id="club-title" class="align-top col-2">MESSI ANKLES</span>
 
-  <img class="club-logo" src="../media/ma-badge.png">
-      <!-- <span id="club-title" class="align-top">MESSI ANKLES</span> -->
-  <nav>
+  <nav class="col-12">
     
     <ul class="nav justify-content-center">
       <li class="nav-item menu-item d-flex align-items-center justify-content-center">
@@ -78,7 +80,7 @@
     
 
   </nav>
-
+</div>
 
   {% block page_header %}
   {% endblock %}
@@ -101,10 +103,11 @@
 
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-  </script>
-
+  {% block postloadjs %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+  {% endblock %}
 </body>
 
 </html>

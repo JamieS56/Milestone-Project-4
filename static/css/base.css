@@ -2,18 +2,29 @@ body{
   font-family: 'Roboto', sans-serif;
   background-color: #ffe344;
 }
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.col, [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
 
 /* Nav bar stylings */
 nav {
   display: inline-flex;
   float: right;
   height: 0;
-  width: auto;
+  width: auto !important;
   border-bottom: 80px solid black;
   border-left: 37px solid transparent;
+  inline-size: auto;
 }
 .menu-item {
-    width: 9.5vw;
+    width: 8vw;
     height: 80px;
     transform: skew(-25deg);
     background: black;
@@ -24,7 +35,7 @@ nav {
 
   }
 .login-item{
-  width: 9.5vw;
+  width: 8vw;
   height: 80px;
   background: black;
   border: 0.5px solid black;
@@ -52,7 +63,7 @@ nav {
 }
 .trapezoid {
   height: 0;
-  width: 11vw;
+  width: 10vw;
   transform: skew(0deg);
   background: transparent;
   margin-left: -19px;
@@ -69,6 +80,24 @@ nav {
   border-bottom: 79px solid #ffe344e5;
   border-left: 37px solid transparent;
   background: transparent;
+}
+
+/* Club Badge Stylings */
+
+.club-logo{
+  width: 8vw;
+  margin: 10px;
+  margin-left: 1vw;
+}
+#club-title{
+  font-size: 30px;
+  font-weight: bold;
+  margin-top:40px;
+}
+.club-badge{
+  float:left;
+  width:30vw;
+
 }
 
 /* footer stylings */
@@ -90,22 +119,4 @@ footer{
 }
 #footer-email{
   padding-left: 20px;
-}
-
-/* Club Badge Stylings */
-
-.club-logo{
-  width: 10vw;
-  margin: 10px;
-  margin-left: 9vw;
-}
-#club-title{
-  font-size: 30px;
-  font-weight: bold;
-  margin-top:10px;
-}
-.club-badge{
-  float:left;
-  width:30vw;
-
 }

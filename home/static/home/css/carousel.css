@@ -1,0 +1,22 @@
+.carousel{
+    margin:5vw;
+}
+.carousel-indicators{
+    position: relative;
+}
+.carousel-inner{
+
+}
+.carousel-row{
+    place-content: center;
+}
+.player-close-up{
+    width: 25vw;
+    height: 27vw;
+    border: 5px solid black;
+    margin: 10px;
+}
+.carousel-control-next, .carousel-control-prev {
+    top:unset;
+    bottom:-10px;
+}
