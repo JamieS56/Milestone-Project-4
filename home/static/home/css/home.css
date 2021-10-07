@@ -1,7 +1,10 @@
 #hero-image{
     width: 100%;
-    border: 4px solid black;
     --bs-gutter-x: 0;
 }
-
-
+.hero-image-row{
+    background-color: black;
+}
+#fixture-tab{
+    background-color:
+}
