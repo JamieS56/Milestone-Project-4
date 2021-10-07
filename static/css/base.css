@@ -12,12 +12,15 @@ body{
     padding-left: 0;
   }
 
-  .center{
+.center{
     justify-content: center;
   }
-  .align-right{
+.align-right{
     text-align:right;
   }
+.bold{
+  font-weight:bold;
+}
 
 /* Nav bar stylings */
 nav {

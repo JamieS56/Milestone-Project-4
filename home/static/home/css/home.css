@@ -1,10 +1,32 @@
 #hero-image{
     width: 100%;
     --bs-gutter-x: 0;
+    padding:80px 0;
+}
+.hero-outer{
+    position:relative;
 }
 .hero-image-row{
     background-color: black;
 }
 #fixture-tab{
-    background-color:
+    background-color: #ffe344;
+    color: black;
+    top: 40%;
+
+}
+#book-tickets-tab{
+    background-color: black;
+    color: white;
+    top: 45%;
+}
+.hero-tab{
+    position: absolute;
+    right: 0%;
+    width: 20vw;
+    height: 50px;
+    text-align:center;
+    font-family: 'Inter', sans-serif;
+    font-size:20px;
+
 }
