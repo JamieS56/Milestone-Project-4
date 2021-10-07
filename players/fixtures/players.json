@@ -1,0 +1,70 @@
+[
+    {
+        "pk":1,
+        "model":"players.Player",
+        "fields":{
+            "name":"Harvey Carter",
+            "position":"Defender",
+            "apearences":12,
+            "goals":0,
+            "assists":2,
+            "clean_sheets":5,
+            "description":"",
+            "main_image_url":"",
+            "close_up_image_url":"/workspace/Milestone-Project-4/media/harvey-close-up.jpg"
+
+        }
+    },
+    {
+        "pk":2,
+        "model":"players.Player",
+        "fields":{
+            "name":"Joe O'Brien",
+            "position":"Midfield",
+            "apearences":15,
+            "goals":2,
+            "assists":7,
+            "clean_sheets":5,
+            "description":"",
+            "main_image_url":"",
+            "close_up_image_url":"/workspace/Milestone-Project-4/media/joe-close-up.jpg"
+
+
+        }
+    },
+    {
+        "pk":4,
+        "model":"players.Player",
+        "fields":{
+            "name":"Kiran Illet",
+            "position":"Midfield",
+            "apearences":14,
+            "goals":1,
+            "assists":11,
+            "clean_sheets":5,
+            "description":"",
+            "main_image_url":"",
+            "close_up_image_url":"/workspace/Milestone-Project-4/media/kiran-close-up.jpg"
+
+
+        }
+    },
+    {
+        "pk":4,
+        "model":"players.Player",
+        "fields":{
+            "name":"Josh Ireland",
+            "position":"Defender",
+            "apearences":"10",
+            "goals":"0",
+            "assists":"0",
+            "clean_sheets":"4",
+            "description":"",
+            "main_image_url":"",
+            "close_up_image_url":"/workspace/Milestone-Project-4/media/josh-close-up.jpg"
+
+
+        }
+    }
+
+]

@@ -33,6 +33,8 @@
 
 ## Testing
 
+admin login page does not exist fix https://stackoverflow.com/questions/9736975/django-admin-doesnotexist-at-admin
+
 
 ## Deployment
 
