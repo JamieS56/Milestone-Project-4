@@ -9,7 +9,7 @@ def index(request):
     players = Player.objects.all()
 
     context = {
-        'player': players
+        'players': players
     }
 
     return render(request, 'home/index.html', context)

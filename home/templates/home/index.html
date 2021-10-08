@@ -14,7 +14,7 @@
 
   <div class="row center hero-image-row">
     <div class="col-10 hero-outer">
-      <img id="hero-image" class='no-gutters' src='media/team-hero-image.jpg' alt='Team Photo'>
+      <img id="hero-image" class='no-gutters' src="{% static 'media/team-hero-image.jpg' %}" alt='Team Photo'>
       <span id='fixture-tab' class='hero-tab bold'>Fixture</span>
       <span id='book-tickets-tab' class='hero-tab bold'>Book Tickets!</span>
     </div>
@@ -24,13 +24,15 @@
 <div class="row center">
   <div id="player-carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner row">
+      
       <div class="carousel-item active">
         <div class="row carousel-row">
-          <img src="media/harvey-close-up.jpg" class="d-block w-20 player-close-up col-4" alt="Harvey Carter">
-          <img src="media/joe-close-up.jpg" class="d-block w-20 player-close-up col-4" alt="Ollie Findlay">
-          <img src="media/josh-close-up.jpg" class="d-block w-20 player-close-up col-4" alt="James Sebire">
+          {% for player in players %}
+          <img src="{% static player.close_up_image_url %}" class="d-block w-20 player-close-up col-4" alt="{{ player.name }}">
+          {% endfor %}
         </div>
       </div>
+      
       <div class="carousel-item">
         <div class="row carousel-row">
           <img src="media/joe-close-up.jpg" class="d-block w-20 player-close-up col-4" alt="Joe O'brien">

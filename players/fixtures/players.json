@@ -11,7 +11,7 @@
             "clean_sheets":5,
             "description":"",
             "main_image_url":"",
-            "close_up_image_url":"/workspace/Milestone-Project-4/media/harvey-close-up.jpg"
+            "close_up_image_url":"media/harvey-close-up.jpg"
 
         }
     },
@@ -27,13 +27,13 @@
             "clean_sheets":5,
             "description":"",
             "main_image_url":"",
-            "close_up_image_url":"/workspace/Milestone-Project-4/media/joe-close-up.jpg"
+            "close_up_image_url":"media/joe-close-up.jpg"
 
 
         }
     },
     {
-        "pk":4,
+        "pk":3,
         "model":"players.Player",
         "fields":{
             "name":"Kiran Illet",
@@ -44,7 +44,7 @@
             "clean_sheets":5,
             "description":"",
             "main_image_url":"",
-            "close_up_image_url":"/workspace/Milestone-Project-4/media/kiran-close-up.jpg"
+            "close_up_image_url":"media/kiran-close-up.jpg"
 
 
         }
@@ -61,7 +61,7 @@
             "clean_sheets":"4",
             "description":"",
             "main_image_url":"",
-            "close_up_image_url":"/workspace/Milestone-Project-4/media/josh-close-up.jpg"
+            "close_up_image_url":"media/josh-close-up.jpg"
 
 
         }
