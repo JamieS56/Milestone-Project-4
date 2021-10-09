@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{{ block page_header }}
+
+{{ endblock }}
+
+{{ block content }}
+
+{% for player in players %}
+    {% if player.position == 'Goalkeeper' %}
+    {% endif %}
+    {% if player.position == 'Defender' %}
+    {% endif %}
+    {% if player.position == 'Midfield' %}
+    {% endif %}
+    {% if player.position == 'Forward' %}
+    {% endif %}
+{% endfor %}
+
+{{ endblock }}

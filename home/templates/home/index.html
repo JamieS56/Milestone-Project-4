@@ -8,63 +8,65 @@
 {% endblock %}
 
 {% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
 
-  <div class="row center hero-image-row">
-    <div class="col-10 hero-outer">
-      <img id="hero-image" class='no-gutters' src="{% static 'media/team-hero-image.jpg' %}" alt='Team Photo'>
-      <span id='fixture-tab' class='hero-tab bold'>Fixture</span>
-      <span id='book-tickets-tab' class='hero-tab bold'>Book Tickets!</span>
-    </div>
+<div class="row center hero-image-row">
+  <div class="col-10 hero-outer">
+    <img id="hero-image" class='no-gutters' src="{% static 'media/team-hero-image.jpg' %}" alt='Team Photo'>
+    <span id='fixture-tab' class='hero-tab bold'>Fixture</span>
+    <span id='book-tickets-tab' class='hero-tab bold'>Book Tickets!</span>
   </div>
+</div>
 
 <div class='carousel-container'>
-<div class="row center">
-  <div id="player-carousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner row">
-      
-      <div class="carousel-item active">
-        <div class="row carousel-row">
-          {% for player in players %}
+  <div class="row center">
+    <div id="player-carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner row">
+        <div class="carousel-item active">
+          <div class="row carousel-row">
+        {% for player in players %}
           <img src="{% static player.close_up_image_url %}" class="d-block w-20 player-close-up col-4" alt="{{ player.name }}">
-          {% endfor %}
+          {% if forloop.counter|divisibleby:3 %}
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row carousel-row">
+          {% endif %}
+        {% endfor %}
+          </div>
         </div>
       </div>
-      
-      <div class="carousel-item">
-        <div class="row carousel-row">
-          <img src="media/joe-close-up.jpg" class="d-block w-20 player-close-up col-4" alt="Joe O'brien">
-          <img src="media/josh-close-up.jpg" class="d-block w-20 player-close-up col-4" alt="Josh Ireland">
-          <img src="media/kiran-close-up.jpg" class="d-block w-20 player-close-up col-4" alt="Kiran Illet">
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="row carousel-row">
-          <img src="media/josh-close-up.jpg" class="d-block w-20 player-close-up col-4" alt="George Bangs">
-          <img src="media/kiran-close-up.jpg" class="d-block w-20 player-close-up col-4" alt="Adam Kempster">
+        <div class="carousel-indicators">
+            {% for player in players %}
+            {% if forloop.first %}
+            <button type="button" data-bs-target="#player-carousel" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            {% else %}
+            <button type="button" data-bs-target="#player-carousel" data-bs-slide-to='{{ forloop.counter0 }}'
+              aria-label="Slide {{ forloop.counter }}"></button>
+            {% endif %}
+            {% endfor %}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#player-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#player-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </div>
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#player-carousel" data-bs-slide-to="0" class="active" aria-current="true"
-        aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#player-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#player-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#player-carousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#player-carousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
 </div>
-</div>
-
 {% endblock %}
 
 {% block postloadjs %}
