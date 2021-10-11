@@ -5,6 +5,7 @@ from django.db import models
 
 class Player(models.Model):
     name = models.CharField(max_length=254)
+    number = models.IntegerField(null=False)
     position = models.CharField(max_length=15)
     apearences = models.IntegerField()
     goals = models.IntegerField()
@@ -12,7 +13,7 @@ class Player(models.Model):
     clean_sheets = models.IntegerField()
     description = models.TextField()
     main_image_url = models.URLField(max_length=1024, null=True, blank=True)
-    close_up_image_url = models.URLField(max_length=1024, null=True, 
+    close_up_image_url = models.URLField(max_length=1024, null=True,
                                                          blank=True)
 
     def __str__(self):

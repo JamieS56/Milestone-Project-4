@@ -4,6 +4,7 @@
         "model":"players.Player",
         "fields":{
             "name":"Harvey Carter",
+            "number":4,
             "position":"Defender",
             "apearences":12,
             "goals":0,
@@ -20,11 +21,12 @@
         "model":"players.Player",
         "fields":{
             "name":"Joe O'Brien",
+            "number":7,
             "position":"Midfield",
             "apearences":15,
             "goals":2,
             "assists":7,
-            "clean_sheets":5,
+            "clean_sheets":8,
             "description":"",
             "main_image_url":"",
             "close_up_image_url":"media/joe-close-up.jpg"
@@ -37,11 +39,12 @@
         "model":"players.Player",
         "fields":{
             "name":"Kiran Illet",
+            "number":8,
             "position":"Midfield",
             "apearences":14,
             "goals":1,
             "assists":11,
-            "clean_sheets":5,
+            "clean_sheets":8,
             "description":"",
             "main_image_url":"",
             "close_up_image_url":"media/kiran-close-up.jpg"
@@ -54,17 +57,87 @@
         "model":"players.Player",
         "fields":{
             "name":"Josh Ireland",
+            "number":2,
             "position":"Defender",
-            "apearences":"10",
-            "goals":"0",
-            "assists":"0",
-            "clean_sheets":"4",
+            "apearences":10,
+            "goals":0,
+            "assists":0,
+            "clean_sheets":4,
             "description":"",
             "main_image_url":"",
             "close_up_image_url":"media/josh-close-up.jpg"
 
 
         }
+    },
+    {
+        "pk":5,
+        "model":"players.Player",
+        "fields":{
+            "name":"James Sebire",
+            "number":9,
+            "position":"Forward",
+            "apearences":15,
+            "goals":6,
+            "assists":4,
+            "clean_sheets":8,
+            "description":"",
+            "main_image_url":"",
+            "close_up_image_url":""
+
+        }
+    },
+    {
+        "pk":6,
+        "model":"players.Player",
+        "fields":{
+            "name":"Ollie Findlay",
+            "number":1,
+            "position":"Goalkeeper",
+            "apearences":15,
+            "goals":0,
+            "assists":0,
+            "clean_sheets":8,
+            "description":"",
+            "main_image_url":"",
+            "close_up_image_url":""
+
+        }
+    },
+    {
+        "pk":7,
+        "model":"players.Player",
+        "fields":{
+            "name":"George Colivin-Bangs",
+            "number":22,
+            "position":"Defender",
+            "apearences":13,
+            "goals":1,
+            "assists":0,
+            "clean_sheets":8,
+            "description":"",
+            "main_image_url":"",
+            "close_up_image_url":""
+
+        }
+    },
+    {
+        "pk":8,
+        "model":"players.Player",
+        "fields":{
+            "name":"Adam Kempster",
+            "number":6,
+            "position":"Defender",
+            "apearences":14,
+            "goals":2,
+            "assists":0,
+            "clean_sheets":8,
+            "description":"",
+            "main_image_url":"",
+            "close_up_image_url":""
+
+        }
     }
+
 
 ]
