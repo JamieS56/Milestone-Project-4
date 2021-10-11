@@ -4,13 +4,12 @@ from .models import Player
 
 
 def team(request):
-    """ A view to show the whole team."""
+    ''' A view to return the index page '''
 
     players = Player.objects.all()
 
     context = {
-        'player': players
+        'players': players
     }
 
-    return render(request, 'players/team.html', context)
-
+    return render(request, 'players/teams.html', context)

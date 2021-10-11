@@ -1,21 +1,51 @@
 {% extends "base.html" %}
 {% load static %}
 
-{{ block page_header }}
+{% block page_header %}
 
-{{ endblock }}
+{% endblock %}
 
-{{ block content }}
-
-{% for player in players %}
-    {% if player.position == 'Goalkeeper' %}
-    {% endif %}
-    {% if player.position == 'Defender' %}
-    {% endif %}
-    {% if player.position == 'Midfield' %}
-    {% endif %}
-    {% if player.position == 'Forward' %}
-    {% endif %}
-{% endfor %}
-
-{{ endblock }}
+{% block content %}
+<div class="conainer">
+    <div class="row">
+        <div class="row"><h2 class="center">Goalkeeper</h2></div>
+        <div class="row center">
+            {% for player in players %}
+                {% if player.position == 'Goalkeeper' %}
+                    <img src="{% static player.close_up_image_url %}" class="col-3 center" alt="{{ player.name }}">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="row"><h2 class="center">Defender</h2></div>
+        <div class="row center">
+        {% for player in players %}
+            {% if player.position == 'Defender' %}
+                <img src="{% static player.close_up_image_url %}" class="col-3 center" alt="{{ player.name }}">
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="row"><h2 class="center">Midfielder</h2></div>
+        <div class="row center">
+        {% for player in players %}
+            {% if player.position == 'Midfield' %}
+                <img src="{% static player.close_up_image_url %}" class="col-3 center" alt="{{ player.name }}">
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="row"><h2 class="center">Forward</h2></div>
+        <div class="row center">
+        {% for player in players %}
+            {% if player.position == 'Forward' %}
+                <img src="{% static player.close_up_image_url %}" class="col-3" alt="{{ player.name }}">
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
