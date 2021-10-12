@@ -16,11 +16,11 @@
         <div class="row center">
             {% for player in players %}
                 {% if player.position == 'Goalkeeper' %}
-                <div class="col-2 player-image">
+                <a href="{% url 'player_profile' player.id %}" class="col-2 player-image">
                     <img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
                     <div class="player-number">{{ player.number }}</div>
                     <div class="player-name">{{ player.name }}</div>
-                </div>
+                </a>
                 {% endif %}
             {% endfor %}
         </div>
@@ -30,11 +30,11 @@
         <div class="row center">
         {% for player in players %}
             {% if player.position == 'Defender' %}
-            <div class="col-2 player-image">
-                <img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
-                <div class="player-number">{{ player.number }}</div>
-                <div class="player-name">{{ player.name }}</div>
-            </div>
+                <a href="{% url 'player_profile' player.id %}" class="col-2 player-image">
+                    <img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
+                    <div class="player-number">{{ player.number }}</div>
+                    <div class="player-name">{{ player.name }}</div>
+                </a>
             {% endif %}
         {% endfor %}
         </div>
@@ -44,11 +44,11 @@
         <div class="row center">
         {% for player in players %}
             {% if player.position == 'Midfield' %}
-            <div class="col-2 player-image">
-                <img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
-                <div class="player-number">{{ player.number }}</div>
-                <div class="player-name">{{ player.name }}</div>
-            </div>
+                <a href="{% url 'player_profile' player.id %}" class="col-2 player-image">
+                    <img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
+                    <div class="player-number">{{ player.number }}</div>
+                    <div class="player-name">{{ player.name }}</div>
+                </a>
             {% endif %}
         {% endfor %}
         </div>
@@ -58,11 +58,11 @@
         <div class="row center">
         {% for player in players %}
             {% if player.position == 'Forward' %}
-            <div class="col-2 player-image">
-                <img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
-                <div class="player-number">{{ player.number }}</div>
-                <div class="player-name">{{ player.name }}</div>
-            </div>
+                <a href="{% url 'player_profile' player.id %}" class="col-2 player-image">
+                        <img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
+                        <div class="player-number">{{ player.number }}</div>
+                        <div class="player-name">{{ player.name }}</div>
+                    </a>
             {% endif %}
         {% endfor %}
         </div>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '/players/css/teams.css' %}">
+{% endblock %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+<img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
+
+{% endblock %}
