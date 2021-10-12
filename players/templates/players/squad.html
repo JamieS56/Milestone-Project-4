@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static '/players/css/teams.css' %}">
+    <link rel="stylesheet" href="{% static '/players/css/squad.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="row"><h2 class="center">Defender</h2></div>
+        <div class="row"><h2 class="center">Defenders</h2></div>
         <div class="row center">
         {% for player in players %}
             {% if player.position == 'Defender' %}
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="row"><h2 class="center">Midfielder</h2></div>
+        <div class="row"><h2 class="center">Midfielders</h2></div>
         <div class="row center">
         {% for player in players %}
             {% if player.position == 'Midfield' %}
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="row"><h2 class="center">Forward</h2></div>
+        <div class="row"><h2 class="center">Forwards</h2></div>
         <div class="row center">
         {% for player in players %}
             {% if player.position == 'Forward' %}

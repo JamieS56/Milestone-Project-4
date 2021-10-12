@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static '/players/css/teams.css' %}">
+<link rel="stylesheet" href="{% static '/players/css/player_profile.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -10,6 +10,42 @@
 {% endblock %}
 
 {% block content %}
-<img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
+<div class="container">
+
+    
+    <div class="row">
+        <div class="col-6 player-profile-pic">
+            <img src="{% static player.close_up_image_url %}" class="" alt="{{ player.name }}">
+        </div>
+        <div class="col-6">
+            <div class="player-name-container">
+                <h1 id='player-name'>{{ player.name }}
+                    <span id='player-number'>{{ player.number }}</span>
+                </h1>
+            </div>
+            <div class="stat-block appearences-stat">
+                <h3 class="stat-title">Appearences
+                    <span class="stat-number">{{ player.apearences }}</span>
+                    </h2>
+            </div>
+            <div class="stat-block goals-stat">
+                <h3 class="stat-title">Goals <span class="stat-number">{{ player.goals }}</span>
+                    </h2>
+            </div>
+            <div class="stat-block assists-stat">
+                <h3 class="stat-title">Assists <span class="stat-number">{{ player.assists }}</span></h2>
+            </div>
+            <div class="stat-block clean-sheets-stat">
+                <h3 class="stat-title">Clean Sheets <span class="stat-number">{{ player.clean_sheets }}</span></h2>
+            </div>
+            <a class="back-button" href="{% url 'players' %}">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+
+        </div>
+    </div>
+
+</div>
+
 
 {% endblock %}

@@ -9,10 +9,12 @@
 .player-number{
     background-color: black;
     color:white;
+    padding:5px;
 }
 .player-name{
     background-color: black;
     color:white;
+    padding:5px;
 }
 a{
     text-decoration: none;

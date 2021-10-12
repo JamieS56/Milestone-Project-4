@@ -1,0 +1,55 @@
+.container{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.player-profile-pic{
+    border: 3px solid black;
+}
+.player-profile-pic > img {
+    width:100%;
+}
+.stat-block{
+    height: 0;
+    background: transparent;
+    border-top: 75px solid black;
+    border-right: 37px solid transparent;
+    color: white;
+    margin: 45px;
+    margin-left: 0;
+  }
+
+.player-name-container{
+    height: 80px;
+    color: white;
+    background-color: black;
+    margin: 15px 0 70px 0;
+    padding: 15px;
+
+}
+#player-name{
+    margin-left:30px;
+}
+#player-number{
+    margin-left:10px;
+    color:#ffe344;
+}
+.stat-title{
+    margin-top: -55px;
+    margin-left: 20px;
+}
+.stat-number{
+    color: #ffe344;
+    margin-left: 10px;
+}
+.back-button{
+    color: white;
+    font-size: 20px;
+    background-color: black;
+    text-decoration: none;
+    padding: 15px;
+    float: right;
+}
+
+.back-button:hover{
+    color:#ffe344e5;
+}

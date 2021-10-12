@@ -31,41 +31,31 @@
       <div class="carousel-inner row">
         <div class="carousel-item active">
           <div class="row carousel-row">
-        {% for player in players %}
-          <img src="{% static player.close_up_image_url %}" class="d-block w-20 player-close-up col-4" alt="{{ player.name }}">
-          {% if forloop.counter|divisibleby:3 %}
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="row carousel-row">
-          {% endif %}
-        {% endfor %}
+            {% for player in players %}
+            <img src="{% static player.close_up_image_url %}" class="d-block w-20 player-close-up col-4"
+              alt="{{ player.name }}">
+            {% if forloop.counter|divisibleby:3 %}
           </div>
         </div>
-      </div>
-        <div class="carousel-indicators">
-            {% for player in players %}
-            {% if forloop.first %}
-            <button type="button" data-bs-target="#player-carousel" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            {% else %}
-            <button type="button" data-bs-target="#player-carousel" data-bs-slide-to='{{ forloop.counter0 }}'
-              aria-label="Slide {{ forloop.counter }}"></button>
+        <div class="carousel-item">
+          <div class="row carousel-row">
             {% endif %}
             {% endfor %}
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#player-carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#player-carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#player-carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#player-carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </div>
+</div>
+</div>
 </div>
 {% endblock %}
 
