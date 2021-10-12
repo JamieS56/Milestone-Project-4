@@ -32,8 +32,9 @@
         <div class="carousel-item active">
           <div class="row carousel-row">
             {% for player in players %}
-            <img src="{% static player.close_up_image_url %}" class="d-block w-20 player-close-up col-4"
-              alt="{{ player.name }}">
+            <a href="{% url 'player_profile' player.id %}"><img src="{% static player.close_up_image_url %}" class="d-block w-20 player-close-up col-4"
+              alt="{{ player.name }}"></a>
+            
             {% if forloop.counter|divisibleby:3 %}
           </div>
         </div>

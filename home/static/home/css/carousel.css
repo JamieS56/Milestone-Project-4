@@ -4,11 +4,11 @@
 .carousel-indicators{
     position: relative;
 }
-.carousel-inner{
-
-}
 .carousel-row{
     place-content: center;
+}
+.carousel-row > a{
+    width: fit-content !important;
 }
 .player-close-up{
     width: 25vw;
