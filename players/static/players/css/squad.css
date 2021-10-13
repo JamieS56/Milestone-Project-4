@@ -2,19 +2,35 @@
     margin: 20px;
     border: 3px solid black;
     background-color: black;
+    position: relative;
 }
 .player-image > img{
     width:100%;
 }
 .player-number{
     background-color: black;
-    color:white;
-    padding:5px;
+    color: white;
+    height: 4rem;
+    width: 4rem;
+    border: 8px solid black;
+    border-radius: 50%;
+    position: relative;
+    padding: 11px;
+    margin: auto;
+    margin-top: -2rem;
+    margin-bottom: -2rem;
+
+}
+.player-image:hover .player-number{
+    background-color: #ffe344;
+    color: black;
+    
 }
 .player-name{
     background-color: black;
-    color:white;
-    padding:5px;
+    color: white;
+    padding-bottom: 8px;
+    padding-top: 2rem;
 }
 a{
     text-decoration: none;
