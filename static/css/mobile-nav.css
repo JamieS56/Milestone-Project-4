@@ -53,6 +53,7 @@
 .side-menu-item > a{
     color:#ffe344;
     font-size: 20px;
+    text-decoration: none;
 }
 
 #account-side-menu-box{
@@ -71,6 +72,7 @@
 .account-side-menu-item > a{
     color: black;
     font-weight: bold;
+    text-decoration: none;
 }
 .offcanvas-body{
     padding:0;
