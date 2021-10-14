@@ -1,0 +1,72 @@
+.nav-custom {
+    float: right;
+    height: 0;
+    border-bottom: 80px solid black;
+    border-left: 37px solid transparent;
+}
+.top-row{
+  background-color: #ffe344;
+  align-items: center;
+  margin: 20px 0;
+}
+.menu-item {
+    width: 8vw;
+    height: 80px;
+    transform: skew(-25deg);
+    background: black;
+    border: 0.5px solid rgb(31, 29, 29);
+    color: white;
+    text-align: center;
+    transition: background-color .5s;
+
+  }
+.login-item{
+  width: 8vw;
+  height: 80px;
+  background: black;
+  border: 0.5px solid black;
+  color: white;
+  text-align: center;
+  transition: background-color .5s;
+
+}
+.menu-item:hover, .login-item:hover{
+    background-color: #ffe344e5;
+    border: none;
+  }
+.menu-item > .nav-link{
+  transform: skew(25deg);
+}
+.nav-link {
+      color: white;
+  }
+.menu-item:hover > a, .login-item:hover > a {
+    color: black;
+  }
+
+#login-list{
+  padding-left:16px
+}
+.trapezoid {
+  height: 0;
+  width: 10vw;
+  transform: skew(0deg);
+  background: transparent;
+  margin-left: -19px;
+  margin-right: -17px;
+  border-bottom: 79px solid black;
+  border-left: 37px solid transparent;
+  transition: border .5s;
+}
+.trapezoid > .trapezoid-text{
+  transform: skew(0deg);
+  margin-top: 73px;
+}
+.trapezoid:hover{
+  border-bottom: 79px solid #ffe344e5;
+  border-left: 37px solid transparent;
+  background: transparent;
+}
+.nav{
+  display:inline-flex;
+}

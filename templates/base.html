@@ -24,6 +24,7 @@
     integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  
   {% endblock %}
 
   {% block extra_css %}
@@ -34,55 +35,13 @@
 
 <body>
 
-<div class="row top-row">
-  <div class="col-2 align-right">
-   <img class="club-logo" src="{% static 'media/ma-badge.png' %}">
-  </div>
-  <div class="col-2">
-  <span id="club-title" class="align-middle">MESSI ANKLES</span>
+<div class="d-none d-lg-block">
+  {% include "includes/main-nav.html" %}
+  
 </div>
-  <nav class="col-8">
-    
-    <ul class="nav justify-content-center">
-      <li class="nav-item menu-item d-flex align-items-center justify-content-center">
-        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-      </li>
-      <li class="nav-item menu-item d-flex align-items-center justify-content-center">
-        <a class="nav-link" href="{% url 'players' %}">Players</a>
-      </li>
-      <li class="nav-item menu-item d-flex align-items-center justify-content-center">
-        <a class="nav-link" href="#">Fixtures</a>
-      </li>
-      <li class="nav-item menu-item d-flex align-items-center justify-content-center">
-        <a class="nav-link" href="#">Club</a>
-      </li>
-      <li class="nav-item menu-item d-flex align-items-center justify-content-center book-tickets trapezoid">
-        <a class="nav-link trapezoid-text" href="#">Book Tickets</a>
-      </li>
 
-    </ul>
-
-    <ul id="login-list" class="nav justify-content-center">
-      {% if session.user %}
-      <li class="nav-item login-item d-flex align-items-center justify-content-center">
-        <a class="nav-link" href="#">Logout</a>
-      </li>
-      {% else %}
-      <li class="nav-item login-item d-flex align-items-center justify-content-center">
-        <a class="nav-link" href="#">Login</a>
-      </li>
-
-      <li class="nav-item login-item d-flex align-items-center justify-content-center">
-        <a class="nav-link" href="#">Create Account</a>
-      </li>
-      {% endif %}
-
-    </ul>
-
-
-    
-
-  </nav>
+<div class="d-lg-none">
+  {% include "includes/mobile-nav.html" %}
 </div>
 
   {% block page_header %}
@@ -97,12 +56,14 @@
 
   <footer class="page-footer">
 
-    <span id="footer-email">messiankles@gmail.com</span>
-    <div class="social-links float-right">
-      <span><i class="fab fa-twitter"></i></span>
-      <span><i class="fab fa-facebook"></i></span>
-      <span><i class="fab fa-instagram"></i></span>
+    <div class="row g-0">
+      <div id="footer-email" class=" d-none d-md-block col-6">messiankles@gmail.com</div>
+      <div class="social-links col-12 col-md-6 float-right">
+        <span><i class="fab fa-twitter"></i></span>
+        <span><i class="fab fa-facebook"></i></span>
+        <span><i class="fab fa-instagram"></i></span>
 
+      </div>
     </div>
 
   </footer>

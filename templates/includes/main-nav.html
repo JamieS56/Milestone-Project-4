@@ -1,0 +1,54 @@
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+{% endblock %}
+
+<div class="row top-row g-0">
+  <div class="col-2 align-right">
+    <img id="club-logo" class="" src="{% static 'media/ma-badge.png' %}">
+  </div>
+  <div class="col-2">
+    <h1 id="club-title" class="align-middle nav-title">MESSI ANKLES</h1>
+  </div>
+  <div class="col-8 nav-custom">
+    <nav class="">
+
+      <ul class="nav justify-content-center">
+        <li class="nav-item menu-item d-flex align-items-center justify-content-center">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item menu-item d-flex align-items-center justify-content-center">
+          <a class="nav-link" href="{% url 'players' %}">Players</a>
+        </li>
+        <li class="nav-item menu-item d-flex align-items-center justify-content-center">
+          <a class="nav-link" href="#">Fixtures</a>
+        </li>
+        <li class="nav-item menu-item d-flex align-items-center justify-content-center">
+          <a class="nav-link" href="#">Club</a>
+        </li>
+        <li class="nav-item menu-item d-flex align-items-center justify-content-center book-tickets trapezoid">
+          <a class="nav-link trapezoid-text" href="#">Tickets</a>
+        </li>
+
+      </ul>
+
+      <ul id="login-list" class="nav justify-content-center">
+        {% if session.user %}
+        <li class="nav-item login-item d-flex align-items-center justify-content-center">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item login-item d-flex align-items-center justify-content-center">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+
+        <li class="nav-item login-item d-flex align-items-center justify-content-center">
+          <a class="nav-link" href="#">Create Account</a>
+        </li>
+        {% endif %}
+
+      </ul>
+    </nav>
+  </div>
+</div>

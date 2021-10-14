@@ -1,0 +1,50 @@
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/mobile-nav.css' %}">
+{% endblock %}
+<div class="row top-row g-0 vertical-center">
+    <div class="col-4 col-sm-2 center">
+        <img id="club-logo" class="mobile-club-logo" src="{% static 'media/ma-badge.png' %}">
+    </div>
+    <div class="col-4 col-sm-3 center ">
+        <h1 id="club-title" class="align-middle nav-title">MESSI ANKLES</h1>
+    </div>
+    <div class="mobile-nav-bar col-sm-7 col-md-7 d-none d-sm-block">
+        <ul class="nav">
+            <li class="nav-item mob-menu-item d-flex align-items-center justify-content-center">
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item mob-menu-item d-flex align-items-center justify-content-center">
+                <a class="nav-link" href="#">Fixtures</a>
+            </li>
+            <li class="nav-item mob-menu-item d-flex align-items-center justify-content-center">
+                <a class="nav-link" href="#">Tickets</a>
+            </li>
+            <li class="nav-item mob-burger-menu d-flex align-items-center justify-content-center">
+                <button id="mobile-nav-btn" class="btn btn-primary warning" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-bars"></i></button>
+            </li>
+    </div>
+    <div class="col-4 d-sm-none mob-burger-menu">
+        <button id="mobile-nav-btn" class="btn btn-primary warning" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-bars"></i></button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        ...
+    </div>
+</div>

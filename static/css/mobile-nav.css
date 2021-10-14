@@ -1,0 +1,41 @@
+.mobile-nav-bar{
+    float: right;
+    height: 0;
+    border-bottom: 80px solid black;
+    border-left: 37px solid transparent;
+}
+.nav-title{
+    color: black;
+}
+#mobile-nav-btn{
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 25px;
+    margin-left: 20px;
+}
+.mob-menu-item{
+    width: 13vw;
+    height: 80px;
+    transform: skew(-25deg);
+    background: black;
+    border: 0.5px solid rgb(31, 29, 29);
+    color: white;
+    text-align: center;
+    transition: background-color .5s;
+}
+.mob-menu-item > a{
+    transform: skew(25deg);
+}
+.mob-burger-menu{
+    text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+    .mobile-nav-bar{
+        height: 0;
+        background:black;
+
+    }
+
+}
