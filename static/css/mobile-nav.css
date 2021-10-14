@@ -39,3 +39,39 @@
     }
 
 }
+
+.offcanvas{
+    background-color:black;
+    color: #ffe344;
+}
+.offcanvas-body > ul{
+    list-style: none;
+}
+.side-menu-item{
+    padding: 10px;
+}
+.side-menu-item > a{
+    color:#ffe344;
+    font-size: 20px;
+}
+
+#account-side-menu-box{
+    background-color: #ffe344;
+    color: black;
+    height: 100px;
+    margin-top: 50%;
+    padding: 1rem;
+    margin-bottom: 0;
+}
+.account-side-menu-item{
+    justify-content: center;
+    padding: 1rem;
+    font-size: 15px;
+}
+.account-side-menu-item > a{
+    color: black;
+    font-weight: bold;
+}
+.offcanvas-body{
+    padding:0;
+}

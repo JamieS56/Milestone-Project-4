@@ -23,12 +23,12 @@
             </li>
             <li class="nav-item mob-burger-menu d-flex align-items-center justify-content-center">
                 <button id="mobile-nav-btn" class="btn btn-primary warning" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-bars"></i></button>
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-bars"></i></button>
             </li>
     </div>
     <div class="col-4 d-sm-none mob-burger-menu">
         <button id="mobile-nav-btn" class="btn btn-primary warning" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-bars"></i></button>
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-bars"></i></button>
     </div>
 </div>
 
@@ -41,10 +41,47 @@
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">Offcanvas right</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        ...
+        <ul class="">
+            <li class="side-menu-item">
+                <a class="text-uppercase" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="side-menu-item">
+                <a class="" href="{% url 'players' %}">Players</a>
+            </li>
+            <li class="side-menu-item">
+                <a class="text-uppercase" href="#">Fixtures</a>
+            </li>
+            <li class="side-menu-item">
+                <a class="text-uppercase" href="#">Club</a>
+            </li>
+            <li class="side-menu-item">
+                <a class="text-uppercase" href="#">Tickets</a>
+            </li>
+
+        </ul>
+
+        <ul id="account-side-menu-box" class="">
+            {% if session.user %}
+            <li class="account-side-menu-item center">
+                <a class="text-uppercase" href="#">Logout</a>
+            </li>
+            {% else %}
+            <div class="row">
+            <div class="col-6">
+                <li class="account-side-menu-item center">
+                    <a class="text-uppercase" href="#">Login</a>
+                </li>
+            </div>
+            <div class="col-6">
+                <li class="account-side-menu-item">
+                    <a class="text-uppercase" href="#">Create Account</a>
+                </li>
+            </div>
+        </div>
+            {% endif %}
+        </ul>
     </div>
 </div>

@@ -11,9 +11,9 @@
 
 {% block content %}
 <div class="conainer">
-    <div class="row">
-        <div class="row"><h2 class="center">Goalkeeper</h2></div>
-        <div class="row center">
+    <div class="row  g-0">
+        <div class="row g-0"><h2 class="center">Goalkeeper</h2></div>
+        <div class="row center g-0">
             {% for player in players %}
                 {% if player.position == 'Goalkeeper' %}
                 <a href="{% url 'player_profile' player.id %}" class="col-6 col-md-4 col-lg-2 player-image">
@@ -25,9 +25,9 @@
             {% endfor %}
         </div>
     </div>
-    <div class="row">
-        <div class="row"><h2 class="center">Defenders</h2></div>
-        <div class="row center">
+    <div class="row g-0">
+        <div class="row g-0"><h2 class="center">Defenders</h2></div>
+        <div class="row center g-0">
         {% for player in players %}
             {% if player.position == 'Defender' %}
                 <a href="{% url 'player_profile' player.id %}" class="col-6 col-md-4 col-lg-2 player-image">
@@ -39,9 +39,9 @@
         {% endfor %}
         </div>
     </div>
-    <div class="row">
-        <div class="row"><h2 class="center">Midfielders</h2></div>
-        <div class="row center">
+    <div class="row g-0">
+        <div class="row g-0"><h2 class="center">Midfielders</h2></div>
+        <div class="row center g-0">
         {% for player in players %}
             {% if player.position == 'Midfield' %}
                 <a href="{% url 'player_profile' player.id %}" class="col-6 col-md-4 col-lg-2 player-image">
@@ -53,9 +53,9 @@
         {% endfor %}
         </div>
     </div>
-    <div class="row">
-        <div class="row"><h2 class="center">Forwards</h2></div>
-        <div class="row center">
+    <div class="row g-0">
+        <div class="row g-0"><h2 class="center">Forwards</h2></div>
+        <div class="row center g-0">
         {% for player in players %}
             {% if player.position == 'Forward' %}
                 <a href="{% url 'player_profile' player.id %}" class="col-6 col-md-4 col-lg-2  player-image">
