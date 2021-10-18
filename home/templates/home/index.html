@@ -19,7 +19,7 @@
 
 <div class="row center hero-image-row no-gutters">
   <div class="col-10 hero-outer">
-    <img id="hero-image" class='g-0' src="{% static 'media/team-hero-image.jpg' %}" alt='Team Photo'>
+    <img id="hero-image" class='g-0' src="{{ MEDIA_URL }}team-hero-image.jpg" alt='Team Photo'>
     <span id='fixture-tab' class='hero-tab bold'>Fixture</span>
     <span id='book-tickets-tab' class='hero-tab bold'>Book Tickets!</span>
   </div>
@@ -32,7 +32,7 @@
         <div class="carousel-item active">
           <div class="row carousel-row">
             {% for player in players %}
-            <a href="{% url 'player_profile' player.id %}"><img src="{% static player.close_up_image_url %}" class="d-block w-20 player-close-up col-4"
+            <a href="{% url 'player_profile' player.id %}"><img src="{{ MEDIA_URL }}{{ player.close_up_image_url }}" class="d-block w-20 player-close-up col-4"
               alt="{{ player.name }}"></a>
             
             {% if forloop.counter|divisibleby:3 %}

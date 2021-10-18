@@ -12,7 +12,7 @@
             "clean_sheets":5,
             "description":"",
             "main_image_url":"",
-            "close_up_image_url":"media/harvey-close-up.jpg"
+            "close_up_image_url":"harvey-close-up.jpg"
 
         }
     },
@@ -29,7 +29,7 @@
             "clean_sheets":8,
             "description":"",
             "main_image_url":"",
-            "close_up_image_url":"media/joe-close-up.jpg"
+            "close_up_image_url":"joe-close-up.jpg"
 
 
         }
@@ -47,7 +47,7 @@
             "clean_sheets":8,
             "description":"",
             "main_image_url":"",
-            "close_up_image_url":"media/kiran-close-up.jpg"
+            "close_up_image_url":"kiran-close-up.jpg"
 
 
         }
@@ -65,7 +65,7 @@
             "clean_sheets":4,
             "description":"",
             "main_image_url":"",
-            "close_up_image_url":"media/josh-close-up.jpg"
+            "close_up_image_url":"josh-close-up.jpg"
 
 
         }
