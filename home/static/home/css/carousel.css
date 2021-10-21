@@ -1,5 +1,6 @@
 .carousel{
     margin:5vw 0;
+    text-align: -webkit-center;
 }
 .carousel-indicators{
     position: relative;
@@ -19,4 +20,16 @@
 .carousel-control-next, .carousel-control-prev {
     top:unset;
     bottom:-10px;
+}
+
+@media screen and (max-width: 767px) {
+
+    .player-close-up{
+        width: 35vw;
+        height: 37vw;
+        border: 5px solid black;
+        margin: 10px;
+    }
+
+
 }
