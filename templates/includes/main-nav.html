@@ -34,13 +34,13 @@
       </ul>
 
       <ul id="login-list" class="nav justify-content-center">
-        {% if session.user %}
+        {% if user.is_authenticated %}
         <li class="nav-item login-item d-flex align-items-center justify-content-center">
-          <a class="nav-link" href="#">Logout</a>
+          <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
         </li>
         {% else %}
         <li class="nav-item login-item d-flex align-items-center justify-content-center">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="{% url 'account_login' %}">Login</a>
         </li>
 
         <li class="nav-item login-item d-flex align-items-center justify-content-center">

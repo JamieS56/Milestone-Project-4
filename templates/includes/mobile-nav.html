@@ -66,13 +66,13 @@
         <ul id="account-side-menu-box" class="">
             {% if session.user %}
             <li class="account-side-menu-item center">
-                <a class="text-uppercase" href="#">Logout</a>
+                <a class="text-uppercase" href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
             <div class="row">
             <div class="col-6">
                 <li class="account-side-menu-item center">
-                    <a class="text-uppercase" href="#">Login</a>
+                    <a class="text-uppercase" href="{% url 'account_login' %}">Login</a>
                 </li>
             </div>
             <div class="col-6">
