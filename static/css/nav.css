@@ -32,7 +32,6 @@
 }
 .menu-item:hover, .login-item:hover{
     background-color: #ffe344e5;
-    border: none;
   }
 .menu-item > .nav-link{
   transform: skew(25deg);
