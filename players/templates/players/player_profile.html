@@ -41,6 +41,11 @@
             <a class="back-button" href="{% url 'players' %}">
                 <i class="fas fa-arrow-left"></i> Back
             </a>
+            {% if user.is_superuser %}
+            <a class="back-button" href="{% url 'edit_player' player.id %}">
+                edit
+            </a>
+            {% endif %}
 
         </div>
     </div>

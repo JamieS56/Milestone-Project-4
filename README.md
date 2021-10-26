@@ -41,3 +41,4 @@ admin login page does not exist fix https://stackoverflow.com/questions/9736975/
 ## Acknowledgements/ Links
 
 CSS Shapes - https://css-tricks.com/the-shapes-of-css/
+Fixed footer - https://stackoverflow.com/questions/40853952/bootstrap-footer-at-the-bottom-of-the-page/40854221
