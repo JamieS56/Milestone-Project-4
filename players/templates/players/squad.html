@@ -17,7 +17,7 @@
             {% for player in players %}
                 {% if player.position == 'Goalkeeper' %}
                 <a href="{% url 'player_profile' player.id %}" class="col-6 col-md-4 col-lg-2 player-image">
-                    <img src="{{ MEDIA_URL }}{{ player.close_up_image_url }}" class="" alt="{{ player.name }}">
+                    <img src="{{ MEDIA_URL }}{{ player.image_url }}" class="" alt="{{ player.name }}">
                     <div class="player-number">{{ player.number }}</div>
                     <div class="player-name">{{ player.name }}</div>
                 </a>
@@ -31,7 +31,7 @@
         {% for player in players %}
             {% if player.position == 'Defender' %}
                 <a href="{% url 'player_profile' player.id %}" class="col-6 col-md-4 col-lg-2 player-image">
-                    <img src="{{ MEDIA_URL }}{{ player.close_up_image_url }}" class="" alt="{{ player.name }}">
+                    <img src="{{ MEDIA_URL }}{{ player.image_url }}" class="" alt="{{ player.name }}">
                     <div class="player-number">{{ player.number }}</div>
                     <div class="player-name">{{ player.name }}</div>
                 </a>
@@ -45,7 +45,7 @@
         {% for player in players %}
             {% if player.position == 'Midfield' %}
                 <a href="{% url 'player_profile' player.id %}" class="col-6 col-md-4 col-lg-2 player-image">
-                    <img src="{{ MEDIA_URL }}{{ player.close_up_image_url }}" class="" alt="{{ player.name }}">
+                    <img src="{{ MEDIA_URL }}{{ player.image_url }}" class="" alt="{{ player.name }}">
                     <div class="player-number">{{ player.number }}</div>
                     <div class="player-name">{{ player.name }}</div>
                 </a>
@@ -59,7 +59,7 @@
         {% for player in players %}
             {% if player.position == 'Forward' %}
                 <a href="{% url 'player_profile' player.id %}" class="col-6 col-md-4 col-lg-2  player-image">
-                        <img src="{{ MEDIA_URL }}{{ player.close_up_image_url }}" class="" alt="{{ player.name }}">
+                        <img src="{{ MEDIA_URL }}{{ player.image_url }}" class="" alt="{{ player.name }}">
                         <div class="player-number">{{ player.number }}</div>
                         <div class="player-name">{{ player.name }}</div>
                     </a>

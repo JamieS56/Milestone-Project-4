@@ -12,9 +12,7 @@ class Player(models.Model):
     assists = models.IntegerField()
     clean_sheets = models.IntegerField()
     description = models.TextField(null=True, blank=True)
-    main_image_url = models.URLField(max_length=1024, null=True, blank=True)
-    close_up_image_url = models.CharField(max_length=100, null=True,
+    image_url = models.CharField(max_length=100, null=True,
                                                          blank=True)
-
     def __str__(self):
         return self.name

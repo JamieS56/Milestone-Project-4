@@ -7,11 +7,11 @@ def add_no_image(players):
 
     try:
         for player in players:
-            if player.close_up_image_url == '':
-                player.close_up_image_url = 'no-image.jpg'
+            if player.image_url == '':
+                player.image_url = 'no-image.jpg'
     except TypeError:
-        if players.close_up_image_url == '':
-            players.close_up_image_url = 'no-image.jpg'
+        if players.image_url == '':
+            players.image_url = 'no-image.jpg'
 
     return players
 
