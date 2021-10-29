@@ -1,0 +1,114 @@
+[
+    {
+        "pk":1,
+        "model":"team_fixtures.Team",
+        "fields":{
+            "name":"Messi Ankles",
+            "wins":0,
+            "draws":0,
+            "losses":0,
+            "goals_for":0,
+            "goals_against":0,
+            "points":0
+        }
+
+    },
+    {
+        "pk":2,
+        "model":"team_fixtures.Team",
+        "fields":{
+            "name":"Team Folded",
+            "wins":0,
+            "draws":0,
+            "losses":0,
+            "goals_for":0,
+            "goals_against":0,
+            "points":0
+        }
+
+    },
+    {
+        "pk":3,
+        "model":"team_fixtures.Team",
+        "fields":{
+            "name":"Neptune FC",
+            "wins":0,
+            "draws":0,
+            "losses":0,
+            "goals_for":0,
+            "goals_against":0,
+            "points":0
+        }
+
+    },
+    {
+        "pk":4,
+        "model":"team_fixtures.Team",
+        "fields":{
+            "name":"Pro Clubs",
+            "wins":0,
+            "draws":0,
+            "losses":0,
+            "goals_for":0,
+            "goals_against":0,
+            "points":0
+        }
+
+    },
+    {
+        "pk":5,
+        "model":"team_fixtures.Team",
+        "fields":{
+            "name":"Back Post",
+            "wins":0,
+            "draws":0,
+            "losses":0,
+            "goals_for":0,
+            "goals_against":0,
+            "points":0
+        }
+
+    },
+    {
+        "pk":6,
+        "model":"team_fixtures.Team",
+        "fields":{
+            "name":"Frauds FC",
+            "wins":0,
+            "draws":0,
+            "losses":0,
+            "goals_for":0,
+            "goals_against":0,
+            "points":0
+        }
+
+    },
+    {
+        "pk":7,
+        "model":"team_fixtures.Team",
+        "fields":{
+            "name":"Eagles",
+            "wins":0,
+            "draws":0,
+            "losses":0,
+            "goals_for":0,
+            "goals_against":0,
+            "points":0
+        }
+
+    },
+    {
+        "pk":8,
+        "model":"team_fixtures.Team",
+        "fields":{
+            "name":"Bears",
+            "wins":0,
+            "draws":0,
+            "losses":0,
+            "goals_for":0,
+            "goals_against":0,
+            "points":0
+        }
+
+    }
+]
