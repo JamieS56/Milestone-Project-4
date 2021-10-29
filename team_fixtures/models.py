@@ -17,12 +17,10 @@ class Team(models.Model):
 
 
 class Fixture(models.Model):
-    home_team = models.ManyToManyField(Team),
-    away_team = models.ManyToManyField(Team),
+    teams = models.ManyToManyField(Team)
     date_time = models.DateTimeField()
     home_team_goals = models.IntegerField(blank=True)
-    away_team_goals = models.IntegerField()
-    
+    away_team_goals = models.IntegerField(blank=True)
 
     def get_teams(self):
 
