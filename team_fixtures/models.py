@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 
@@ -18,7 +19,7 @@ class Team(models.Model):
 
 class Fixture(models.Model):
     teams = models.ManyToManyField(Team)
-    date_time = models.DateTimeField()
+    date_time = forms.SplitDateTimeField()
     home_team_goals = models.IntegerField(blank=True)
     away_team_goals = models.IntegerField(blank=True)
 
