@@ -13,8 +13,6 @@ class Team(models.Model):
     goals_against = models.IntegerField()
     points = models.IntegerField()
 
-    def __str__(self):
-        return self.name
 
 
 class Fixture(models.Model):
