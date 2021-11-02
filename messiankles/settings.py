@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-
+import dj_database_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'home',
     'players',
     'profiles',
+    'teams',
 
     # other
     'storages',
