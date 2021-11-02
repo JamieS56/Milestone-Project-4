@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'home',
     'players',
     'profiles',
-    'team_fixtures',
 
     # other
     'storages',
