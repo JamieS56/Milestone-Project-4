@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 import dj_database_url
-# import env
+import psycopg2
+import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,8 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', '')
-# env.SECRET_KEY
+SECRET_KEY = os.environ.get('SECRET_KEY', 'env.SECRET_KEY')
+env.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
@@ -118,9 +119,10 @@ WSGI_APPLICATION = 'messiankles.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
+    DATABASE_URL = os.environ['DATABASE_URL']
+
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 else:
     DATABASES = {
         'default': {
