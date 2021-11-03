@@ -119,7 +119,7 @@ WSGI_APPLICATION = 'messiankles.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': dj_database_url.parse('postgres://hwjqieewfmvnre:f538a24bd3bf2ee7e31799ea0e94008507295efba6d70832a2342465543d2402@ec2-52-210-120-210.eu-west-1.compute.amazonaws.com:5432/d3sdjo3sn72mq2')
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
