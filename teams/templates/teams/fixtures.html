@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+<div class="conainer">
+    {% for fixture in fixtures %}
+    <p>{{ fixture.teams }}</p>
+    {% endfor %}
+
+
+    <a class="btn custom-btn" href="{% url 'add_fixture' %}"> Add Fixture</a>
+
+</div>
+
+{% endblock %}
