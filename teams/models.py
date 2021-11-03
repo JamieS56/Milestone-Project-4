@@ -14,9 +14,9 @@ class Team(models.Model):
     points = models.IntegerField()
 
 
-
 class Fixture(models.Model):
-    teams = models.ManyToManyField(Team)
+    home_team = models.ManyToManyField(Team, related_name='home_team')
+    away_team = models.ManyToManyField(Team, related_name='away_team')
     date_time = forms.SplitDateTimeField()
     home_team_goals = models.IntegerField(blank=True)
     away_team_goals = models.IntegerField(blank=True)

@@ -1,7 +1,9 @@
 from django import forms
+from django.db import models
 from .models import Team, Fixture
 from players.models import Player
 
+from datetime import date
 
 class FixtureForm(forms.ModelForm):
 
@@ -15,15 +17,25 @@ class FixtureForm(forms.ModelForm):
         all_teams.append(teams)
         print(teams)
 
-    date_time = forms.SplitDateTimeField(label='Split Date Time Field',
-                        label_suffix=" : ", required=True,
-                        disabled=False, input_date_formats=["%d-%m-%Y"],
-                        input_time_formats=["%H:%M"],
-                        widget=forms.SplitDateTimeWidget(attrs={'class': 'form-control'}),
-                        error_messages={'required': "This field is required."})
+    home_team_goals = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'min': 0})
+    )
+    away_team_goals = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'min': 0})
+    )
 
-    teams = forms.MultipleChoiceField(
+    date_time = forms.SplitDateTimeField(
+        widget=forms.SplitDateTimeWidget(date_attrs={'type': 'date', 'min':date.today()}, time_attrs={'type': 'time'})
+        )
+
+    home_team = forms.MultipleChoiceField(
         required=True,
-        widget=forms.SelectMultiple,
+        widget=forms.Select(),
+        choices=list(Team.objects.values_list('id', 'name'))
+    )
+
+    away_team = forms.MultipleChoiceField(
+        required=True,
+        widget=forms.Select(),
         choices=list(Team.objects.values_list('id', 'name'))
     )
