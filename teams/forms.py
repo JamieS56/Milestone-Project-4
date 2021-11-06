@@ -28,13 +28,13 @@ class FixtureForm(forms.ModelForm):
         widget=forms.SplitDateTimeWidget(date_attrs={'type': 'date', 'min':date.today()}, time_attrs={'type': 'time'})
         )
 
-    home_team = forms.MultipleChoiceField(
+    home_team = forms.ChoiceField(
         required=True,
         widget=forms.Select(),
         choices=list(Team.objects.values_list('id', 'name'))
     )
 
-    away_team = forms.MultipleChoiceField(
+    away_team = forms.ChoiceField(
         required=True,
         widget=forms.Select(),
         choices=list(Team.objects.values_list('id', 'name'))

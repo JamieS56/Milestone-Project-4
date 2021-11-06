@@ -15,8 +15,9 @@ class Team(models.Model):
 
 
 class Fixture(models.Model):
-    home_team = models.ManyToManyField(Team, related_name='home_team')
-    away_team = models.ManyToManyField(Team, related_name='away_team')
+    home_team = models.CharField(max_length=50)
+    away_team = models.CharField(max_length=50)
+
     date_time = forms.SplitDateTimeField()
     home_team_goals = models.IntegerField(blank=True)
     away_team_goals = models.IntegerField(blank=True)

@@ -7,9 +7,27 @@
 
 {% block content %}
 <div class="conainer">
-    {% for fixture in fixtures %}
-    <p>{{ fixture.teams }}</p>
-    {% endfor %}
+
+
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <th class=''>Fixtures</th>
+        </thead>
+        <tbody>
+            {% for fixture in fixtures %}
+            <tr class="">
+                <td>{{ fixture.home_team }}</td>
+                <td>{{ fixture.home_team_goals }}</td>
+                <td>V</td>
+                <td>{{ fixture.away_team_goals }}</td>
+                <td>{{ fixture.away_team }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>>
+
+
 
 
     <a class="btn custom-btn" href="{% url 'add_fixture' %}"> Add Fixture</a>
