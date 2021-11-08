@@ -10,22 +10,30 @@
 
 
 
-    <table class="table table-dark table-striped">
-        <thead>
-            <th class=''>Fixtures</th>
-        </thead>
+    <table class="table table-dark table-striped col-8 center">
+
+            <h2 class=''>Fixtures</h2>
+
         <tbody>
             {% for fixture in fixtures %}
             <tr class="">
+                <th>{{ fixture.date }}<br> {{ fixture.time }}</th>
                 <td>{{ fixture.home_team }}</td>
-                <td>{{ fixture.home_team_goals }}</td>
-                <td>V</td>
-                <td>{{ fixture.away_team_goals }}</td>
+                {% if fixture.game_played %}
+                    <td>{{ fixture.home_team_goals }}</td>
+                    <td>V</td>
+                    <td>{{ fixture.away_team_goals }}</td>
+                {% else %}
+                    <td>-</td>
+                    <td>V</td>
+                    <td>-</td>
+                    
+                {% endif %}
                 <td>{{ fixture.away_team }}</td>
             </tr>
             {% endfor %}
         </tbody>
-    </table>>
+    </table>
 
 
 

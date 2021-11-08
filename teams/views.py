@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django import forms
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Team, Fixture
 from .forms import FixtureForm
+
 
 # Create your views here.
 
@@ -25,6 +27,7 @@ def fixtures_page(request):
     for fixture in fixtures:
         fixture.home_team = Team.objects.get(pk=fixture.home_team).name
         fixture.away_team = Team.objects.get(pk=fixture.away_team).name
+        print(fixture.time)
 
     context = {
         'fixtures': fixtures,

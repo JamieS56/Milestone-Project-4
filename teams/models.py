@@ -17,15 +17,12 @@ class Team(models.Model):
 class Fixture(models.Model):
     home_team = models.CharField(max_length=50)
     away_team = models.CharField(max_length=50)
-
-    date_time = forms.SplitDateTimeField()
-    home_team_goals = models.IntegerField(blank=True)
-    away_team_goals = models.IntegerField(blank=True)
+    home_team_goals = models.IntegerField(null=True, blank=True)
+    away_team_goals = models.IntegerField(null=True, blank=True)
+    date = models.DateField()
+    time = models.TimeField()
+    game_played = models.BooleanField(default=False)
 
     def get_teams(self):
 
         return self.home_team, self.away_team
-
-    def get_fixture_date(self):
-
-        return self.date_time
