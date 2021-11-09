@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.shortcuts import get_object_or_404
 
 # Create your models here.
 
@@ -13,6 +14,9 @@ class Team(models.Model):
     goals_against = models.IntegerField()
     points = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 
 class Fixture(models.Model):
     home_team = models.CharField(max_length=50)
@@ -23,6 +27,5 @@ class Fixture(models.Model):
     time = models.TimeField()
     game_played = models.BooleanField(default=False)
 
-    def get_teams(self):
-
-        return self.home_team, self.away_team
+    def __str__(self):
+        return f'{self.home_team} V {self.away_team}'

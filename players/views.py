@@ -50,6 +50,7 @@ def edit_player(request, player_id):
         return redirect(reverse('home'))
 
     player = add_no_image(get_object_or_404(Player, pk=player_id))
+    print(player)
     if request.method == 'POST':
         form = PlayerForm(request.POST, request.FILES, instance=player)
         if form.is_valid():

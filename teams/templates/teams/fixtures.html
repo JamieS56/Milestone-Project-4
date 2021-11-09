@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css%}
+<link rel="stylesheet" href="{% static 'teams/css/fixtures.css' %}">
+
+{% endblock %}
+
 {% block page_header %}
 
 {% endblock %}
 
 {% block content %}
-<div class="conainer">
+<div class="conainer center">
 
 
 
@@ -30,6 +35,9 @@
                     
                 {% endif %}
                 <td>{{ fixture.away_team }}</td>
+                {% if user.is_superuser %}
+                <td><a class="btn custom-btn" href="{% url 'edit_fixture' fixture.id %}"> Edit Fixture</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>

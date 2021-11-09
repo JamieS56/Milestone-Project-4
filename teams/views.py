@@ -3,7 +3,7 @@ from django import forms
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Team, Fixture
-from .forms import FixtureForm
+from .forms import FixtureForm, EditFixtureForm
 
 
 # Create your views here.
@@ -27,7 +27,6 @@ def fixtures_page(request):
     for fixture in fixtures:
         fixture.home_team = Team.objects.get(pk=fixture.home_team).name
         fixture.away_team = Team.objects.get(pk=fixture.away_team).name
-        print(fixture.time)
 
     sorted_fixtures = sorted(fixtures, key=lambda fixture: fixture.date)
 
@@ -68,7 +67,7 @@ def add_fixture(request):
 
     return render(request, template, context)
 
-
+@login_required
 def edit_fixture(request, fixture_id):
     """ Edit a fixture """
     if not request.user.is_superuser:
@@ -76,6 +75,7 @@ def edit_fixture(request, fixture_id):
         return redirect(reverse('home'))
 
     fixture = get_object_or_404(Fixture, pk=fixture_id)
+    print(fixture)
 
     if request.method == 'POST':
         form = EditFixtureForm(request.POST, request.FILES, instance=fixture)
@@ -89,7 +89,7 @@ def edit_fixture(request, fixture_id):
         else:
             messages.error(request, 'Failed to add fixture. Please ensure the form is valid.')
     else:
-        form = FixtureForm()
+        form = EditFixtureForm(instance=fixture)
 
     teams = Team.objects.all()
     template = 'teams/edit_fixture.html'
