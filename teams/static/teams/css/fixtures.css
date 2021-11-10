@@ -2,3 +2,17 @@
     width: 70%;
     margin: 20px auto;
 }
+.badge {
+    margin: 10px;
+    height: 3rem;
+    width: 90px;
+    font-size: 1rem;
+    font-weight:500;
+    padding-top: 0.8rem;
+    padding-top: 0.8rem;
+}
+.btn-close{
+    margin-left: 10px;
+    opacity: 1;
+    font-size: 0.8rem;
+}

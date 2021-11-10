@@ -19,13 +19,19 @@ class Team(models.Model):
 
 
 class Fixture(models.Model):
-    home_team = models.CharField(max_length=50)
-    away_team = models.CharField(max_length=50)
-    home_team_goals = models.IntegerField(null=True, blank=True)
-    away_team_goals = models.IntegerField(null=True, blank=True)
+
+    HOME_OR_AWAY = [
+        ('H', 'Home'),
+        ('A', 'Away')
+    ]
+
+
+
+    home_or_away = models.CharField(max_length=1, choices=HOME_OR_AWAY)
+    opposition_team = models.IntegerField(choices=Team.objects.values_list('id', 'name').exclude(name='Messi Ankles'))
+    messi_ankles_team_goals = models.IntegerField(null=True, blank=True)
+    opposition_team_goals = models.IntegerField(null=True, blank=True)
     date = models.DateField()
     time = models.TimeField()
     game_played = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f'{self.home_team} V {self.away_team}'

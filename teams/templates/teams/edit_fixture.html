@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="{% static 'teams/css/fixtures.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -12,9 +13,54 @@
 <div class="container">
     <form method="POST" action="{% url 'edit_fixture' fixture.id %}" class="form mb-2" enctype="multipart/form-data">
         {% csrf_token %}
-        {% for field in form %}
-            {{ field | as_crispy_field }}
-        {% endfor %}
+        {{ form.home_or_away | as_crispy_field }}
+        {{ form.opposition_team | as_crispy_field }}
+
+        <div class="row">
+            <div class="col-6 center">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-goal-form">Add Goal</button>
+                <input id='goal-counter' value='0' class="visually-hidden"></input>
+                <div id="goal-counter-pills"></div>
+            </div>
+            <div class="col-6">{{ form.opposition_team_goals | as_crispy_field }}</div>
+        </div>
+        <div class="row">
+            <div class="col-6">{{ form.date | as_crispy_field }}
+            </div>
+            <div class="col-6">{{ form.time | as_crispy_field }}</div>
+        </div>
+        {{ form.game_played| as_crispy_field }}
+
+        <div class="modal fade" id="add-goal-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="add-goal-form" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Add Goal</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <select name='goal-scorer'>
+                            {% for player in players %}
+                            <option>{{ player.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="">
+                        <select name='assist-maker'>
+                            {% for player in players %}
+                            <option>{{ player.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button id='add-goal-btn' type="button" class="btn btn-primary" data-bs-dismiss="modal" >Add Goal</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <div class="text-right">
             <a class="btn btn-outline-black rounded-0" href="{% url 'fixtures' %}">Cancel</a>
             <button class="btn btn-black rounded-0" type="submit">Edit Fixture</button>
@@ -23,4 +69,8 @@
 </div>
 
 
+{% endblock %}
+{% block postloadjs %}
+{{block.super}}
+<script src="{% static 'teams/js/add-goal.js' %}"></script>
 {% endblock %}

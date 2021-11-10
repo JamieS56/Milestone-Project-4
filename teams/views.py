@@ -3,6 +3,7 @@ from django import forms
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Team, Fixture
+from players.models import Player
 from .forms import FixtureForm, EditFixtureForm
 
 
@@ -25,8 +26,7 @@ def fixtures_page(request):
     teams = Team.objects.all()
 
     for fixture in fixtures:
-        fixture.home_team = Team.objects.get(pk=fixture.home_team).name
-        fixture.away_team = Team.objects.get(pk=fixture.away_team).name
+        fixture.opposition_team = Team.objects.get(pk=fixture.opposition_team).name
 
     sorted_fixtures = sorted(fixtures, key=lambda fixture: fixture.date)
 
@@ -46,10 +46,9 @@ def add_fixture(request):
 
     if request.method == 'POST':
         form = FixtureForm(request.POST, request.FILES)
-        if request.POST.get("home_team") == request.POST.get('away_team'):
-            messages.error(request, "You can't have the same home team and away team.")
-            return redirect('add_fixture')
+
         if form.is_valid():
+
             form.save()
             messages.success(request, 'Successfully added fixture!')
             return redirect('fixtures')
@@ -75,13 +74,10 @@ def edit_fixture(request, fixture_id):
         return redirect(reverse('home'))
 
     fixture = get_object_or_404(Fixture, pk=fixture_id)
-    print(fixture)
 
     if request.method == 'POST':
         form = EditFixtureForm(request.POST, request.FILES, instance=fixture)
-        if request.POST.get("home_team") == request.POST.get('away_team'):
-            messages.error(request, "You can't have the same home team and away team.")
-            return redirect('add_fixture')
+        
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully added fixture!')
@@ -92,11 +88,13 @@ def edit_fixture(request, fixture_id):
         form = EditFixtureForm(instance=fixture)
 
     teams = Team.objects.all()
+    players = Player.objects.all()
     template = 'teams/edit_fixture.html'
     context = {
         'form': form,
         'teams': teams,
-        'fixture': fixture
+        'fixture': fixture,
+        'players': players
     }
 
     return render(request, template, context)

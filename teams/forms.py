@@ -11,36 +11,32 @@ class FixtureForm(forms.ModelForm):
         model = Fixture
         fields = '__all__'
 
-    all_teams = []
-
-    for teams in Team.objects.all():
-        all_teams.append(teams)
-
-    home_team_goals = forms.IntegerField(
+    home_or_away = forms.ChoiceField(
+        required=True,
+        widget=forms.Select(),
+        choices=[
+            ('H', 'Home'),
+            ('A', 'Away')
+        ]
+    )
+    opposition_team = forms.ChoiceField(
+        required=True,
+        widget=forms.Select(),
+        choices=Team.objects.values_list('id', 'name').exclude(name='Messi Ankles'),
+    )
+    messi_ankles_team_goals = forms.IntegerField(
         required=False,
-
         widget=forms.NumberInput(attrs={'min': 0}),
     )
-    away_team_goals = forms.IntegerField(
+    opposition_team_goals = forms.IntegerField(
         required=False,
         widget=forms.NumberInput(attrs={'min': 0}),
-
     )
     date = forms.DateField(
         widget=forms.TextInput(attrs={'type': 'date', 'min': date.today()})
         )
     time = forms.TimeField(
         widget=forms.TextInput(attrs={'type': 'time'})
-    )
-    home_team = forms.ChoiceField(
-        required=True,
-        widget=forms.Select(),
-        choices=list(Team.objects.values_list('id', 'name'))
-    )
-    away_team = forms.ChoiceField(
-        required=True,
-        widget=forms.Select(),
-        choices=list(Team.objects.values_list('id', 'name'))
     )
     game_played = forms.BooleanField(
         widget=forms.HiddenInput(),
@@ -54,37 +50,34 @@ class EditFixtureForm(forms.ModelForm):
         model = Fixture
         fields = '__all__'
 
-    all_teams = []
-
-    for teams in Team.objects.all():
-        all_teams.append(teams)
-
-    home_team_goals = forms.IntegerField(
+    home_or_away = forms.ChoiceField(
+        required=True,
+        widget=forms.Select(),
+        choices=[
+            ('H', 'Home'),
+            ('A', 'Away')
+        ]
+    )
+    opposition_team = forms.ChoiceField(
+        required=True,
+        widget=forms.Select(),
+        choices=Team.objects.values_list('id', 'name').exclude(name='Messi Ankles'),
+    )
+    messi_ankles_team_goals = forms.IntegerField(
         required=False,
-
         widget=forms.NumberInput(attrs={'min': 0}),
     )
-    away_team_goals = forms.IntegerField(
+    opposition_team_goals = forms.IntegerField(
         required=False,
         widget=forms.NumberInput(attrs={'min': 0}),
-
     )
     date = forms.DateField(
-        widget=forms.TextInput(attrs={'type': 'date', 'min': date.today()})
+        widget=forms.TextInput(attrs={'type': 'date', 'min': date.today(), 'class': 'col-6'})
         )
     time = forms.TimeField(
-        widget=forms.TextInput(attrs={'type': 'time'})
+        widget=forms.TextInput(attrs={'type': 'time', 'class': ' col-6'})
     )
-    home_team = forms.ChoiceField(
-        required=True,
-        widget=forms.Select(),
-        choices=list(Team.objects.values_list('id', 'name'))
-    )
-    away_team = forms.ChoiceField(
-        required=True,
-        widget=forms.Select(),
-        choices=list(Team.objects.values_list('id', 'name'))
-    )
+
     game_played = forms.BooleanField(
         required=False
     )
