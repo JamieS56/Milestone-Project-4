@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django import forms
+from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Team, Fixture
+from .models import Team, Fixture, Goal
 from players.models import Player
-from .forms import FixtureForm, EditFixtureForm
-
+from .forms import FixtureForm, EditFixtureForm, AddGoalForm
+from customFunctions import customFunctions
+import json
 
 # Create your views here.
 
@@ -17,7 +18,7 @@ def teams_page(request):
     context = {
         'teams': teams
     }
-    return render(request,'teams/teams.html', context)
+    return render(request, 'teams/teams.html', context)
 
 
 def fixtures_page(request):
@@ -25,16 +26,13 @@ def fixtures_page(request):
     fixtures = Fixture.objects.all()
     teams = Team.objects.all()
 
-    for fixture in fixtures:
-        fixture.opposition_team = Team.objects.get(pk=fixture.opposition_team).name
-
     sorted_fixtures = sorted(fixtures, key=lambda fixture: fixture.date)
 
     context = {
         'fixtures': sorted_fixtures,
         'teams': teams
     }
-    return render(request,'teams/fixtures.html', context)
+    return render(request, 'teams/fixtures.html', context)
 
 
 @login_required
@@ -66,6 +64,7 @@ def add_fixture(request):
 
     return render(request, template, context)
 
+
 @login_required
 def edit_fixture(request, fixture_id):
     """ Edit a fixture """
@@ -75,10 +74,13 @@ def edit_fixture(request, fixture_id):
 
     fixture = get_object_or_404(Fixture, pk=fixture_id)
 
+
     if request.method == 'POST':
         form = EditFixtureForm(request.POST, request.FILES, instance=fixture)
-        
+        add_goal_form = AddGoalForm(request.POST, request.FILES)
+
         if form.is_valid():
+
             form.save()
             messages.success(request, 'Successfully added fixture!')
             return redirect('fixtures')
@@ -86,6 +88,7 @@ def edit_fixture(request, fixture_id):
             messages.error(request, 'Failed to add fixture. Please ensure the form is valid.')
     else:
         form = EditFixtureForm(instance=fixture)
+        add_goal_form = AddGoalForm(initial={'fixture': fixture})
 
     teams = Team.objects.all()
     players = Player.objects.all()
@@ -94,7 +97,73 @@ def edit_fixture(request, fixture_id):
         'form': form,
         'teams': teams,
         'fixture': fixture,
-        'players': players
+        'players': players,
+        'add_goal_form': add_goal_form
+
     }
 
     return render(request, template, context)
+
+
+def add_goals(goals_list):
+
+    for goals in goals_list:
+        try:
+
+            fixture_id = goals['fixture']
+            fixture = get_object_or_404(Fixture, pk=fixture_id)
+            goal_scorer = get_object_or_404(Player, pk=goals['goal_scorer'])
+            assist_maker = get_object_or_404(Player, pk=goals['assist_maker'])
+            print('heeeeeeeeeeeeeeeey')
+            print(goals)
+            goal = Goal(goal_id=goals['goal_id'], goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
+            goal.save()
+            return 'success'
+        except AttributeError:
+            return 'error'
+    
+
+
+
+GOAL_LIST = []
+
+
+@login_required
+def handle_goal(request):
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin can do that.')
+        return redirect(reverse('home'))
+
+    try:
+
+        goal_data = json.loads(request.body.decode('utf-8'))
+        print(goal_data)
+
+    except AttributeError:
+        pass
+
+    if goal_data['submit'] == 'True':
+        goals_list = GOAL_LIST
+        goal_success = add_goals(goals_list)
+        if goal_success == 'success':
+            messages.success(request, 'Successfully added Goal!')
+        else:
+            messages.error(request, 'Failed to add goal. Please ensure the form is valid.')
+
+
+        return JsonResponse({'submit': 'success'})
+
+    if goal_data['add_or_remove'] == 'add':
+        goal_data['goal_id'] = customFunctions.createRandomPK()
+        GOAL_LIST.append(goal_data)
+
+        return JsonResponse(goal_data)
+
+    if goal_data['add_or_remove'] == 'remove':
+        for goal in range(len(GOAL_LIST)):
+            if GOAL_LIST[goal]['goal_id'] == goal_data['goal_id']:
+                del GOAL_LIST[goal]
+                break
+
+        return JsonResponse({'game_id': '0'})

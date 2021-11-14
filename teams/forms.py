@@ -1,6 +1,7 @@
 from django import forms
-from .models import Team, Fixture
+from .models import Team, Fixture, Goal
 from players.models import Player
+from customFunctions import customFunctions
 
 from datetime import date
 
@@ -58,10 +59,9 @@ class EditFixtureForm(forms.ModelForm):
             ('A', 'Away')
         ]
     )
-    opposition_team = forms.ChoiceField(
+    opposition_team = forms.ModelChoiceField(
         required=True,
-        widget=forms.Select(),
-        choices=Team.objects.values_list('id', 'name').exclude(name='Messi Ankles'),
+        queryset=Team.objects.all()
     )
     messi_ankles_team_goals = forms.IntegerField(
         required=False,
@@ -72,7 +72,7 @@ class EditFixtureForm(forms.ModelForm):
         widget=forms.NumberInput(attrs={'min': 0}),
     )
     date = forms.DateField(
-        widget=forms.TextInput(attrs={'type': 'date', 'min': date.today(), 'class': 'col-6'})
+        widget=forms.TextInput(attrs={'type': 'date', 'class': 'col-6'})
         )
     time = forms.TimeField(
         widget=forms.TextInput(attrs={'type': 'time', 'class': ' col-6'})
@@ -80,4 +80,24 @@ class EditFixtureForm(forms.ModelForm):
 
     game_played = forms.BooleanField(
         required=False
+    )
+
+
+class AddGoalForm(forms.ModelForm):
+
+    class Meta:
+        model = Goal
+        fields = '__all__'
+
+    goal_id = forms.IntegerField(
+        widget=forms.HiddenInput(attrs={'value':customFunctions.createRandomPK})
+        )
+    goal_scorer = forms.ModelChoiceField(
+        queryset=Player.objects.all()
+    )
+    assist_maker = forms.ModelChoiceField(
+        queryset=Player.objects.all()
+    )
+    fixture = forms.IntegerField(
+        widget=forms.HiddenInput(attrs={'value': '{{ fixture }}'})
     )
