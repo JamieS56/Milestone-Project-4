@@ -1,9 +1,12 @@
 var addGoalBtn = document.getElementById('add-goal-btn')
 var goalCounter = document.getElementById('goal-counter')
-var playerPill = `<span class="badge bg-dark">Goal\
-                        <input id='' value='0' class="visually-hidden goal-id"></input>
-                        <button type="button" class="btn-close btn-close-white close" aria-label="Close"></button>
-                    </span>`
+var goal_table_row = `<tr class="">
+                          <th scope="row"></th>
+                          <td class="">${$('#id_goal_scorer option:selected').text()}</td>
+                          <td class="">${$('#id_assist_maker option:selected').text()}</td>
+                          <td class=""><button type="button" class="btn-close btn-close-white close" aria-label="Close"></button></td>
+                          <td class="visually-hidden"><input id='' value='${$('#id_goal_id').val()}' class="visually-hidden goal-id"></input></td>
+                      <tr>`
 
 
 function getCookie(name) {
@@ -57,7 +60,14 @@ async function handle_goals(goal_data){
 
 function increaseGoalCount(){
     
-    $('#goal-counter').val(parseInt($('#goal-counter').val()) + 1);
+    if($('#goal-team-select option:selected').val() == $('#goal-home-team-option').val()){
+        $('#home-goal-table').append(goal_table_row);
+        $('#home-goal-table').children().addClass('table-dark')
+    } else{
+        $('#away-goal-table').append(goal_table_row);
+    };
+
+    
 
     goal_data = {
         'goal_id': $('#id_goal_id').val(),
@@ -89,7 +99,7 @@ function decreaseGoalCount(){
     handle_goals(goal_data)
 }
 
-function removePill(){
+function removeRow(){
     $('#goal-counter-pills span:last-child').remove();
 }
 
@@ -113,11 +123,6 @@ function submitGoals(){
 
 $(document).ready(function(){
 
-
-
-
-
-
     $('#id_home_team').change(function(){
         $('#goal-home-team-option').text($(this).find('option:selected').text())
         $('#goal-home-team-option').val($(this).find('option:selected').val())
@@ -128,10 +133,9 @@ $(document).ready(function(){
         $('#goal-away-team-option').val( $(this).find('option:selected').val())
     })
     
-
-    $('#add-goal-btn').click(function(){
-        $('#goal-counter-pills').append(playerPill);
-    });
+    // $('#add-goal-btn').click(function(){
+    //     $('').append(goal_table_row);
+    // });
     $('#add-goal-submit-btn').click(increaseGoalCount);
 
     $('#goal-counter-pills').on('click', '.close', decreaseGoalCount);
@@ -142,8 +146,5 @@ $(document).ready(function(){
 
     $('#goal-home-team-option').val($('#id_home_team option:selected').val())
     $('#goal-away-team-option').val($('#id_away_team option:selected').val())
-
-    
-
 
 });

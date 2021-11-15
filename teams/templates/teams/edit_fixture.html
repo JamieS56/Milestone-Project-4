@@ -10,66 +10,114 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container col-8">
     <form method="POST" action="{% url 'edit_fixture' fixture.id %}" class="form mb-2" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.home_team | as_crispy_field }}
         {{ form.away_team | as_crispy_field }}
 
-        <div class="row">
-            <div class="col-6 center">
-                <button id='add-goal-btn' type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-goal-form">Add Goal</button>
-                <input id='goal-counter' value='0' class="visually-hidden"></input>
-                <div id="goal-counter-pills">
+        <div class="row center">
+            <div class="col-5">
+                <button id='add-goal-btn' type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#add-goal-form">Add Goal</button>
+            </div>
+        </div>
+        <div class="row center">
+        <div class="col-6">
+            <h3>Home Team</h3>
+            <input id='goal-counter' value='0' class="visually-hidden"></input>
+            <div id="goal-counter-pills">
+                <table id='home-goal-table' class="table"> 
+                    <thead class="table-dark">
+                        <tr class="table-dark">
+                          <th class="table-dark" scope="col">#</th>
+                          <th class="table-dark" scope="col">Scorer</th>
+                          <th class="table-dark" scope="col">Assist</th>
+                          <th class="table-dark" scope="col">Del</th>
+                        </tr>
+                    </thead>  
                     {% for goal in goals %}
-                    <span class="badge bg-dark">
-                        <input id='' value='{{ goal.goal_id }}' class="visually-hidden goal-id"></input>
-                        <button type="button" class="btn-close btn-close-white close" aria-label="Close"></button>
-                    </span>
+                    {% if goal.team == fixture.home_team %}
+                    <tr class="table-dark">
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td class="table-dark">{{ goal.goal_scorer }}</td>
+                        <td class="table-dark" >{{ goal.assist_maker }}</td>
+                        <td class="table-dark"><button type="button" class="btn-close btn-close-white close" aria-label="Close"></button></td>
+                        <td class="visually-hidden table-dark"><input id='' value='{{ goal.goal_id }}' class="visually-hidden goal-id"></input></td>
+                    </tr>
+                    {% endif %}
                     {% endfor %}
-                </div>
+                </table>
             </div>
-            <div class="col-6">{{ form.away_team_goals | as_crispy_field }}</div>
         </div>
-        <div class="row">
-            <div class="col-6">{{ form.date | as_crispy_field }}
-            </div>
-            <div class="col-6">{{ form.time | as_crispy_field }}</div>
+        <div class="col-6">
+            <h3>Away Team</h3>
+            <table id='away-goal-table' class="table table-dark"> 
+                <thead class="table-dark">
+                    <tr class="table-dark">
+                      <th class="table-dark" scope="col">#</th>
+                      <th class="table-dark" scope="col">Scorer</th>
+                      <th class="table-dark" scope="col">Assist</th>
+                      <th class="table-dark" scope="col">Del</th>
+                    </tr>
+                </thead>  
+                {% for goal in goals %}
+                {% if goal.team == fixture.home_away %}
+                <tr class="table-dark">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td class="table-dark">{{ goal.goal_scorer }}</td>
+                    <td class="table-dark" >{{ goal.assist_maker }}</td>
+                    <td class="table-dark"><button type="button" class="btn-close btn-close-white close" aria-label="Close"></button></td>
+                    <td class="visually-hidden table-dark"><input id='' value='{{ goal.goal_id }}' class="visually-hidden goal-id"></input></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
         </div>
-        {{ form.game_played | as_crispy_field }}
+</div>
+<div class="row">
+    <div class="col-6">{{ form.date | as_crispy_field }}</div>
+    <div class="col-6">{{ form.time | as_crispy_field }}</div>
+</div>
+{{ form.game_played | as_crispy_field }}
 
-       
-        <div class="text-right">
-            <a class="btn btn-outline-black rounded-0" href="{% url 'fixtures' %}">Cancel</a>
-            <button id="edit-fixture" class="btn btn-black rounded-0" type="">Save Fixture</button>
-        </div>
-    </form>
 
-    <div class="modal fade" id="add-goal-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="add-goal-form" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
+<div class="text-right">
+    <a class="btn btn-outline-black rounded-0" href="{% url 'fixtures' %}">Cancel</a>
+    <button id="edit-fixture" class="btn btn-black rounded-0" type="">Save Fixture</button>
+</div>
+</form>
+
+<div class="modal fade" id="add-goal-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="add-goal-form" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Add Goal</h5>
-              <button type="button" class="btn-close close-add-goal" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="staticBackdropLabel">Add Goal</h5>
+                <button type="button" class="btn-close close-add-goal" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
             </div>
-                <div class="modal-body">
-                    <input id='fixture-input' class='visually-hidden' value='{{ fixture.id }}'> 
-                    <select id='goal-team-select' name='goal-team-select' class='select form-control'>
-                        <option id="goal-home-team-option" value="{{ ficture.home_team.id }}">{{ fixture.home_team }}</option>
-                        <option id="goal-away-team-option" value="{{ ficture.away_team.id }}">{{ fixture.away_team }}</option>
-                    </select>
-                    {% for fields in add_goal_form %}
-                        {{ fields | as_crispy_field }}
-                    {% endfor %}
-                </div>
-                <div class="modal-footer">
+            <div class="modal-body">
+                <input id='fixture-input' class='visually-hidden' value='{{ fixture.id }}'>
+                <select id='goal-team-select' name='goal-team-select' class='select form-control'>
+                    <option id="goal-home-team-option" value="{{ ficture.home_team.id }}">{{ fixture.home_team }}
+                    </option>
+                    <option id="goal-away-team-option" value="{{ ficture.away_team.id }}">{{ fixture.away_team }}
+                    </option>
+                </select>
+                {% for fields in add_goal_form %}
+                {{ fields | as_crispy_field }}
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary close-add-goal" data-bs-dismiss="modal">Close</button>
-                <button id='add-goal-submit-btn' type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Add Goal</button>
-                
-                </div>
-          </div>
+                <button id='add-goal-submit-btn' type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add
+                    Goal</button>
+
+            </div>
         </div>
-      </div>
+    </div>
+</div>
 </div>
 
 
