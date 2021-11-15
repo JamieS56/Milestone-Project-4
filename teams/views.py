@@ -34,6 +34,17 @@ def fixtures_page(request):
     }
     return render(request, 'teams/fixtures.html', context)
 
+def table_page(request):
+    ''' A view to return the index page '''
+
+    teams = Team.objects.all()
+    sorted_teams = sorted(teams, key=lambda team: team.points(), reverse=True)
+    context = {
+        'teams': sorted_teams
+    }
+    return render(request, 'teams/table.html', context)
+
+
 
 @login_required
 def add_fixture(request):
@@ -73,6 +84,8 @@ def edit_fixture(request, fixture_id):
         return redirect(reverse('home'))
 
     fixture = get_object_or_404(Fixture, pk=fixture_id)
+    goals = Goal.objects.filter(fixture=fixture)
+    print(goals)
 
 
     if request.method == 'POST':
@@ -97,6 +110,7 @@ def edit_fixture(request, fixture_id):
         'form': form,
         'teams': teams,
         'fixture': fixture,
+        'goals': goals,
         'players': players,
         'add_goal_form': add_goal_form
 
@@ -109,16 +123,22 @@ def add_goals(goals_list):
 
     for goals in goals_list:
         try:
+            if goals['team'] == '1':
 
-            fixture_id = goals['fixture']
-            fixture = get_object_or_404(Fixture, pk=fixture_id)
-            goal_scorer = get_object_or_404(Player, pk=goals['goal_scorer'])
-            assist_maker = get_object_or_404(Player, pk=goals['assist_maker'])
-            print('heeeeeeeeeeeeeeeey')
-            print(goals)
-            goal = Goal(goal_id=goals['goal_id'], goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
-            goal.save()
-            return 'success'
+                fixture = get_object_or_404(Fixture, pk=goals['fixture'])
+                team = get_object_or_404(Team, pk=goals['team'])
+                goal_scorer = get_object_or_404(Player, pk=goals['goal_scorer'])
+                assist_maker = get_object_or_404(Player, pk=goals['assist_maker'])
+                goal = Goal(goal_id=goals['goal_id'], team=team, goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
+                goal.save()
+                return 'success'
+            else:
+                fixture = get_object_or_404(Fixture, pk=goals['fixture'])
+                team = get_object_or_404(Team, pk=goals['team'])
+                goal = Goal(goal_id=goals['goal_id'], team=team, goal_scorer=None, assist_maker=None, fixture=fixture)
+                goal.save()
+                return 'success'
+
         except AttributeError:
             return 'error'
     

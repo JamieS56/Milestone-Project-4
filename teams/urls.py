@@ -8,5 +8,6 @@ urlpatterns = [
     path('teams/', views.teams_page, name='teams'),
     path('handle_goal/', views.handle_goal, name='handle_goal'),
     path('add_goals/<int:fixture_id>/', views.add_goals, name='add_goals'),
+    path('table/', views.table_page, name='table'),
 
 ]

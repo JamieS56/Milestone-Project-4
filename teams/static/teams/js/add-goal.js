@@ -36,7 +36,6 @@ async function handle_goals(goal_data){
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        console.log(data['goal_id'])
 
         $('#goal-counter-pills').find('input').each(function(){
             if (data['goal_id']){
@@ -62,6 +61,7 @@ function increaseGoalCount(){
 
     goal_data = {
         'goal_id': $('#id_goal_id').val(),
+        'team': $('#goal-team-select option:selected').val(),
         'goal_scorer': $('#id_goal_scorer option:selected').val(),
         'assist_maker': $('#id_assist_maker option:selected').val(),
         'fixture': $('#fixture-input').val(),
@@ -84,7 +84,6 @@ function decreaseGoalCount(){
     }
     
     $('#goal-counter').val(parseInt($('#goal-counter').val()) - 1);
-    console.log($('#goal-counter').val());
     $(this).parent().remove();
 
     handle_goals(goal_data)
@@ -114,6 +113,20 @@ function submitGoals(){
 
 $(document).ready(function(){
 
+
+
+
+
+
+    $('#id_home_team').change(function(){
+        $('#goal-home-team-option').text($(this).find('option:selected').text())
+        $('#goal-home-team-option').val($(this).find('option:selected').val())
+    })
+
+    $('#id_away_team').change(function(){
+        $('#goal-away-team-option').text( $(this).find('option:selected').text())
+        $('#goal-away-team-option').val( $(this).find('option:selected').val())
+    })
     
 
     $('#add-goal-btn').click(function(){
@@ -126,6 +139,9 @@ $(document).ready(function(){
     $('.close-add-goal').click(removePill)
 
     $('#edit-fixture').click(submitGoals)
+
+    $('#goal-home-team-option').val($('#id_home_team option:selected').val())
+    $('#goal-away-team-option').val($('#id_away_team option:selected').val())
 
     
 

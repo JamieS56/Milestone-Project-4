@@ -13,16 +13,23 @@
 <div class="container">
     <form method="POST" action="{% url 'edit_fixture' fixture.id %}" class="form mb-2" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.home_or_away | as_crispy_field }}
-        {{ form.opposition_team | as_crispy_field }}
+        {{ form.home_team | as_crispy_field }}
+        {{ form.away_team | as_crispy_field }}
 
         <div class="row">
             <div class="col-6 center">
                 <button id='add-goal-btn' type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-goal-form">Add Goal</button>
                 <input id='goal-counter' value='0' class="visually-hidden"></input>
-                <div id="goal-counter-pills"></div>
+                <div id="goal-counter-pills">
+                    {% for goal in goals %}
+                    <span class="badge bg-dark">
+                        <input id='' value='{{ goal.goal_id }}' class="visually-hidden goal-id"></input>
+                        <button type="button" class="btn-close btn-close-white close" aria-label="Close"></button>
+                    </span>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="col-6">{{ form.opposition_team_goals | as_crispy_field }}</div>
+            <div class="col-6">{{ form.away_team_goals | as_crispy_field }}</div>
         </div>
         <div class="row">
             <div class="col-6">{{ form.date | as_crispy_field }}
@@ -46,7 +53,11 @@
               <button type="button" class="btn-close close-add-goal" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
                 <div class="modal-body">
-                    <input id='fixture-input' class='vissualy-hidden' value='{{ fixture.id }}'> 
+                    <input id='fixture-input' class='visually-hidden' value='{{ fixture.id }}'> 
+                    <select id='goal-team-select' name='goal-team-select' class='select form-control'>
+                        <option id="goal-home-team-option" value="{{ ficture.home_team.id }}">{{ fixture.home_team }}</option>
+                        <option id="goal-away-team-option" value="{{ ficture.away_team.id }}">{{ fixture.away_team }}</option>
+                    </select>
                     {% for fields in add_goal_form %}
                         {{ fields | as_crispy_field }}
                     {% endfor %}

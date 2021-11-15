@@ -51,23 +51,19 @@ class EditFixtureForm(forms.ModelForm):
         model = Fixture
         fields = '__all__'
 
-    home_or_away = forms.ChoiceField(
+    home_team = forms.ModelChoiceField(
         required=True,
-        widget=forms.Select(),
-        choices=[
-            ('H', 'Home'),
-            ('A', 'Away')
-        ]
+        queryset=Team.objects.all()
     )
     opposition_team = forms.ModelChoiceField(
         required=True,
         queryset=Team.objects.all()
     )
-    messi_ankles_team_goals = forms.IntegerField(
+    home_team_goals = forms.IntegerField(
         required=False,
         widget=forms.NumberInput(attrs={'min': 0}),
     )
-    opposition_team_goals = forms.IntegerField(
+    away_team_goals = forms.IntegerField(
         required=False,
         widget=forms.NumberInput(attrs={'min': 0}),
     )
@@ -88,6 +84,16 @@ class AddGoalForm(forms.ModelForm):
     class Meta:
         model = Goal
         fields = '__all__'
+
+    fixture = forms.ModelChoiceField(
+        widget=forms.HiddenInput(),
+        queryset=Fixture.objects.all()
+    )
+
+    team = forms.ModelChoiceField(
+        widget=forms.HiddenInput(attrs={'id': 'goal_home_team'}),
+        queryset=Team.objects.all()
+    )
 
     goal_id = forms.IntegerField(
         widget=forms.HiddenInput(attrs={'value':customFunctions.createRandomPK})
