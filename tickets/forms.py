@@ -36,3 +36,13 @@ class CheckoutForm(forms.ModelForm):
             'last_name',
             'email'
         ]
+    
+    first_name = forms.CharField(
+        required=True
+    )
+    last_name = forms.CharField(
+        required=True
+    )
+    email = forms.EmailField(
+        required=True
+    )
