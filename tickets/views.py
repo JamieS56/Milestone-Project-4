@@ -93,21 +93,41 @@ def handle_checkout(request):
         }
         checkout_form = CheckoutForm(form_data)
         ticket_id = str(customFunctions.createRandomPK())
+        full_name=form_data['first_name']+' '+form_data['last_name']
 
         if checkout_form.is_valid():
-            user=request.user
-            ticket = Ticket(ticket_holder=request.user, fixture=order_details['fixture'], number_of_tickets=order_details['number_of_tickets'], price=order_details['grand_total'])
-            ticket.save()
-            checkout = checkout_form.save()
-            print(checkout)
-            return render(request, 'tickets/success.html')
+            if request.user.is_authenticated:
+                user=request.user
+                ticket = Ticket(
+                    ticket_id=ticket_id,
+                    ticket_holder=user,
+                    fixture=order_details['fixture'],
+                    number_of_tickets=order_details['number_of_tickets'],
+                    price=order_details['grand_total'],
+                    full_name=full_name,
+                    email=form_data['email']
+                    )
+                ticket.save()
+                request.session['order_details'] = {}
+                return render(request, 'tickets/success.html')
+            else:
+                print('user not logged in')
+                ticket = Ticket(
+                    ticket_id=ticket_id,
+                    ticket_holder=None,
+                    fixture=order_details['fixture'],
+                    number_of_tickets=order_details['number_of_tickets'],
+                    price=order_details['grand_total'],
+                    full_name=full_name,
+                    email=form_data['email']
+                    )
+                ticket.save()
+                request.session['order_details'] = {}
+                return render(request, 'tickets/success.html')
+
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
-
-    
-
-
 
 
 def success_url(request):

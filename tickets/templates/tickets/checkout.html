@@ -23,22 +23,23 @@
             <hr>
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <div class="row center">
-            <form id='payment-form' action="{% url 'handle_checkout' %}" method="POST" id="payment-form">
-                {% csrf_token %}
-                <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
-                    Fixture: {{ fixture }}<br>
-                    Tickets: {{ order_details.number_of_tickets }}<br>
-                    Total: ${{ order_details.grand_total }}<br>
+<div class="container">
+    <div class="row center">
+        <form id='payment-form' action="{% url 'handle_checkout' %}" method="POST" id="payment-form">
+            {% csrf_token %}
+            <fieldset class="rounded px-3 mb-5">
+                <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                Fixture: {{ fixture }}<br>
+                Tickets: {{ order_details.number_of_tickets }}<br>
+                Total: ${{ order_details.grand_total }}<br>
 
-                </fieldset>
-                <fieldset class="rounded px-3 mb-5">
-                    {% for fields in form %}
-                        {{ fields | as_crispy_field  }}
-                    {% endfor %}
+            </fieldset>
+            <fieldset class="rounded px-3 mb-5">
+                {% for fields in form %}
+                {{ fields | as_crispy_field  }}
+                {% endfor %}
                 <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                     <!-- A Stripe card element will go here -->
@@ -64,13 +65,14 @@
                         <span>Your card will be charged <strong>${{ order_details.grand_total }}</strong></span>
                     </p>
 
-                    
 
-            </form>
 
-        </div>
+        </form>
+
     </div>
 </div>
+</div>
+
 
 
 {% endblock %}

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}"> -->
 {% endblock %}
 
 {% block page_header %}
@@ -19,33 +19,43 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">{{ user }} Profile</h2>
+                <h2 class="logo-font mb-4">{{ user | capfirst }}'s Profile</h2>
                 <hr>
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-8">
                 <p class="text-muted">Order History</p>
                 <div class="order-history table-responsive">
                     <table class="table table-sm table-borderless">
                         <thead>
                             <tr>
                                 <th>Order Number</th>
-                                <th>Date</th>
-                                <th>Tickets</th>
+                                <th>Fixture</th>
+                                <th>Number of Tickets</th>
                                 <th>Order Total</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            {% for ticket in tickets %}
+                            <tr>
+                                <td>{{ ticket.ticket_id }}</td>
+                                <td>{{ ticket.fixture }}</td>
+                                <td>{{ ticket.number_of_tickets }}</td>
+                                <td>${{ ticket.price }}</td>
+                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
+
+
                 </div>
             </div>
         </div>
+    </div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script> -->
 {% endblock %}

@@ -8,10 +8,11 @@ from profiles.models  import UserProfile
 
 def profile_page(request):
     """ Display the user's profile. """
-    print(request.user.id)
-    profile = UserProfile.objects.filter(pk=request.user.id)
+
+    profile = request.user
 
     tickets = Ticket.objects.filter(ticket_holder=profile)
+    print(tickets)
 
     template = 'profiles/profiles.html'
     context = {
