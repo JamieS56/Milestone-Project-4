@@ -81,22 +81,26 @@ class AddGoalForm(forms.ModelForm):
         fields = '__all__'
 
     fixture = forms.ModelChoiceField(
+        required=True,
         widget=forms.HiddenInput(),
         queryset=Fixture.objects.all()
     )
 
     team = forms.ModelChoiceField(
-        widget=forms.HiddenInput(attrs={'id': 'goal_home_team'}),
+        required=True,
+        widget=forms.Select(attrs={'id': 'goal_home_team'}),
         queryset=Team.objects.all()
     )
 
     goal_id = forms.IntegerField(
-        widget=forms.HiddenInput(attrs={'value':customFunctions.createRandomPK})
+        widget=forms.HiddenInput(attrs={})
         )
     goal_scorer = forms.ModelChoiceField(
+        required=False,
         queryset=Player.objects.all()
     )
     assist_maker = forms.ModelChoiceField(
+        required=False,
         queryset=Player.objects.all()
     )
 

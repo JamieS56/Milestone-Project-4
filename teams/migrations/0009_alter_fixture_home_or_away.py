@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='fixture',
             name='home_or_away',
-            field=models.CharField(choices=[('H', 'Home'), ('A', 'Away')], max_length=1),
+            field=models.CharField(choices=[('H', 'Home'), ('A', 'Away')], max_length=50),
         ),
     ]

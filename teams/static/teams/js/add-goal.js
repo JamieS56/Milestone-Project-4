@@ -40,7 +40,7 @@ async function handle_goals(goal_data){
     .then(data => {
         console.log('Success:', data);
 
-        $('#goal-counter-pills').find('input').each(function(){
+        $('.goal-table').find('input').each(function(){
             if (data['goal_id']){
                 console.log($(this))
                 if($(this).val() == '0'){  
@@ -99,9 +99,7 @@ function decreaseGoalCount(){
     handle_goals(goal_data)
 }
 
-function removeRow(){
-    $('#goal-counter-pills span:last-child').remove();
-}
+
 
 function submitGoals(){
     goal_data = {
@@ -133,16 +131,8 @@ $(document).ready(function(){
         $('#goal-away-team-option').val( $(this).find('option:selected').val())
     })
     
-    // $('#add-goal-btn').click(function(){
-    //     $('').append(goal_table_row);
-    // });
-    $('#add-goal-submit-btn').click(increaseGoalCount);
 
-    $('#goal-counter-pills').on('click', '.close', decreaseGoalCount);
 
-    $('.close-add-goal').click(removePill)
-
-    $('#edit-fixture').click(submitGoals)
 
     $('#goal-home-team-option').val($('#id_home_team option:selected').val())
     $('#goal-away-team-option').val($('#id_away_team option:selected').val())

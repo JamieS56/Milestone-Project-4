@@ -93,56 +93,67 @@ def edit_fixture(request, fixture_id):
         form = EditFixtureForm(instance=fixture)
         add_goal_form = AddGoalForm(initial={'fixture': fixture})
 
-    teams = Team.objects.all()
-    players = Player.objects.all()
+
     template = 'teams/edit_fixture.html'
     context = {
         'form': form,
-        'teams': teams,
         'fixture': fixture,
         'goals': goals,
-        'players': players,
         'add_goal_form': add_goal_form
-
     }
 
     return render(request, template, context)
 
 
-def add_goals(goals_list):
+def add_goal(request):
     """ This view handles adding goals to the """
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin can do that.')
         return redirect(reverse('home'))
 
-    if request.method == 'POST':
+    print(request.POST)
 
-    for goals in goals_list:
-        try:
-            if goals['team'] == '1':
-
-                fixture = get_object_or_404(Fixture, pk=goals['fixture'])
-                team = get_object_or_404(Team, pk=goals['team'])
-                goal_scorer = get_object_or_404(Player, pk=goals['goal_scorer'])
-                assist_maker = get_object_or_404(Player, pk=goals['assist_maker'])
-                goal = Goal(goal_id=goals['goal_id'], team=team, goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
-                goal.save()
-                return 'success'
-            else:
-                fixture = get_object_or_404(Fixture, pk=goals['fixture'])
-                team = get_object_or_404(Team, pk=goals['team'])
-                goal = Goal(goal_id=goals['goal_id'], team=team, goal_scorer=None, assist_maker=None, fixture=fixture)
-                goal.save()
-                return 'success'
-
-        except AttributeError:
-            return 'error'
     
+    fixture = get_object_or_404(Fixture, pk=request.POST['fixture'])
+    goals = Goal.objects.filter(fixture=fixture)
+    add_goal_form = AddGoalForm(request.POST, request.FILES)
+    form = EditFixtureForm(instance=fixture)
 
+    template = 'teams/edit_fixture.html'
+    context = {
+        'form': form,
+        'fixture': fixture,
+        'goals': goals,
+        'add_goal_form': add_goal_form
+    }
 
+    if request.method == 'POST':
+        
+        print(request.POST)
+        team = get_object_or_404(Team, pk=request.POST['team'])
+        messi_ankles = get_object_or_404(Team, pk=1)
 
-GOAL_LIST = []
+        if add_goal_form.is_valid:
+            goal_id = customFunctions.createRandomPK()
+
+            if team == messi_ankles:
+                print('cool')
+                print(team)
+                goal_scorer = get_object_or_404(Player, pk=request.POST['goal_scorer'])
+                assist_maker = get_object_or_404(Player, pk=request.POST['assist_maker'])
+                goal = Goal(goal_id=goal_id, team=team, goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
+                goal.save()
+                return render(request, 'teams/edit_fixture.html', context)
+            else:
+
+                print(team)
+                
+                goal = Goal(goal_id=goal_id, team=team, goal_scorer=None, assist_maker=None, fixture=fixture)
+                goal.save()
+                return render(request, 'teams/edit_fixture.html', context)
+        else:
+            return messages.error(request, 'Sorry, form is invalid please check your form.')
 
 
 @login_required
@@ -155,7 +166,7 @@ def handle_goal(request):
     try:
 
         goal_data = json.loads(request.body.decode('utf-8'))
-        print(goal_data)
+
 
     except AttributeError:
         pass

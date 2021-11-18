@@ -26,7 +26,7 @@
         <div class="col-6">
             <h3>Home Team</h3>
             <input id='goal-counter' value='0' class="visually-hidden"></input>
-            <div id="goal-counter-pills">
+            <div class='goal-table'>
                 <table id='home-goal-table' class="table"> 
                     <thead class="table-dark">
                         <tr class="table-dark">
@@ -62,7 +62,7 @@
                     </tr>
                 </thead>  
                 {% for goal in goals %}
-                {% if goal.team == fixture.home_away %}
+                {% if goal.team == fixture.away_team %}
                 <tr class="table-dark">
                     <th scope="row">{{ forloop.counter }}</th>
                     <td class="table-dark">{{ goal.goal_scorer }}</td>
@@ -97,16 +97,10 @@
                 <button type="button" class="btn-close close-add-goal" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-            <form method="POST" action="{% url 'add_goal' fixture.id %}" class="form mb-2" enctype="multipart/form-data">
+            <form method="POST" action="{% url 'add_goal' %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="modal-body">
                     <input id='fixture-input' class='visually-hidden' value='{{ fixture.id }}'>
-                    <select id='goal-team-select' name='goal-team-select' class='select form-control'>
-                        <option id="goal-home-team-option" value="{{ ficture.home_team.id }}">{{ fixture.home_team }}
-                        </option>
-                        <option id="goal-away-team-option" value="{{ ficture.away_team.id }}">{{ fixture.away_team }}
-                        </option>
-                    </select>
                     {% for fields in add_goal_form %}
                     {{ fields | as_crispy_field }}
                     {% endfor %}

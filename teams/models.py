@@ -107,12 +107,9 @@ class Fixture(models.Model):
 class Goal(models.Model):
 
     goal_id = models.CharField(max_length=100, primary_key=True)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE,  null=True, blank=True)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, null=False, blank=False)
     goal_scorer = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='goal_scorer' , null=True, blank=True)
     assist_maker = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='assist_maker', null=True, blank=True)
-    fixture = models.ForeignKey(Fixture, on_delete=models.CASCADE)
+    fixture = models.ForeignKey(Fixture, on_delete=models.CASCADE, null=False, blank=False)
 
-    @classmethod
-    def create(cls, goal_id, goal_scorer, assist_maker, fixture):
-        goal = cls(goal_id=goal_id, goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
-        return goal
+
