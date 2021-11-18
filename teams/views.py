@@ -105,6 +105,7 @@ def edit_fixture(request, fixture_id):
     return render(request, template, context)
 
 
+@login_required
 def add_goal(request):
     """ This view handles adding goals to the """
 
@@ -154,6 +155,33 @@ def add_goal(request):
                 return render(request, 'teams/edit_fixture.html', context)
         else:
             return messages.error(request, 'Sorry, form is invalid please check your form.')
+
+
+@login_required
+def delete_goal(request, goal_id):
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin can do that.')
+        return redirect(reverse('home'))
+
+    goal = get_object_or_404(Goal, goal_id=goal_id)
+    
+    print(goal)
+    fixture = goal.fixture
+    goals = Goal.objects.filter(fixture=fixture)
+    add_goal_form = AddGoalForm(request.POST, request.FILES)
+    form = EditFixtureForm(instance=fixture)
+    goal.delete()
+    messages.success(request, 'Successfully deleted goal!')
+
+    context = {
+        'form': form,
+        'fixture': fixture,
+        'goals': goals,
+        'add_goal_form': add_goal_form
+    }
+
+    return render(request, 'teams/edit_fixture.html', context)
 
 
 @login_required
