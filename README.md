@@ -45,3 +45,5 @@ CSS Shapes - https://css-tricks.com/the-shapes-of-css/
 Fixed footer - https://stackoverflow.com/questions/40853952/bootstrap-footer-at-the-bottom-of-the-page/40854221
 
 CSRF cookie code - https://stackoverflow.com/questions/43606056/proper-django-csrf-validation-using-fetch-post-request
+
+

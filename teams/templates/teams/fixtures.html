@@ -26,9 +26,9 @@
                     <td>{{ fixture.home_team }}</td>
 
                     {% if fixture.game_played %}
-                        <td>{{ fixture.home_team_goals }}</td>
+                        <td>{{ fixture.home_team_goals.count }}</td>
                         <td>V</td>
-                        <td>{{ fixture.away_team_goals }}</td>
+                        <td>{{ fixture.away_team_goals.count }}</td>
                     {% else %}
                         <td>-</td>
                         <td>V</td>

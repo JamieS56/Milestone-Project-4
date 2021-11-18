@@ -8,8 +8,6 @@ from players.models import Player
 
 class Team(models.Model):
 
-
-
     name = models.CharField(max_length=20)
     wins = models.IntegerField()
     draws = models.IntegerField()
@@ -85,23 +83,25 @@ class Team(models.Model):
         return self.wins() * 3 + self.draws()
 
 
-
-
-
 class Fixture(models.Model):
 
     home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team', null=True, blank=True)
     away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team', null=True, blank=True)
-    home_team_goals = models.IntegerField(null=True, blank=True)
-    away_team_goals = models.IntegerField(null=True, blank=True)
     date = models.DateField()
     time = models.TimeField()
     game_played = models.BooleanField(default=False)
 
+
     def __str__(self):
         return f'{self.date}: {self.home_team} v {self.away_team}'
 
+    def home_team_goals(self):
+        goals = Goal.objects.filter(fixture=self, team=self.home_team)
+        return goals
 
+    def away_team_goals(self):
+        goals = Goal.objects.filter(fixture=self, team=self.away_team)
+        return goals
 
 
 class Goal(models.Model):

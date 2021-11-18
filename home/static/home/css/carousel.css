@@ -21,7 +21,6 @@
     top:unset;
     bottom:-10px;
 }
-
 @media screen and (max-width: 767px) {
 
     .player-close-up{
@@ -30,6 +29,4 @@
         border: 5px solid black;
         margin: 10px;
     }
-
-
 }

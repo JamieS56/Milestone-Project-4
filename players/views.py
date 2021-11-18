@@ -1,27 +1,16 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from customFunctions import customFunctions
 from .models import Player
 from .forms import PlayerForm
-# Create your views here.
 
 
-def add_no_image(players):
-
-    try:
-        for player in players:
-            if player.image_url == '':
-                player.image_url = 'no-image.jpg'
-    except TypeError:
-        if players.image_url == '':
-            players.image_url = 'no-image.jpg'
-
-    return players
 
 
 def squad(request):
-    ''' A view to return the index page '''
-    players = add_no_image(Player.objects.all())
+    ''' A view to return a list of all the players. '''
+    players = customFunctions.add_no_image(Player.objects.all())
 
     context = {
         'players': players
@@ -33,7 +22,7 @@ def squad(request):
 def player_profile(request, player_id):
     """ A view to show individual players stats """
 
-    player = add_no_image(get_object_or_404(Player, pk=player_id))
+    player = customFunctions.add_no_image(get_object_or_404(Player, pk=player_id))
 
     context = {
         'player': player,
@@ -45,12 +34,13 @@ def player_profile(request, player_id):
 @login_required
 def edit_player(request, player_id):
     """ A view to edit the individual players stats """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admins can do that.')
         return redirect(reverse('home'))
 
-    player = add_no_image(get_object_or_404(Player, pk=player_id))
-    print(player)
+    player = customFunctions.add_no_image(get_object_or_404(Player, pk=player_id))
+
     if request.method == 'POST':
         form = PlayerForm(request.POST, request.FILES, instance=player)
         if form.is_valid():

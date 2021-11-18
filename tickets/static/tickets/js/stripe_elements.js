@@ -1,3 +1,5 @@
+// This was all taken from the boutique ado project and stripe docs.
+
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);

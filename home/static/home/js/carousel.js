@@ -1,3 +1,5 @@
+// Bootstrap js for the carousel on the home page.
+
 var myCarousel = document.querySelector('#player-carousel')
 var carousel = new bootstrap.Carousel(myCarousel, {
   interval: false,

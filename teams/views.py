@@ -11,18 +11,9 @@ import json
 # Create your views here.
 
 
-def teams_page(request):
-    ''' A view to return the index page '''
-    teams = Team.objects.all()
-
-    context = {
-        'teams': teams
-    }
-    return render(request, 'teams/teams.html', context)
-
-
 def fixtures_page(request):
-    ''' A view to return the index page '''
+    ''' A view to return a table of all the fixtures. '''
+
     fixtures = Fixture.objects.all()
     teams = Team.objects.all()
 
@@ -34,8 +25,9 @@ def fixtures_page(request):
     }
     return render(request, 'teams/fixtures.html', context)
 
+
 def table_page(request):
-    ''' A view to return the index page '''
+    ''' A view to return the current league table '''
 
     teams = Team.objects.all()
     sorted_teams = sorted(teams, key=lambda team: team.points(), reverse=True)
@@ -49,6 +41,7 @@ def table_page(request):
 @login_required
 def add_fixture(request):
     """ Add a fixture to the fixture list """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -78,22 +71,19 @@ def add_fixture(request):
 
 @login_required
 def edit_fixture(request, fixture_id):
-    """ Edit a fixture """
+    """ Edit a fixture on the fixture list. """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin can do that.')
         return redirect(reverse('home'))
 
     fixture = get_object_or_404(Fixture, pk=fixture_id)
     goals = Goal.objects.filter(fixture=fixture)
-    print(goals)
-
 
     if request.method == 'POST':
         form = EditFixtureForm(request.POST, request.FILES, instance=fixture)
         add_goal_form = AddGoalForm(request.POST, request.FILES)
-
         if form.is_valid():
-
             form.save()
             messages.success(request, 'Successfully added fixture!')
             return redirect('fixtures')
@@ -120,6 +110,13 @@ def edit_fixture(request, fixture_id):
 
 
 def add_goals(goals_list):
+    """ This view handles adding goals to the """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin can do that.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
 
     for goals in goals_list:
         try:

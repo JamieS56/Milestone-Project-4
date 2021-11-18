@@ -7,6 +7,7 @@ from datetime import date
 
 
 class TicketOrderForm(forms.ModelForm):
+    """ The form used to select what game the tickets are for and how many are wanted."""
 
     class Meta:
         model = TicketOrder
@@ -29,6 +30,8 @@ class TicketOrderForm(forms.ModelForm):
 
 
 class CheckoutForm(forms.ModelForm):
+    """ The form used on the checkout age fo inputing the user information"""
+
     class Meta:
         model = User
         fields = [

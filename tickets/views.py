@@ -8,10 +8,9 @@ from django.conf import settings
 from customFunctions import customFunctions
 import stripe
 
-# Create your views here.
-
 
 def tickets_page(request):
+    '''A view to display the initial page of the purchasing tickets method.'''
 
     form = TicketOrderForm(request.POST, request.FILES)
     context = {
@@ -21,15 +20,14 @@ def tickets_page(request):
 
 
 def checkout_page(request):
+    '''A view for the checkout page where the user inputs there card info and purchasing details.'''
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    grand_total = int(request.POST.get('number_of_tickets', False)) * 15
 
+    grand_total = int(request.POST.get('number_of_tickets', False)) * 15
     fixture = Fixture.objects.filter(pk=request.POST['fixture'])
 
-    grand_total = int(request.POST.get('number_of_tickets', False)) * 15
-        
     order_details = {
             'fixture': request.POST['fixture'],
             'number_of_tickets': request.POST.get('number_of_tickets', False),
@@ -38,6 +36,8 @@ def checkout_page(request):
 
     request.session['order_details'] = order_details
 
+
+    # Trying to prefill the checkout form if the user is logged in and has there data saved.
     if request.user.is_authenticated:
         try:
             profile = User.objects.get(username=request.user)
@@ -74,30 +74,30 @@ def checkout_page(request):
 
 
 def handle_checkout(request):
-
-    print(request.POST)
+    ''''A function that handles the data from a ticket purchase. '''
 
     if request.method == 'POST':
 
         order_details = request.session['order_details']
-        print(order_details)
 
         fixture = Fixture.objects.filter(pk=order_details['fixture'])
         order_details['fixture'] = fixture[0]
-
 
         form_data = {
             'first_name': request.POST.get('first_name', False),
             'last_name': request.POST.get('last_name', False),
             'email': request.POST.get('email', False),
         }
+
         checkout_form = CheckoutForm(form_data)
         ticket_id = str(customFunctions.createRandomPK())
-        full_name=form_data['first_name']+' '+form_data['last_name']
+        full_name = form_data['first_name']+' '+form_data['last_name']
 
         if checkout_form.is_valid():
+
+            # If user is logged in it will add the account to the ticket info if not just there name and email.
             if request.user.is_authenticated:
-                user=request.user
+                user = request.user
                 ticket = Ticket(
                     ticket_id=ticket_id,
                     ticket_holder=user,
@@ -131,11 +131,13 @@ def handle_checkout(request):
 
 
 def success_url(request):
+    ''' Succesful purchase page.'''
 
     return render(request, 'tickets/success.html', context)
 
 
 def cancel_url(request):
+    ''' Canceled purchase page.'''
 
     return render(request, 'tickets/cancel.html', context)
 

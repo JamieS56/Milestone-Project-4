@@ -19,12 +19,10 @@
     margin: auto;
     margin-top: -2rem;
     margin-bottom: -2rem;
-
 }
 .player-image:hover .player-number{
     background-color: #ffe344;
     color: black;
-    
 }
 .player-name{
     background-color: black;

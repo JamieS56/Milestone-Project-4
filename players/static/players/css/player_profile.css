@@ -16,8 +16,7 @@
     color: white;
     margin: 45px;
     margin-left: 0;
-  }
-
+}
 .player-name-container{
     height: 80px;
     color: white;
@@ -49,7 +48,6 @@
     padding: 15px;
     float: right;
 }
-
 .back-button:hover{
     color:#ffe344e5;
 }
