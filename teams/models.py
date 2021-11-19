@@ -1,6 +1,4 @@
 from django.db import models
-from django import forms
-from django.shortcuts import get_object_or_404
 from players.models import Player
 
 # Create your models here.

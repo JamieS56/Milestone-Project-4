@@ -1,11 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from customFunctions import customFunctions
+from helpers import customFunctions, playerStats
 from .models import Player
 from .forms import PlayerForm
-
-
 
 
 def squad(request):
@@ -23,6 +21,14 @@ def player_profile(request, player_id):
     """ A view to show individual players stats """
 
     player = customFunctions.add_no_image(get_object_or_404(Player, pk=player_id))
+
+    player.goals = len(playerStats.goals(player))
+    player.assists = len(playerStats.assists(player))
+    player.clean_sheets = playerStats.clean_sheets()
+    player.appearances = len(playerStats.appearances())
+
+    player.save()
+
 
     context = {
         'player': player,

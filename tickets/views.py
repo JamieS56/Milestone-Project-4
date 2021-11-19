@@ -5,7 +5,7 @@ from .forms import TicketOrderForm, CheckoutForm
 from .models import Ticket
 from teams.models import Fixture
 from django.conf import settings
-from customFunctions import customFunctions
+from helpers import customFunctions
 import stripe
 
 

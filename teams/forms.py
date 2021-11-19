@@ -1,7 +1,7 @@
 from django import forms
 from .models import Team, Fixture, Goal
 from players.models import Player
-from customFunctions import customFunctions
+from helpers import customFunctions
 
 from datetime import date
 

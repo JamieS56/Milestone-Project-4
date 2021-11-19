@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Team, Fixture, Goal
 from players.models import Player
 from .forms import FixtureForm, EditFixtureForm, AddGoalForm
-from customFunctions import customFunctions
+from helpers import customFunctions
 import json
 
 # Create your views here.

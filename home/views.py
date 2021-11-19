@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from customFunctions import customFunctions
+from helpers import customFunctions
 from players.models import Player
 
 
