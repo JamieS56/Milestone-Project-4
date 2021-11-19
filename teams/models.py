@@ -85,11 +85,11 @@ class Team(models.Model):
 
 class Fixture(models.Model):
 
-    home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team', null=True, blank=True)
-    away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team', null=True, blank=True)
+    home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team', null=False, blank=False)
+    away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team', null=False, blank=False)
     date = models.DateField()
     time = models.TimeField()
-    game_played = models.BooleanField(default=False)
+    game_played = models.BooleanField(default=False, null=False, blank=False)
 
 
     def __str__(self):
@@ -112,4 +112,6 @@ class Goal(models.Model):
     assist_maker = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='assist_maker', null=True, blank=True)
     fixture = models.ForeignKey(Fixture, on_delete=models.CASCADE, null=False, blank=False)
 
+    def __str__(self):
+        return f'Goal: {self.team}, {self.fixture}'
 

@@ -48,10 +48,12 @@ class EditFixtureForm(forms.ModelForm):
 
     home_team = forms.ModelChoiceField(
         required=True,
+        widget=forms.Select(attrs={'class': 'team-select'}),
         queryset=Team.objects.all()
     )
-    opposition_team = forms.ModelChoiceField(
+    away_team = forms.ModelChoiceField(
         required=True,
+        widget=forms.Select(attrs={'class': 'team-select'}),
         queryset=Team.objects.all()
     )
     home_team_goals = forms.IntegerField(
@@ -70,7 +72,9 @@ class EditFixtureForm(forms.ModelForm):
     )
 
     game_played = forms.BooleanField(
+        widget=forms.CheckboxInput(),
         required=False
+
     )
 
 
@@ -86,20 +90,22 @@ class AddGoalForm(forms.ModelForm):
         queryset=Fixture.objects.all()
     )
 
-    team = forms.ModelChoiceField(
+    team = forms.ChoiceField(
         required=True,
-        widget=forms.Select(attrs={'id': 'goal_home_team'}),
-        queryset=Team.objects.all()
+        widget=forms.Select(attrs={'class':'select form-control'}),
+
     )
 
     goal_id = forms.IntegerField(
         widget=forms.HiddenInput(attrs={})
         )
     goal_scorer = forms.ModelChoiceField(
+        widget=forms.Select(attrs={'class':'select form-control'}),
         required=False,
         queryset=Player.objects.all()
     )
     assist_maker = forms.ModelChoiceField(
+        widget=forms.Select(attrs={'class':'select form-control'}),
         required=False,
         queryset=Player.objects.all()
     )

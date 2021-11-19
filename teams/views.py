@@ -81,6 +81,7 @@ def edit_fixture(request, fixture_id):
     goals = Goal.objects.filter(fixture=fixture)
 
     if request.method == 'POST':
+        print(request.POST)
         form = EditFixtureForm(request.POST, request.FILES, instance=fixture)
         add_goal_form = AddGoalForm(request.POST, request.FILES)
         if form.is_valid():
@@ -113,25 +114,13 @@ def add_goal(request):
         messages.error(request, 'Sorry, only admin can do that.')
         return redirect(reverse('home'))
 
-    print(request.POST)
-
-    
     fixture = get_object_or_404(Fixture, pk=request.POST['fixture'])
     goals = Goal.objects.filter(fixture=fixture)
     add_goal_form = AddGoalForm(request.POST, request.FILES)
     form = EditFixtureForm(instance=fixture)
 
-    template = 'teams/edit_fixture.html'
-    context = {
-        'form': form,
-        'fixture': fixture,
-        'goals': goals,
-        'add_goal_form': add_goal_form
-    }
-
     if request.method == 'POST':
-        
-        print(request.POST)
+
         team = get_object_or_404(Team, pk=request.POST['team'])
         messi_ankles = get_object_or_404(Team, pk=1)
 
@@ -139,20 +128,15 @@ def add_goal(request):
             goal_id = customFunctions.createRandomPK()
 
             if team == messi_ankles:
-                print('cool')
-                print(team)
                 goal_scorer = get_object_or_404(Player, pk=request.POST['goal_scorer'])
                 assist_maker = get_object_or_404(Player, pk=request.POST['assist_maker'])
                 goal = Goal(goal_id=goal_id, team=team, goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
                 goal.save()
-                return render(request, 'teams/edit_fixture.html', context)
+                return redirect('edit_fixture', fixture_id=fixture.id)
             else:
-
-                print(team)
-                
                 goal = Goal(goal_id=goal_id, team=team, goal_scorer=None, assist_maker=None, fixture=fixture)
                 goal.save()
-                return render(request, 'teams/edit_fixture.html', context)
+                return redirect('edit_fixture', fixture_id=fixture.id)
         else:
             return messages.error(request, 'Sorry, form is invalid please check your form.')
 
@@ -168,58 +152,36 @@ def delete_goal(request, goal_id):
     
     print(goal)
     fixture = goal.fixture
-    goals = Goal.objects.filter(fixture=fixture)
-    add_goal_form = AddGoalForm(request.POST, request.FILES)
-    form = EditFixtureForm(instance=fixture)
     goal.delete()
     messages.success(request, 'Successfully deleted goal!')
 
-    context = {
-        'form': form,
-        'fixture': fixture,
-        'goals': goals,
-        'add_goal_form': add_goal_form
-    }
-
-    return render(request, 'teams/edit_fixture.html', context)
+    return redirect('edit_fixture', fixture_id=fixture.id)
 
 
 @login_required
-def handle_goal(request):
+def delete_team_goals(request):
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin can do that.')
         return redirect(reverse('home'))
 
-    try:
+    data = json.loads(request.body.decode('utf-8'))
+    fixture = get_object_or_404(Fixture, pk=data['fixture'])
+    old_team = get_object_or_404(Team, pk=data['old_team'])
+    new_team = get_object_or_404(Team, pk=data['new_team'])
 
-        goal_data = json.loads(request.body.decode('utf-8'))
+    print(f'{fixture}, {old_team}, {new_team}')
 
+    goals = Goal.objects.filter(team=old_team, fixture=fixture)
+    goals.delete()
 
-    except AttributeError:
-        pass
-
-    if goal_data['submit'] == 'True':
-        goals_list = GOAL_LIST
-        goal_success = add_goals(goals_list)
-        if goal_success == 'success':
-            messages.success(request, 'Successfully added Goal!')
-        else:
-            messages.error(request, 'Failed to add goal. Please ensure the form is valid.')
-
-
-        return JsonResponse({'submit': 'success'})
-
-    if goal_data['add_or_remove'] == 'add':
-        goal_data['goal_id'] = customFunctions.createRandomPK()
-        GOAL_LIST.append(goal_data)
-
-        return JsonResponse(goal_data)
-
-    if goal_data['add_or_remove'] == 'remove':
-        for goal in range(len(GOAL_LIST)):
-            if GOAL_LIST[goal]['goal_id'] == goal_data['goal_id']:
-                del GOAL_LIST[goal]
-                break
-
-        return JsonResponse({'game_id': '0'})
+    if fixture.home_team == old_team:
+        fixture.home_team = new_team
+        fixture.save(update_fields=['home_team'])
+        messages.success(request, 'Successfully deleted all home goals!')
+    elif fixture.away_team == old_team:
+        fixture.away_team = new_team
+        fixture.save(update_fields=['away_team'])
+        messages.success(request, 'Successfully deleted all away goals!')
+    
+    return redirect('edit_fixture', fixture_id=fixture.id)
