@@ -14,13 +14,14 @@ class Team(models.Model):
     goals_against = models.IntegerField()
     points = models.IntegerField()
 
+
     def __str__(self):
         return self.name
 
     def id(self):
         return self.id
 
-    def wins(self):
+    def get_wins(self):
         wins = 0
         home_fixture_list = Fixture.objects.filter(game_played=True, home_team=self.id)
         for fixtures in home_fixture_list:
@@ -38,7 +39,7 @@ class Team(models.Model):
 
         return wins
 
-    def losses(self):
+    def get_losses(self):
         losses = 0
         home_fixture_list = Fixture.objects.filter(game_played=True, home_team=self.id)
         for fixtures in home_fixture_list:
@@ -56,7 +57,7 @@ class Team(models.Model):
 
         return losses
 
-    def draws(self):
+    def get_draws(self):
         draws = 0
         home_fixture_list = Fixture.objects.filter(game_played=True, home_team=self.id)
         for fixtures in home_fixture_list:
@@ -77,7 +78,7 @@ class Team(models.Model):
     def number_of_goals(self):
         return Goal.objects.filter(team=self.id).count()
 
-    def points(self):
+    def get_points(self):
         return self.wins() * 3 + self.draws()
 
 
