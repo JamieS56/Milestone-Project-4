@@ -7,7 +7,7 @@
     border-right: 1rem solid black;
 }
 .top-row{
-  background-color: #FFFF33;
+  background-color: #ffde45;
   align-items: center;
   margin: 20px 0;
   justify-content: space-between;
@@ -34,7 +34,7 @@
 
 }
 .menu-item:hover, .login-item:hover{
-    background-color: #FFFF33;
+    background-color: #ffde45;
   }
 .menu-item > .nav-link{
   transform: skew(25deg);
@@ -64,7 +64,7 @@
   margin-top: 73px;
 }
 .trapezoid:hover{
-  border-bottom: 78px solid #FFFF33;
+  border-bottom: 78px solid #ffde45;
   border-left: 37px solid transparent;
   background: transparent;
 }

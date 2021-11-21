@@ -37,7 +37,7 @@
 
 .offcanvas{
     background-color:black;
-    color: #FFFF33;
+    color: #ffde45;
 }
 .offcanvas-body > ul{
     list-style: none;
@@ -46,13 +46,13 @@
     padding: 10px;
 }
 .side-menu-item > a{
-    color: #FFFF33;
+    color: #ffde45;
     font-size: 20px;
     text-decoration: none;
 }
 
 #account-side-menu-box{
-    background-color: #FFFF33;
+    background-color: #ffde45;
     color: black;
     height: 100px;
     margin-top: 50%;

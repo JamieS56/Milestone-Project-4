@@ -1,6 +1,6 @@
 body{
   font-family: 'Inter', sans-serif;
-  background-color: #FFFF33;
+  background-color: #ffde45;
 }
 .no-gutters {
   margin-right: 0;
@@ -43,7 +43,7 @@ h1, h2,h3, h4, h5, h6{
 }
 .custom-btn:hover{
   color:black;
-  background-color: #FFFF33;
+  background-color: #ffde45;
   border: 1px solid black;
 }
 /* Club Badge Stylings */
@@ -79,7 +79,7 @@ footer{
   padding:5px;
 }
 .social-links > span:hover{
-  color:#FFFF33;
+  color:#ffde45;
 }
 #footer-email{
   padding-left: 20px;
