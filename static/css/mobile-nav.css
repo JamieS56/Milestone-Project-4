@@ -3,19 +3,20 @@
     height: 0;
     border-bottom: 80px solid black;
     border-left: 37px solid transparent;
+    max-width: fit-content;
 }
 .nav-title{
     color: black;
 }
 #mobile-nav-btn{
-    background-color: black;
+    background:none;
     color: white;
     border: none;
     font-size: 25px;
     margin-left: 20px;
 }
 .mob-menu-item{
-    width: 13vw;
+    width: 25%;
     height: 80px;
     transform: skew(-25deg);
     background: black;
@@ -29,16 +30,10 @@
 }
 .mob-burger-menu{
     text-align: center;
+    width: 25%;
 }
 
-@media screen and (max-width: 576px) {
-    .mobile-nav-bar{
-        height: 0;
-        background:black;
 
-    }
-
-}
 
 .offcanvas{
     background-color:black;
@@ -76,4 +71,29 @@
 }
 .offcanvas-body{
     padding:0;
+}
+
+@media screen and (max-width: 576px) {
+    .mobile-nav-bar{
+        height: 0;
+    }
+
+
+}
+
+@media screen and (max-width: 460px) {
+    .club-logo-xs{
+        display: none;
+    }
+    .top-row{
+        justify-content: end;
+    }
+
+}
+
+@media screen and (min-width: 576px) {
+    .club-logo-xs{
+        display: none;
+    }
+
 }

@@ -17,24 +17,114 @@
 
 {% block content %}
 
+
+<div id='mobile-fixture-tab' class='center bold mobile-hero-tabs  d-block d-md-none'>
+  {% if fixture.home_team.name == 'Messi Ankles' %}
+  <table class="table table-sm next-fixture-table table-dark">
+    <tbody>
+      <tr>
+        <th>Next Match: H</th>
+        <td>{{ fixture.time }}</td>
+      </tr>
+      <tr>
+        <td>{{ fixture.away_team }}</td>
+        <td>{{ fixture.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  {% endif %}
+  {% if fixture.away_team.name == 'Messi Ankles' %}
+  <table class="table table-sm next-fixture-table table-dark">
+    <thead>
+
+    </thead>
+    <tbody>
+      <tr>
+        <th>Next Match: A</th>
+        <td>{{ fixture.time }}</td>
+      </tr>
+      <tr>
+        <td>{{ fixture.home_team }}</td>
+        <td>{{ fixture.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+  {% endif %}
+
+</div>
+
+
+<a class='no-underline  d-block d-md-none' href="{% url 'tickets' %}">
+  <div id='mobile-book-tickets-tab' class='center bold mobile-hero-tabs'>
+    <span>Book Tickets!</span>
+  </div>
+</a>
+
 <div class="row center hero-image-row no-gutters">
-  <div class="col-10 hero-outer">
+
+  <div class="col-11 hero-outer">
     <img id="hero-image" class='g-0' src="{{ MEDIA_URL }}team-hero-image.jpg" alt='Team Photo'>
-    <span id='fixture-tab' class='hero-tab bold'>Fixture</span>
-    <span id='book-tickets-tab' class='hero-tab bold'>Book Tickets!</span>
+
+    <div class="hero-tabs-div d-none d-md-block">
+      <a href="{% url 'fixtures' %}">
+        <div id='fixture-tab' class='center bold hero-tabs'>
+          {% if fixture.home_team.name == 'Messi Ankles' %}
+          <table class="table table-sm next-fixture-table table-dark">
+            <tbody>
+              <tr>
+                <th>Next Match: H</th>
+                <td>{{ fixture.time }}</td>
+              </tr>
+              <tr>
+                <td>{{ fixture.away_team }}</td>
+                <td>{{ fixture.date }}</td>
+              </tr>
+            </tbody>
+          </table>
+        
+        
+          {% endif %}
+          {% if fixture.away_team.name == 'Messi Ankles' %}
+          <table class="table table-sm next-fixture-table table-dark">
+            <thead>
+        
+            </thead>
+            <tbody>
+              <tr>
+                <th>Next Match: A</th>
+                <td>{{ fixture.time }}</td>
+              </tr>
+              <tr>
+                <td>{{ fixture.home_team }}</td>
+                <td>{{ fixture.date }}</td>
+              </tr>
+            </tbody>
+          </table>
+          {% endif %}
+        </div>
+      </a>
+      <a href="{% url 'tickets' %}">
+        <div id='book-tickets-tab' class='center bold hero-tabs'>
+          <span>Book Tickets!</span>
+        </div>
+      </a>
+    </div>
+
   </div>
 </div>
 
-<div class='carousel-container d-none d-sm-block'>
+<div class='carousel-container carousel-dark d-none d-md-block'>
   <div class="row center g-0">
     <div id="player-carousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner row">
         <div class="carousel-item active">
           <div class="row carousel-row">
             {% for player in players %}
-            <a href="{% url 'player_profile' player.id %}"><img src="{{ MEDIA_URL }}{{ player.image_url }}" class="d-block w-20 player-close-up col-4"
-              alt="{{ player.name }}"></a>
-            
+            <a href="{% url 'player_profile' player.id %}"><img src="{{ MEDIA_URL }}{{ player.image_url }}"
+                class="d-block w-20 player-close-up col-4" alt="{{ player.name }}"></a>
+
             {% if forloop.counter|divisibleby:3 %}
           </div>
         </div>
@@ -57,31 +147,32 @@
   </div>
 </div>
 <!-- Mobile Screen Carousel -->
-<div class='carousel-container d-block d-sm-none'>
+<div class='carousel-container carousel-dark d-block d-md-none'>
   <div class="row center g-0">
     <div id="mobile-player-carousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner row">
-        <div class="carousel-item active">
-          <div class="row carousel-row">
-            {% for player in players %}
-            <a href="{% url 'player_profile' player.id %}"><img src="{{ MEDIA_URL }}{{ player.image_url }}" class="d-block w-20 player-close-up col-4"
-              alt="{{ player.name }}"></a>
-              {% if forloop.counter|divisibleby:2 %}
-          </div>
+      <div class="carousel-inner row active">
+        {% for player in players %}
+        {% if forloop.first %}
+        <div class="carousel-item w-80 active">
+          <a href="{% url 'player_profile' player.id %}"><img src="{{ MEDIA_URL }}{{ player.image_url }}"
+              class="d-block w-80 player-close-up" alt="{{ player.name }}"></a>
         </div>
-        <div class="carousel-item">
-          <div class="row carousel-row">
-            {% endif %}
-            {% endfor %}
-          </div>
+        {% else %}
+        <div class="carousel-item w-80">
+          <a href="{% url 'player_profile' player.id %}"><img src="{{ MEDIA_URL }}{{ player.image_url }}"
+              class="d-block w-80 player-close-up" alt="{{ player.name }}"></a>
         </div>
+        {% endif %}
+        {% endfor %}
       </div>
       <div class="row">
-        <button class="carousel-control-prev" type="button" data-bs-target="#mobile-player-carousel" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#mobile-player-carousel"
+          data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#mobile-player-carousel" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#mobile-player-carousel"
+          data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>

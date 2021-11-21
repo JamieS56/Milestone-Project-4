@@ -13,7 +13,6 @@
 }
 .player-close-up{
     width: 25vw;
-    height: 27vw;
     border: 5px solid black;
     margin: 10px;
 }
@@ -24,8 +23,7 @@
 @media screen and (max-width: 767px) {
 
     .player-close-up{
-        width: 35vw;
-        height: 37vw;
+        width: 60vw;
         border: 5px solid black;
         margin: 10px;
     }

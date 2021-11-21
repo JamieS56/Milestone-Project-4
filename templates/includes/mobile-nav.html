@@ -4,43 +4,33 @@
 <link rel="stylesheet" href="{% static 'css/mobile-nav.css' %}">
 {% endblock %}
 <div class="row top-row g-0 vertical-center">
-    <div class="col-4 col-sm-2 center">
-        <img id="club-logo" class="mobile-club-logo" src="{{ MEDIA_URL }}ma-badge.png">
+
+    <div class="col-6 logo-title-div d-none d-sm-flex">
+        <div> <img id="" class="mobile-club-logo club-logo" src="{{ MEDIA_URL }}ma-badge.png"></div>
+        <div><h1 id="club-title" class="align-middle nav-title">MESSI ANKLES</h1></div>
     </div>
-    <div class="col-4 col-sm-3 center ">
-        <h1 id="club-title" class="align-middle nav-title">MESSI ANKLES</h1>
+    <div class='club-logo-xs col-2'>
+         <img  class="mobile-club-logo club-logo " src="{{ MEDIA_URL }}ma-badge.png">
     </div>
-    <div class="mobile-nav-bar col-sm-7 col-md-7 d-none d-sm-block">
+
+    <div class="col-sm-6 mobile-nav-bar">
         <ul class="nav">
             <li class="nav-item mob-menu-item d-flex align-items-center justify-content-center">
                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item mob-menu-item d-flex align-items-center justify-content-center">
-                <a class="nav-link" href="{% url 'fixtures' %}">Fixtures</a>
+                <a class="nav-link" href="{% url 'tickets' %}">Tickets</a>
             </li>
             <li class="nav-item mob-menu-item d-flex align-items-center justify-content-center">
-                <a class="nav-link" href="#">Tickets</a>
-            </li>
-            \<li class="nav-item mob-menu-item d-flex align-items-center justify-content-center">
-                <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-link" href="{% url 'fixtures' %}">Fixtures</a>
             </li>
             <li class="nav-item mob-burger-menu d-flex align-items-center justify-content-center">
                 <button id="mobile-nav-btn" class="btn btn-primary warning" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-bars"></i></button>
             </li>
     </div>
-    <div class="col-4 d-sm-none mob-burger-menu">
-        <button id="mobile-nav-btn" class="btn btn-primary warning" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-bars"></i></button>
-    </div>
+
 </div>
-
-
-
-
-
-
-
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
@@ -55,19 +45,19 @@
                 <a class="" href="{% url 'players' %}">Players</a>
             </li>
             <li class="side-menu-item">
-                <a class="text-uppercase" href="#">Fixtures</a>
+                <a class="text-uppercase" href="{% url 'fixtures' %}">Fixtures</a>
             </li>
             <li class="side-menu-item">
                 <a class="text-uppercase" href="#">Club</a>
             </li>
             <li class="side-menu-item">
-                <a class="text-uppercase" href="#">Tickets</a>
+                <a class="text-uppercase" href="{% url 'tickets' %}">Tickets</a>
             </li>
 
         </ul>
 
         <ul id="account-side-menu-box" class="">
-            {% if session.user %}
+            {% if user.is_authenticated %}
             <li class="account-side-menu-item center">
                 <a class="text-uppercase" href="{% url 'account_logout' %}">Logout</a>
             </li>

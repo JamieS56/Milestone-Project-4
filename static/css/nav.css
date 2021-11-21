@@ -3,14 +3,17 @@
     height: 0;
     border-bottom: 80px solid black;
     border-left: 37px solid transparent;
+    width:fit-content;
+    border-right: 1rem solid black;
 }
 .top-row{
   background-color: #ffe344;
   align-items: center;
   margin: 20px 0;
+  justify-content: space-between;
 }
 .menu-item {
-    width: 8vw;
+    width: 6rem;
     height: 80px;
     transform: skew(-25deg);
     background: black;
@@ -21,7 +24,7 @@
 
   }
 .login-item{
-  width: 8vw;
+  width: 6.5rem;
   height: 80px;
   background: black;
   border: 0.5px solid black;
@@ -48,7 +51,6 @@
 }
 .trapezoid {
   height: 0;
-  width: 10vw;
   transform: skew(0deg);
   background: transparent;
   margin-left: -19px;
@@ -67,7 +69,8 @@
   background: transparent;
 }
 .nav{
-  display:inline-flex;
+    display: inline-flex;
+    font-size: 0.85rem;
 }
 .nav > a{
   text-decoration: none;
