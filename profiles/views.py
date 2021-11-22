@@ -12,6 +12,11 @@ def profile_page(request):
     tickets = Ticket.objects.filter(ticket_holder=profile)
     form = ProfileDataForm(instance=profile)
 
+    if request.POST:
+        form = ProfileDataForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+
     template = 'profiles/profiles.html'
     context = {
         'profile': profile,

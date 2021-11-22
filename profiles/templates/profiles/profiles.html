@@ -53,6 +53,7 @@
             <div class="col-12 col-lg-4">
                 <p class="text-muted">Order History</p>
                 <form method="POST" action="{% url 'profile' %}" class="form mb-2" enctype="multipart/form-data">
+                    {% csrf_token %}
                     {% for fields in form %}
                     {{ fields | as_crispy_field }}
                     {% endfor %}
