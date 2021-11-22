@@ -6,7 +6,6 @@ function getCookie(name) {
         var cookies = document.cookie.split(';');
         for (var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -16,6 +15,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
+// calls python function to delete all team goals if team is changed
 async function delete_all_team_goals(data){
     let csrftoken = getCookie('csrftoken')
     response = await fetch(`/teams/delete_team_goals/`, {
@@ -29,25 +29,52 @@ async function delete_all_team_goals(data){
     })
 }
 
+function display_goal_involvement(){
+    if($('#id_team').val() == 1){
+        $('#div_id_goal_scorer').show()
+        $('#div_id_assist_maker').show()
+    }else{
+        $('#div_id_goal_scorer').hide()
+        $('#div_id_assist_maker').hide()
+    }
+}
+
 $(document).ready(function(){
     var optionVal 
+    var goalPopover = new bootstrap.Popover($('#id_goal_scorer'), {
+        container: 'body',
+        title:'Error',
+        content: 'Please input a player.',
+        placement: 'bottom'
+    })
+    var assistPopover = new bootstrap.Popover($('#id_assist_maker'), {
+        container: 'body',
+        title:'Error',
+        content: 'Please input a player.',
+        placement: 'bottom'
+    })
 
     $('#id_team').append(`
         <option></option>
         <option></option>
     `)
 
-    $('#add-goal-btn').click(function(ev){
+    $('#add-goal-btn').click(function(){
+
+        // Gets what teams are selected up at the top of the page
         homeTeamVal= $('#id_home_team option:selected').val()
         homeTeamText= $('#id_home_team option:selected').text()
         awayTeamVal= $('#id_away_team option:selected').val()
         awayTeamText= $('#id_away_team option:selected').text()
 
+        // Inputs it into goal form
         $('#id_team option:first').val(homeTeamVal)
         $('#id_team option:first').text(homeTeamText)
 
         $('#id_team option:last').val(awayTeamVal)
         $('#id_team option:last').text(awayTeamText)
+
+        display_goal_involvement()
     })
 
     $('.team-select').focus(function(){
@@ -68,12 +95,32 @@ $(document).ready(function(){
             delete_all_team_goals(data)
             console.log(data)
             location.reload();
+        }
+    })
 
+    $('#id_team').change(function(){
+        display_goal_involvement()
+    })
+
+    $('#add-goal-submit-btn').click(function(e){
+        if($('#id_team option:selected').val() == 1){
+            e.preventDefault();
+            console.log('hi')
+            if($('#id_goal_scorer option:selected').val() == ''){
+                console.log('goal');
+                goalPopover.show()
+                return
+            }
+            if($('#id_assist_maker option:selected').val() == ''){
+                console.log('assist')
+                assistPopover.show();
+                return
+            }
 
         }
 
+        $('#add_goal_form').submit()
+
     })
-
-
 
 });

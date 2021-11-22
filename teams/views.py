@@ -69,6 +69,7 @@ def add_fixture(request):
     context = {
         'form': form,
         'teams': teams,
+ 
     }
 
     return render(request, template, context)
@@ -137,11 +138,14 @@ def add_goal(request):
                 assist_maker = get_object_or_404(Player, pk=request.POST['assist_maker'])
                 goal = Goal(goal_id=goal_id, team=team, goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
                 goal.save()
-                return redirect('edit_fixture', fixture_id=fixture.id)
+                messages.success(request, 'Goal has been Saved!')
+                return redirect(reverse('edit_fixture', kwargs={'fixture_id':fixture.id}))
             else:
                 goal = Goal(goal_id=goal_id, team=team, goal_scorer=None, assist_maker=None, fixture=fixture)
                 goal.save()
-                return redirect('edit_fixture', fixture_id=fixture.id)
+                messages.success(request, 'Goal has been Saved!')
+
+                return redirect(reverse('edit_fixture', kwargs={'fixture_id':fixture.id}))
         else:
             return messages.error(request, 'Sorry, form is invalid please check your form.')
 
@@ -160,7 +164,7 @@ def delete_goal(request, goal_id):
     goal.delete()
     messages.success(request, 'Successfully deleted goal!')
 
-    return redirect('edit_fixture', fixture_id=fixture.id)
+    return redirect(reverse('edit_fixture', kwargs={'fixture_id':fixture.id}))
 
 
 @login_required

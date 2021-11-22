@@ -96,7 +96,7 @@
                 <button type="button" class="btn-close close-add-goal" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-            <form method="POST" action="{% url 'add_goal' %}" class="form mb-2" enctype="multipart/form-data">
+            <form id="add_goal_form" method="POST" action="{% url 'add_goal' %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="modal-body">
                     <input id='fixture-input' class='visually-hidden' value='{{ fixture.id }}'>
@@ -106,8 +106,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary close-add-goal" data-bs-dismiss="modal">Close</button>
-                    <button id='add-goal-submit-btn' type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add
-                        Goal</button>
+                    <button id='add-goal-submit-btn' type="submit" class="btn btn-primary">Add Goal</button>
 
                 </div>
             </form>

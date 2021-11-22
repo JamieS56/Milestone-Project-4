@@ -90,20 +90,19 @@ class AddGoalForm(forms.ModelForm):
 
     team = forms.ChoiceField(
         required=True,
-        widget=forms.Select(attrs={'class':'select form-control'}),
-
+        widget=forms.Select(attrs={'class': 'select form-control'})
     )
 
     goal_id = forms.IntegerField(
         widget=forms.HiddenInput(attrs={})
         )
     goal_scorer = forms.ModelChoiceField(
-        widget=forms.Select(attrs={'class':'select form-control'}),
+        widget=forms.Select(attrs={'class': 'select form-control', }),
         required=False,
         queryset=Player.objects.all()
     )
     assist_maker = forms.ModelChoiceField(
-        widget=forms.Select(attrs={'class':'select form-control'}),
+        widget=forms.Select(attrs={'class': 'select form-control'}),
         required=False,
         queryset=Player.objects.all()
     )

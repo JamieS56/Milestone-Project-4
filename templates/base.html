@@ -38,6 +38,8 @@
   </script>
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    
     <script src="https://js.stripe.com/v3/"></script>
   {% endblock %}
 
@@ -57,9 +59,9 @@
 
 
 
-  {% block page_header %}
-  {% if messages %}
-<div class="message-container">
+
+{% if messages %}
+<div class="toast-container">
     {% for message in messages %}
         {% with message.level as level %}
             {% if level == 40 %}
@@ -75,7 +77,9 @@
     {% endfor %}
 </div>
 {% endif %}
-  {% endblock %}
+
+{% block page_header %}
+{% endblock %}
 
 
   {% block content %}
@@ -96,9 +100,12 @@
   </footer>
 
   {% block postloadjs %}
+  <script type="text/javascript">
+    $('.toast').show();
+  </script>
 
 
-  <script src="{% static 'js/toast.js' %}"></script>
+  <script src="{% static 'js/toasts.js' %}"></script>
   {% endblock %}
 </body>
 
