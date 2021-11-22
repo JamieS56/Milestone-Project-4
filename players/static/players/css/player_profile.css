@@ -4,6 +4,7 @@
 }
 .player-profile-pic{
     border: 3px solid black;
+    height:fit-content;
 }
 .player-profile-pic > img {
     width:100%;
@@ -14,7 +15,7 @@
     border-top: 75px solid black;
     border-right: 37px solid transparent;
     color: white;
-    margin: 45px;
+    margin: 1rem;
     margin-left: 0;
 }
 .player-name-container{
@@ -47,6 +48,7 @@
     text-decoration: none;
     padding: 15px;
     float: right;
+    margin-left: 20px;
 }
 .back-button:hover{
     color:#ffde45;
