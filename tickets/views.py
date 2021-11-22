@@ -133,7 +133,10 @@ def handle_checkout(request):
 def success_url(request):
     ''' Succesful purchase page.'''
 
-    return render(request, 'tickets/success.html', context)
+    try:
+        return render(request, 'tickets/success.html', context)
+    except:
+        render(request, '404.html')
 
 
 def cancel_url(request):

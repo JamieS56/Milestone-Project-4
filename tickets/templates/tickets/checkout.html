@@ -15,9 +15,9 @@
 
 {% block content %}
 <div id='loading-overlay' class="overlay"></div>
-<div class="container">
+<div class="container center">
     <div class="row">
-        <div class="col">
+        <div class="col-12">
             <hr>
             <h2 class="logo-font mb-4">Checkout</h2>
             <hr>
@@ -27,10 +27,11 @@
 
 <div class="container">
     <div class="row center">
-        <form id='payment-form' action="{% url 'handle_checkout' %}" method="POST" id="payment-form">
+        <form class="col-8" action="{% url 'handle_checkout' %}" method="POST" id="payment-form">
             {% csrf_token %}
+
+            <h5>Details</h5>
             <fieldset class="rounded px-3 mb-5">
-                <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
                 Fixture: {{ fixture }}<br>
                 Tickets: {{ order_details.number_of_tickets }}<br>
                 Total: ${{ order_details.grand_total }}<br>

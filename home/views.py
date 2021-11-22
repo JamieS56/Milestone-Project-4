@@ -17,3 +17,8 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+def page_not_found(request):
+
+    return render(request, 'home/404.html')

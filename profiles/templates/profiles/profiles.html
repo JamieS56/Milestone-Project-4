@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -11,6 +12,7 @@
         </div>
     </div>
 {% endblock %}
+
 
 {% block content %}
     <div class="overlay"></div>
@@ -22,8 +24,8 @@
                 <hr>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-lg-8">
+        <div class="row profile-content">
+            <div class="col-12 col-lg-6">
                 <p class="text-muted">Order History</p>
                 <div class="order-history table-responsive">
                     <table class="table table-sm table-borderless">
@@ -31,7 +33,7 @@
                             <tr>
                                 <th>Order Number</th>
                                 <th>Fixture</th>
-                                <th>Number of Tickets</th>
+                                <th>No. of Tickets</th>
                                 <th>Order Total</th>
                             </tr>
                         </thead>
@@ -46,9 +48,16 @@
                             {% endfor %}
                         </tbody>
                     </table>
-
-
                 </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <p class="text-muted">Order History</p>
+                <form method="POST" action="{% url 'profile' %}" class="form mb-2" enctype="multipart/form-data">
+                    {% for fields in form %}
+                    {{ fields | as_crispy_field }}
+                    {% endfor %}
+                    <button type='submit' class="custom-btn">Save</button>
+                </form>
             </div>
         </div>
     </div>
