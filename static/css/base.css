@@ -87,19 +87,14 @@ footer{
 }
 /* ------------------------------- bootstrap toasts */
 
-.message-container {
+.toast {
   position: fixed;
-  top: 72px;
-  right: 15px;
-  z-index: 99999999999;
+  margin: 2rem;
 }
 
-.custom-toast {
-  overflow: visible;
-}
+.toast-container {
+  position: absolute;
 
-.toast-capper {
-  height: 2px;
 }
 
 /* Allauth form stylings */

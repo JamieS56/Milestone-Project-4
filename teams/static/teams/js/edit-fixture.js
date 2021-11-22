@@ -107,20 +107,14 @@ $(document).ready(function(){
             e.preventDefault();
             console.log('hi')
             if($('#id_goal_scorer option:selected').val() == ''){
-                console.log('goal');
                 goalPopover.show()
                 return
             }
             if($('#id_assist_maker option:selected').val() == ''){
-                console.log('assist')
                 assistPopover.show();
                 return
             }
-
         }
-
         $('#add_goal_form').submit()
-
     })
-
 });
