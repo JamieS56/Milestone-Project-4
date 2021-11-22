@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import TicketOrderForm, CheckoutForm
@@ -109,7 +109,10 @@ def handle_checkout(request):
                     )
                 ticket.save()
                 request.session['order_details'] = {}
-                return render(request, 'tickets/success.html')
+                context={
+                    'ticket': ticket
+                }
+                return render(request, 'tickets/success.html', context)
             else:
                 print('user not logged in')
                 ticket = Ticket(
@@ -123,7 +126,10 @@ def handle_checkout(request):
                     )
                 ticket.save()
                 request.session['order_details'] = {}
-                return render(request, 'tickets/success.html')
+                context = {
+                    'ticket': ticket
+                }
+                return render(request, 'tickets/success.html', context)
 
         else:
             messages.error(request, 'There was an error with your form. \
@@ -133,10 +139,14 @@ def handle_checkout(request):
 def success_url(request):
     ''' Succesful purchase page.'''
 
-    try:
-        return render(request, 'tickets/success.html', context)
-    except:
-        render(request, '404.html')
+    ticket = get_object_or_404(Ticket, ticket_id=ticket_id)
+
+    context = {
+        'ticket': ticket
+    }
+
+    return render(request, 'tickets/success.html', context)
+
 
 
 def cancel_url(request):
