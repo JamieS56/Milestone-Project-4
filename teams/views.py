@@ -29,13 +29,18 @@ def fixtures_page(request):
 def table_page(request):
     ''' A view to return the current league table '''
 
-    teams = Team.objects.all()
-    sorted_teams = sorted(teams, key=lambda team: team.points(), reverse=True)
+    teams = Team.objects.all().order_by('-points')
+    for team in teams:
+        team.points = team.get_points()
+        print(team.points)
+        team.save()
+
+    print(teams)
+
     context = {
-        'teams': sorted_teams
+        'teams': teams
     }
     return render(request, 'teams/table.html', context)
-
 
 
 @login_required

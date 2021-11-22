@@ -12,6 +12,9 @@
   margin: 20px 0;
   justify-content: space-between;
 }
+#book-tickets{
+  width:6.75rem;
+}
 .menu-item {
     width: 6rem;
     height: 80px;
@@ -24,7 +27,7 @@
 
   }
 .login-item{
-  width: 6.5rem;
+  width: 6rem;
   height: 80px;
   background: black;
   border: 0.5px solid black;

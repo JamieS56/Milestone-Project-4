@@ -10,29 +10,27 @@ class FixtureForm(forms.ModelForm):
 
     class Meta:
         model = Fixture
-        fields = '__all__'
+        fields = [
+            'home_team',
+            'away_team',
+            'date',
+            'time',
+            'game_played'
+        ]
 
     home_team = forms.ModelChoiceField(
         required=True,
         queryset=Team.objects.all()
     )
-    opposition_team = forms.ModelChoiceField(
+    away_team = forms.ModelChoiceField(
         required=True,
         queryset=Team.objects.all()
-    )
-    home_team_goals = forms.IntegerField(
-        required=False,
-        widget=forms.NumberInput(attrs={'min': 0}),
-    )
-    away_team_goals = forms.IntegerField(
-        required=False,
-        widget=forms.NumberInput(attrs={'min': 0}),
     )
     date = forms.DateField(
         widget=forms.TextInput(attrs={'type': 'date', 'class': 'col-6'})
         )
     time = forms.TimeField(
-        widget=forms.TextInput(attrs={'type': 'time', 'class': ' col-6'})
+        widget=forms.TextInput(attrs={'type': 'time', 'class': 'col-6'})
     )
     game_played = forms.BooleanField(
         widget=forms.HiddenInput(),

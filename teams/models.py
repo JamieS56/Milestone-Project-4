@@ -1,5 +1,6 @@
 from django.db import models
 from players.models import Player
+from django.db.models import Q
 
 # Create your models here.
 
@@ -25,17 +26,20 @@ class Team(models.Model):
         wins = 0
         home_fixture_list = Fixture.objects.filter(game_played=True, home_team=self.id)
         for fixtures in home_fixture_list:
-            if fixtures.home_team_goals > fixtures.away_team_goals:
+            if len(fixtures.home_team_goals()) > len(fixtures.away_team_goals()):
                 wins = wins + 1
             else:
                 pass
 
         away_fixture_list = Fixture.objects.filter(game_played=True, away_team=self.id)
         for fixtures in away_fixture_list:
-            if fixtures.away_team_goals > fixtures.home_team_goals:
+            if len(fixtures.away_team_goals()) > len(fixtures.home_team_goals()):
                 wins = wins + 1
             else:
                 pass
+        
+        self.wins = wins
+        self.save()
 
         return wins
 
@@ -43,43 +47,46 @@ class Team(models.Model):
         losses = 0
         home_fixture_list = Fixture.objects.filter(game_played=True, home_team=self.id)
         for fixtures in home_fixture_list:
-            if fixtures.home_team_goals < fixtures.away_team_goals:
+            if len(fixtures.home_team_goals()) < len(fixtures.away_team_goals()):
                 losses = losses + 1
             else:
                 pass
 
         away_fixture_list = Fixture.objects.filter(game_played=True, away_team=self.id)
         for fixtures in away_fixture_list:
-            if fixtures.away_team_goals < fixtures.home_team_goals:
+            if len(fixtures.away_team_goals()) < len(fixtures.home_team_goals()):
                 losses = losses + 1
             else:
                 pass
+        
+        self.losses = losses
+        self.save()
 
         return losses
 
     def get_draws(self):
         draws = 0
-        home_fixture_list = Fixture.objects.filter(game_played=True, home_team=self.id)
-        for fixtures in home_fixture_list:
-            if fixtures.home_team_goals < fixtures.away_team_goals:
+        fixture_list = Fixture.objects.filter(Q(home_team=self) & Q(game_played=True) | Q(away_team=self) & Q(game_played=True))
+        for fixtures in fixture_list:
+            if len(fixtures.home_team_goals()) == len(fixtures.away_team_goals()):
                 draws = draws + 1
             else:
                 pass
 
-        away_fixture_list = Fixture.objects.filter(game_played=True, away_team=self.id)
-        for fixtures in away_fixture_list:
-            if fixtures.away_team_goals < fixtures.home_team_goals:
-                draws = draws + 1
-            else:
-                pass
-
+        self.draws = draws
+        self.save()        
         return draws
 
     def number_of_goals(self):
         return Goal.objects.filter(team=self.id).count()
 
     def get_points(self):
-        return self.wins() * 3 + self.draws()
+        points = self.get_wins() * 3 + self.get_draws()
+        self.points = points
+        self.save()
+        return points
+        
+        
 
 
 class Fixture(models.Model):

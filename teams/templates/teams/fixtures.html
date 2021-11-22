@@ -13,16 +13,16 @@
 {% block content %}
 <div class="conainer center">
 
-    <a class="btn custom-btn" href="{% url 'table' %}"> Table</a>
 
-    <table class="table table-dark table-striped col-8 center">
 
-            <h2 class=''>Fixtures</h2>
+    <table class="table table-dark col-8 center">
+
+        <h2 class=''>Fixtures</h2>
 
         <tbody>
             {% for fixture in fixtures %}
                 <tr class="">
-                    <th>{{ fixture.date }}<br> {{ fixture.time }}</th>
+                    <th class="d-none d-md-table-cell">{{ fixture.date }}<br> {{ fixture.time }}</th>
                     <td>{{ fixture.home_team }}</td>
 
                     {% if fixture.game_played %}
@@ -33,13 +33,14 @@
                         <td>-</td>
                         <td>V</td>
                         <td>-</td>
-                        
                     {% endif %}
                     <td>{{ fixture.away_team }}</td>
-
                     {% if user.is_superuser %}
-                    <td><a class="btn custom-btn" href="{% url 'edit_fixture' fixture.id %}"> Edit Fixture</a></td>
+                    <td class="d-none d-md-table-cell"><a class="btn custom-btn" href="{% url 'edit_fixture' fixture.id %}"> Edit Fixture</a></td>
                     {% endif %}
+                </tr>
+                <tr class="d-table-row d-md-none">
+                    <td colspan="5"><a class="btn custom-btn" href="{% url 'edit_fixture' fixture.id %}"> Edit Fixture</a></td>
                 </tr>
             {% endfor %}
 
@@ -49,7 +50,8 @@
 
 
 
-    <a class="btn custom-btn" href="{% url 'add_fixture' %}"> Add Fixture</a>
+    <a id="add-fixture-btn" class="btn custom-btn" href="{% url 'add_fixture' %}"> Add Fixture</a>
+    <a id="table-btn" class="btn custom-btn" href="{% url 'table' %}"> Table</a>
 
 </div>
 

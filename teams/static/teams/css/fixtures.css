@@ -16,3 +16,13 @@
     opacity: 1;
     font-size: 0.8rem;
 }
+#add-fixture-btn{
+    
+    margin:1rem;
+}
+.date-time-div{
+    justify-content: space-evenly;
+}
+#add-fixture-form{
+    margin:auto;
+}

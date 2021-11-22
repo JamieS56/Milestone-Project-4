@@ -19,25 +19,25 @@
 
             <h2 class=''>Table</h2>
 
+        <thead>
+            <th>Team</th>
+            <th>W-D-L</th>
+            <th>Goals</th>
+            <th>points</th>
+        </thead>
+
         <tbody>
             {% for team in teams %}
                 <tr class="">
                     <th>{{ team.name }}</th>
-                    <td>{{ team.wins }}-{{ team.draws }}-{{ team.losses }}</td>
+                    <td>{{ team.get_wins }}-{{ team.get_draws }}-{{ team.get_losses }}</td>
                     <td>{{ team.number_of_goals }}</td>
-                    <td>{{ team.points }}</td>
-                   
-
+                    <td>{{ team.get_points }}</td>
                 </tr>
             {% endfor %}
 
         </tbody>
     </table>
-
-
-
-
-    <a class="btn custom-btn" href="{% url 'add_fixture' %}"> Add Fixture</a>
 
 </div>
 
