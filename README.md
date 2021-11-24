@@ -99,13 +99,15 @@
 
 ### Checkout Page
 
-* The checkout page Will display the details of the order for the user to make sure they are correct.
+* The checkout page will display the details of the order for the user to make sure they are correct.
 
-* The checkout form will be prefilled with info if the user is logged in and has the details saved to there profile. If the user is not logged in they will have to will out there first and last name and email aswell as there card info.
+* The checkout form will be prefilled with info if the user is logged in and has the details saved to there profile. If the user is not logged in they will have to fill out their first and last name and email aswell as their card info.
 
 * The card info is automatically validated by stripe. before being sent off to be processed.
 
-* if the checkout is complete then the user will be taken to a success page with there order information
+* If the checkout is complete then the user will be taken to a success page with their order information
+
+* The checkout page will also show a loading sign whilst waiting for stripe to respond.
 ## Technologies Used
 
 ## Testing
@@ -120,7 +122,9 @@ admin login page does not exist fix https://stackoverflow.com/questions/9736975/
 * For the league table, currently the fixtures need to be part of my database, in the future it would be good to use an api to get the data off of a central league database that all the teams update so that each website doesn't have to keep a database of all the fixtures and just keep there own, or even just get what ones they need from this central db.
 
 ## Deployment
-This is how I deployed my project to Github and Heroku
+This is how I deployed my project to Github and Heroku and set up amazon web services.
+
+### Github & Heroku
 
 1. First of all I create a github repository using Code institutes github-full-template on git pod.
 
@@ -181,9 +185,28 @@ This is how I deployed my project to Github and Heroku
 
 12. Then you will want to create a super user user using `python3 manage.py create superuser` in the terminal.
 
-13. Then back on Heroku go to the deploy tab click on connect with github and add your repository. Then enable automatic deployment so each time you push in git pod it will push to heroku.
+13. Then back on Heroku go to the deploy tab click on connect with github and add your repository. Then enable automatic deployment so each time you push in git pod it will push to heroku. 
 
-14. Then run `git add .`, `git commit -m` and `git push` in the terminal to push your repository to heroku.
+14. Then click settings then config veariables and add SECRET_KEY and make it your django secret key. and then in the settings.py file change your secret key so it looks like this.
+
+    settings.py
+    ```
+    SECRET_KEY = os.environ.get('SECRET_KEY', '')
+    ```
+
+    and add a new secret key to your env.py file.
+
+    env.py
+    ```
+    import os
+
+    DATABAS_URL = 'your database url goes here'
+    SECRET_KEY = 'your new secret key'
+    ```
+
+14. Then run `git add .`, `git commit -m` and `git push` in the terminal to push your repository to heroku. 
+
+
 
 15. Then in the terminal install gunicorn using `pip3 install gunicorn` and `pip3 freeze > requirements.txt`.
  
@@ -196,7 +219,7 @@ This is how I deployed my project to Github and Heroku
 
     This creates a web dyno and serves the django app.
 
-17. Then disable collect static by logging into heroku in the terminal using `heroku login -i` and then typing `heroku config:set DISABLE_COLLECTSTATIC --app yourappname`
+17. Then disable collect static by going into your config variables creating a variable calles DISABLE_COLLECTSTAIC and set it to 1.
 
 18. Then in settings.py add the url of your heroku app to ALLOWED_HOSTS and also local host so you can still run the test server.
 
@@ -206,7 +229,130 @@ This is how I deployed my project to Github and Heroku
     ```
 
 
+### AWS
 
+1. Go to https://aws.amazon.com/ and create an account.
+
+2. Then you will need to enter a credit card number which will get charged if you go over the service limit for this project you will not go over the limit.
+
+3. Go back to https://aws.amazon.com/ and login and go to aws management console under my account.
+
+4. then search s3 in the services search bar.
+
+5. Then you want to click on create bucket and give your bucket the name your heroku app and select your closest region. Also untick block all public access and check the box that aknowledges you know that your bucket will be public and then click create.
+
+6. Then go to the properties tab and turn on static website hosting and fill in the index doceument and error document with index.html and error.html as we will not use them and click save.
+
+7. Then on the permissions tab go to CORS configuration and paste in 
+    ```
+    [
+      {
+          "AllowedHeaders": [
+              "Authorization"
+          ],
+          "AllowedMethods": [
+              "GET"
+          ],
+          "AllowedOrigins": [
+              "*"
+          ],
+          "ExposeHeaders": []
+      }
+    ]
+    ```
+    and save it.
+
+8. Then go to the bucket policy tab and select policy generator to create a security policy.
+
+9. The policy type will be an S3 bucket policy, in principals put '*',  and in actions select GET object.
+
+10. Then go back to the permissions tab and copy the ARN code to paste into the ARN box.
+
+11. Then click add statement and then generate policy and copy the poicy into the bucke policy editor.
+
+12. Before saving add /* on to the end of the resource key to allow access to all resources in the bucket. Then click save and done.
+
+13. Next go to the access controll list tab and set the list objects to everyone.
+
+14. Go to the services menu and look up IAM.
+
+15. First click on groups and create group and call it name it so you know what app it's for eg. yourappname-manager.
+
+16. Then click next step twice as we dont have a policy to attach to it yet. And then click create group.
+
+17. Then on the left side menu click policies and create policies. then click on the json tab and click import policiy.
+
+18. Search for s3 then click on AmazonS3FullAccess and import it.
+
+19. Next you will want to get your bucket ARN from the bucket policies tab again and paste it twice into the resource section as a list and after the second one add a '/*' to the end so it selects all.
+
+20. Then click on review policy and give it a name and short description to do with your app. and then click create policy.
+
+22. Then go back to the group you created. select attach policy, search and select the policy you just created and attach it.
+
+23. Next youll want to add a user so click add user at the top and give the user a name like 'myapp-static-files-user' give them programatic access and then click next.
+
+24. then add the user to the group and click next through to the end and then create user.
+
+25. You then need to download the csv file which contains the access key you need to give to your django app.
+
+26. Go over to your django app and use `pip3 install ...` to install `boto3` and `django-storages`. And freeze them into requirements.txt.
+
+27. in setiings add storages into the installed apps.
+
+28. Then at the bottom of your settings file add
+
+    settings.py
+    ```
+    if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'your bucket name'
+    AWS_S3_REGION_NAME = 'your region'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+    #Telling Django where the static files are coming from
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # This connects to the custom_storages file you will create next to store static and media files.
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+    ```
+
+    and add your AWS variables to the env.py file.
+
+29. Add your AWS keys to your config variables on your heroku app. and remove the DISABLE_COLLECTSTATIC variable as the static files should hopefully go to S3.
+
+30. Next you will want to create a file called custom_storages.py and set it up like this.
+
+    custom_storages.py
+    ```
+    from django.conf import settings
+    from storages.backends.s3boto3 import S3Boto3Storage
+
+
+    class StaticStorage(S3Boto3Storage):
+        location = settings.STATICFILES_LOCATION
+
+
+    class MediaStorage(S3Boto3Storage):
+        location = settings.MEDIAFILES_LOCATION
+    
+    ```
+
+31. Then run `git add .`, `git commit -m` and `git push` in the terminal to push the changes to heroku and static files to s3. You will know it has worked if when you look at the build log on heroku it will say static files coppied. Also if you go onto s3 you will see the static files in your bucket.
 
 ## Acknowledgements/ Links
 
