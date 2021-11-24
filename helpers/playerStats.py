@@ -1,4 +1,5 @@
-from teams.models import Fixture, Goal, Team
+from teams.models import Team
+from fixtures.models import Fixture, Goal
 from players.models import Player
 from django.shortcuts import get_object_or_404
 from django.db.models import Q

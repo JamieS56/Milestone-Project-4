@@ -1,7 +1,7 @@
 from django import forms
 from .models import Ticket, TicketOrder
 from django.contrib.auth.models import User
-from teams.models import Fixture
+from fixtures.models import Fixture
 from helpers import customFunctions
 from datetime import date
 

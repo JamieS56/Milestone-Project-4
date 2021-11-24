@@ -11,4 +11,5 @@ urlpatterns = [
     path('teams/', include('teams.urls')),
     path('profile/', include('profiles.urls')),
     path('tickets/', include('tickets.urls')),
+    path('fixtures/', include('fixtures.urls')),
  ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

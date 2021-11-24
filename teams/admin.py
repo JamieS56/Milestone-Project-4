@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Team, Fixture, Goal
+from .models import Team
 # Register your models here.
 
 
@@ -13,5 +13,4 @@ class FixtureAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Team)
-admin.site.register(Fixture, FixtureAdmin)
-admin.site.register(Goal)
+

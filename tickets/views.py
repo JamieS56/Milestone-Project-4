@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import TicketOrderForm, CheckoutForm
 from .models import Ticket
-from teams.models import Fixture
+from fixtures.models import Fixture
 from django.conf import settings
 from helpers import customFunctions
 import stripe

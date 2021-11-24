@@ -18,7 +18,7 @@ function getCookie(name) {
 // calls python function to delete all team goals if team is changed
 async function delete_all_team_goals(data){
     let csrftoken = getCookie('csrftoken')
-    response = await fetch(`/teams/delete_team_goals/`, {
+    response = await fetch(`/fixtures/delete_team_goals/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

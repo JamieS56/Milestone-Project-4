@@ -1,10 +1,8 @@
 from django.db import models
-
+from fixtures.models import Fixture
+from django.contrib.auth.models import User
 
 # Create your models here.
-
-from teams.models import Fixture
-from django.contrib.auth.models import User
 
 
 class Ticket(models.Model):

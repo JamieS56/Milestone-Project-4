@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from helpers import customFunctions
 from players.models import Player
-from teams.models import Fixture
+from fixtures.models import Fixture
 from datetime import date
 
 

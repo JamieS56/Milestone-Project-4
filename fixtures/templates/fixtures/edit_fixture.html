@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'teams/css/fixtures.css' %}">
+<link rel="stylesheet" href="{% static 'fixtures/css/fixtures.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -124,5 +124,5 @@
 {% block postloadjs %}
 {{block.super}}
 {{ fixture.id|json_script:"id_fixture_id" }}
-<script src="{% static 'teams/js/edit-fixture.js' %}"></script>
+<script src="{% static 'fixtures/js/edit-fixture.js' %}"></script>
 {% endblock %}

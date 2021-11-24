@@ -22,16 +22,16 @@ def player_profile(request, player_id):
 
     player = customFunctions.add_no_image(get_object_or_404(Player, pk=player_id))
 
-    player.goals = len(playerStats.goals(player))
-    player.assists = len(playerStats.assists(player))
-    player.clean_sheets = playerStats.clean_sheets()
-    player.appearances = len(playerStats.appearances())
-
-    player.save()
+    goals = len(player.goals.all())
+    assists = len(player.goals.all())
+    clean_sheets = player.clean_sheets()
+    appearances = player.appearances()
 
 
     context = {
         'player': player,
+        'clean_sheets': clean_sheets,
+        'appearances': appearances
     }
 
     return render(request, 'players/player_profile.html', context)

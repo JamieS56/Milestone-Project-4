@@ -1,5 +1,6 @@
 from django import forms
-from .models import Team, Fixture, Goal
+from .models import Fixture, Goal
+from teams.models import Team
 from players.models import Player
 from helpers import customFunctions
 

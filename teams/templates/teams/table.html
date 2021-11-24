@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css%}
-<link rel="stylesheet" href="{% static 'teams/css/fixtures.css' %}">
+<link rel="stylesheet" href="{% static 'teams/css/table.css' %}">
 
 {% endblock %}
 
@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="conainer center">
+<div class="container center">
 
 
 
@@ -22,7 +22,7 @@
         <thead>
             <th>Team</th>
             <th>W-D-L</th>
-            <th>Goals</th>
+            <th>+/-</th>
             <th>points</th>
         </thead>
 
@@ -31,7 +31,7 @@
                 <tr class="">
                     <th>{{ team.name }}</th>
                     <td>{{ team.get_wins }}-{{ team.get_draws }}-{{ team.get_losses }}</td>
-                    <td>{{ team.number_of_goals }}</td>
+                    <td>{{ team.goal_difference }}</td>
                     <td>{{ team.get_points }}</td>
                 </tr>
             {% endfor %}

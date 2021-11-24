@@ -11,7 +11,7 @@ class PlayerForm(forms.ModelForm):
             'name',
             'number',
             'position',
-            'description'
+            'team'
         ]
 
     def __init__(self, *args, **kwargs):
