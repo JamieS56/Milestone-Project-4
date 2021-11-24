@@ -35,10 +35,11 @@
                           <th class="table-dark" scope="col">Del</th>
                         </tr>
                     </thead>  
+                    <tbody>
                     {% for goal in goals %}
                     {% if goal.team == fixture.home_team %}
                     <tr class="table-dark">
-                        <th scope="row">{{ forloop.counter }}</th>
+                        <th class="table-first"></th>
                         <td class="table-dark">{{ goal.goal_scorer }}</td>
                         <td class="table-dark" >{{ goal.assist_maker }}</td>
                         <td class="table-dark"><a href='{% url "delete_goal" goal.goal_id %}'><button type="button" class="btn-close btn-close-white close" aria-label="Close"></button></a></td>
@@ -46,6 +47,7 @@
                     </tr>
                     {% endif %}
                     {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -59,11 +61,12 @@
                       <th class="table-dark" scope="col">Assist</th>
                       <th class="table-dark" scope="col">Del</th>
                     </tr>
-                </thead>  
+                </thead> 
+                <tbody>
                 {% for goal in goals %}
                 {% if goal.team == fixture.away_team %}
                 <tr class="table-dark">
-                    <th scope="row">{{ forloop.counter }}</th>
+                    <th class="table-first"></th>
                     <td class="table-dark">{{ goal.goal_scorer }}</td>
                     <td class="table-dark" >{{ goal.assist_maker }}</td>
                     <td class="table-dark"><a href='{% url "delete_goal" goal.goal_id %}'><button type="button"  class="btn-close btn-close-white close" aria-label="Close"></button></a></td>
@@ -71,6 +74,7 @@
                 </tr>
                 {% endif %}
                 {% endfor %}
+                </tbody> 
             </table>
         </div>
 </div>

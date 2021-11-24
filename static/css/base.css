@@ -90,6 +90,7 @@ footer{
 .toast {
   position: fixed;
   margin: 2rem;
+  z-index: 999999;
 }
 
 .toast-container {

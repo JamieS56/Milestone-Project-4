@@ -12,9 +12,10 @@ class Ticket(models.Model):
     Model for customer tickets.
     """
     ticket_id = models.CharField(
-        max_length=50,
+        max_length=40,
         primary_key=True
     )
+
     ticket_holder = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
