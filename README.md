@@ -22,7 +22,7 @@
 1. Have a responsive website.
 2. Player carosel on home page.
 3. Base functionality eg. creating edditing and deleting data works without any problems.
-
+4. Automatic email on booking. 
 
 
 
@@ -328,9 +328,29 @@
         ![Admin view of saved ticket object](media/README/testing/tickets-system/ticket-purchasing-5.jpg)
 
 
+* "See my previously booked tickets."
+
+    In the profiles app there is a list of your previousley bought tickets with the ticket id, price, fixture and number of tickets purchased viewable to the user.
+    Currently it's limited to 5 tickets so the page isn't over filled, but in the future i'm going to add a show more button/ the ability to search and scroll through all the previouse bookings.
+
+    ![Profile page](media/README/testing/profile/profile-page.jpg)
+
+
+### My Goals
+
+
+* "Have a responsive website."
+
+* "Player carosel on home page."
+
+* "Base functionality eg. creating edditing and deleting data works without any problems."
+
+* "Sending an automatic email on ticket bookings."
 
 
 ## Future Ideas
+
+* The ability to search tthrough previouse tickets.
 
 * Be able to filter fixtures shown on the fixtures table by Team and date.
 

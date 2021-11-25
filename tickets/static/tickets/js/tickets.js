@@ -8,9 +8,6 @@ $('document').ready(function(){
     })
     $('#payment-form').submit(function(){
         $('#loading-overlay').show()
-    }).fail(function () {
-        // just reload the page, the error will be in django messages
-        location.reload();
     })
 
 })

@@ -141,7 +141,7 @@ def handle_checkout(request):
                 return redirect('success', ticket=ticket.ticket_id)
 
         else:
-            messages.error(request, 'There was an error with your form. \
+            messages.error(request, 'There was an error with your card. \
                 Please double check your information.')
             return redirect(reverse('checkout'))
 
