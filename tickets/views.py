@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import TicketOrderForm, CheckoutForm
@@ -7,6 +8,7 @@ from fixtures.models import Fixture
 from django.conf import settings
 from helpers import customFunctions
 import stripe
+import os
 
 
 def tickets_page(request):
@@ -109,6 +111,13 @@ def handle_checkout(request):
                     )
                 ticket.save()
                 request.session['order_details'] = {}
+                send_mail(
+                    f'Booking Confirmation <{ticket.ticket_id}>',
+                    f'Hello {full_name},\n\n Your tickets for {str(ticket.fixture)} are confirmed.\n Total: ${ticket.price}.\n\n We hope you enjoy the game!\n The Messi Ankles Team',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [ticket.email],
+                    fail_silently=False
+                )
                 context={
                     'ticket': ticket
                 }

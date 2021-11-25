@@ -8,8 +8,9 @@ from datetime import date
 def index(request):
     ''' A view to return the index page '''
 
-    players = customFunctions.add_no_image(Player.objects.all())
+    players = customFunctions.add_no_image(Player.objects.filter(team=1))
     fixture = Fixture.objects.filter(date__gt=date.today()).order_by('date', 'time').first()
+    print(fixture)
 
     context = {
         'players': players,

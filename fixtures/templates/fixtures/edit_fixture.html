@@ -36,15 +36,18 @@
                         </tr>
                     </thead>  
                     <tbody>
+                    
                     {% for goal in goals %}
                     {% if goal.team == fixture.home_team %}
                     <tr class="table-dark">
-                        <th class="table-first"></th>
+                        <th class="table-first">{{ count }}</th>
                         <td class="table-dark">{{ goal.goal_scorer }}</td>
                         <td class="table-dark" >{{ goal.assist_maker }}</td>
                         <td class="table-dark"><a href='{% url "delete_goal" goal.goal_id %}'><button type="button" class="btn-close btn-close-white close" aria-label="Close"></button></a></td>
                         <td class="visually-hidden table-dark"><input id='' value='{{ goal.goal_id }}' class="visually-hidden goal-id"></input></td>
                     </tr>
+                    {{ set count = count + 1 }}
+
                     {% endif %}
                     {% endfor %}
                     </tbody>
@@ -63,15 +66,17 @@
                     </tr>
                 </thead> 
                 <tbody>
+
                 {% for goal in goals %}
                 {% if goal.team == fixture.away_team %}
                 <tr class="table-dark">
-                    <th class="table-first"></th>
+                    <th class="table-first">{{ count }}</th>
                     <td class="table-dark">{{ goal.goal_scorer }}</td>
                     <td class="table-dark" >{{ goal.assist_maker }}</td>
                     <td class="table-dark"><a href='{% url "delete_goal" goal.goal_id %}'><button type="button"  class="btn-close btn-close-white close" aria-label="Close"></button></a></td>
                     <td class="visually-hidden table-dark"><input id='' value='{{ goal.goal_id }}' class="visually-hidden goal-id"></input></td>
                 </tr>
+
                 {% endif %}
                 {% endfor %}
                 </tbody> 
