@@ -1,4 +1,4 @@
- # Messi Ankles Website
+# Messi Ankles Website
 
 ## User Stories
 
@@ -134,7 +134,9 @@
 
 * Have a Website that tells people about the club.
 
+
 * "Be able to save data about games and players."
+
     The database I have created has models for Teams, Players, Fixtures, Goals, Tickets, and Users. All of these have a table where they get saved to after being created.
     The Teams and Players have been loaded in through fixtures that I created using [Mockaroo](https://www.mockaroo.com/) which generates random json files with custom fields you put in.
     everything else is created within the app using Djangos models and `.save()` method.
@@ -240,23 +242,23 @@
 
     1. Go to the fixtures tab and at the bottom click add fixture and fill out the form and click add fixture.
 
-        ![Add Fixtures form](media/README/testing/save-fixture-1.jpg)
+        ![Add Fixtures form](media/README/testing/fixure-player-edditing/save-fixture-1.jpg)
 
     2. Then to add a goal click edit fixture next to the fixture youve just added on the table. 
 
-        ![Fixtures table with new fixture added](media/README/testing/save-fixture-2.jpg)
+        ![Fixtures table with new fixture added](media/README/testing/fixure-player-edditing/save-fixture-2.jpg)
 
     3. Click add goal and then fill out the team, goal_scorer and assist maker of the goal and click add goal.
 
-        ![Add goal form](media/README/testing/save-fixture-3.jpg)
+        ![Add goal form](media/README/testing/fixure-player-edditing/save-fixture-3.jpg)
 
     4. This has saved the goal and you will be able to see it in the edit fixtures view.
 
-        ![Edit Fixture view with new goal added](media/README/testing/save-fixture-4.jpg)
+        ![Edit Fixture view with new goal added](media/README/testing/fixure-player-edditing/save-fixture-4.jpg)
 
     5. You can then see that it has been changed in the admin view too.
 
-        ![Admin view of both goal and fixture object.](media/README/testing/save-fixture-5.jpg)
+        ![Admin view of both goal and fixture object.](media/README/testing/fixure-player-edditing/save-fixture-5.jpg)
 
 
 
@@ -264,19 +266,69 @@
 
     1. Go to the players tab and then click on the player you want to edit.
 
-        ![Player profile view](media/README/testing/edit-player-1.jpg)
+        ![Player profile view](media/README/testing/fixure-player-edditing/edit-player-1.jpg)
 
     2. Then you can edit what you want and click update player.
 
-        ![Player edit view](media/README/testing/edit-player-2.jpg)
+        ![Player edit view](media/README/testing/fixure-player-edditing/edit-player-2.jpg)
 
     3. You can then see the changes in the player view.
 
-        ![Player Profile showing changes made](media/README/testing/edit-player-3.jpg)
+        ![Player Profile showing changes made](media/README/testing/fixure-player-edditing/edit-player-3.jpg)
 
     4. Here are the changes in the admin view.
 
-        ![admin view of changes to player object](media/README/testing/edit-player-4.jpg)
+        ![admin view of changes to player object](media/README/testing/fixure-player-edditing/edit-player-4.jpg)
+
+
+*   "Have an easily accessible and easy to use ticket system."
+
+    "Be able to book tickets."
+
+    "Not have to put in my details every time I pay for tickets."
+
+    "Not have to create an account to use the service."
+
+
+
+    When creating the ticket system I implemented 'easy to use' by making it a minimum two step process. First choose the ticket and then then checkout. For extra ease you can create an account that saves your info to make checking out quicker but it is not neccasery to purchasing a ticket for users who "don't want to create an account". and to make the tickets 'easily accessible' across all devices the tickets button is directly vissible in the nav bar and also visible through a banner on the home page when you first load the webpage.
+
+    Here is what the navbar and home page look like across different pages:
+
+    Desktop
+
+    ![Destop view showing the navbar and home page linking to the tickets page.](media/README/testing/tickets-system/ticket-nav-desktop.jpg)
+
+    Tablet
+
+    ![Tablet view showing the navbar and home page linking to the tickets page.](media/README/testing/tickets-system/ticket-nav-tablet.jpg)
+
+    Mobile
+
+    ![Mobile view showing the navbar and home page linking to the tickets page.](media/README/testing/tickets-system/ticket-nav-mobile.jpg)
+
+
+    Heres how to book tickets:
+    
+    1. Click on the tickets page and fill out what tickets and how many you want.
+
+        ![Ticket booking page choosing the tickets](media/README/testing/tickets-system/ticket-purchasing-1.jpg)
+
+    2. Fill out your details, if you have your profile details saved it will be prefilled for you and you just have to enter your card details otherwise just enter your name a, email and card info.
+
+        ![Ticket checkout page](media/README/testing/tickets-system/ticket-purchasing-2.jpg)
+
+    3. Click checkout and if your card is good you will be taken to the success page. and sent a booking confirmation email.
+
+        ![Booking success page](media/README/testing/tickets-system/ticket-purchasing-3.jpg)
+        ![Booking confirmation email](media/README/testing/tickets-system/ticket-purchasing-4.jpg)
+
+    4. Here is the admin view of the ticket object. If the user had no account the ticket holder field would be empty.
+
+        ![Admin view of saved ticket object](media/README/testing/tickets-system/ticket-purchasing-5.jpg)
+
+
+
 
 ## Future Ideas
 
