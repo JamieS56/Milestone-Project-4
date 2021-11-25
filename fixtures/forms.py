@@ -1,4 +1,6 @@
 from django import forms
+from django.forms import BaseModelFormSet
+from django.db.models import Q
 from .models import Fixture, Goal
 from teams.models import Team
 from players.models import Player
@@ -41,6 +43,7 @@ class FixtureForm(forms.ModelForm):
 
 class EditFixtureForm(forms.ModelForm):
 
+
     class Meta:
         model = Fixture
         fields = '__all__'
@@ -77,7 +80,19 @@ class EditFixtureForm(forms.ModelForm):
     )
 
 
+
 class AddGoalForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+
+        self.fixture = kwargs.pop('fixture')
+        super(AddGoalForm, self).__init__(*args, **kwargs)
+
+        query_set = Player.objects.filter(Q(team=self.fixture.home_team) | Q(team=self.fixture.away_team))
+        self.fields['goal_scorer'].queryset = query_set
+        self.fields['assist_maker'].queryset = query_set
+
+
 
     class Meta:
         model = Goal
@@ -99,12 +114,14 @@ class AddGoalForm(forms.ModelForm):
         )
     goal_scorer = forms.ModelChoiceField(
         widget=forms.Select(attrs={'class': 'select form-control', }),
-        required=False,
+        required=True,
         queryset=Player.objects.all()
+
     )
     assist_maker = forms.ModelChoiceField(
         widget=forms.Select(attrs={'class': 'select form-control'}),
-        required=False,
+        required=True,
         queryset=Player.objects.all()
     )
+
 

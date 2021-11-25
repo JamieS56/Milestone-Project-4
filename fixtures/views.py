@@ -68,9 +68,9 @@ def edit_fixture(request, fixture_id):
     goals = Goal.objects.filter(fixture=fixture)
 
     if request.method == 'POST':
-        print(request.POST)
         form = EditFixtureForm(request.POST, request.FILES, instance=fixture)
-        add_goal_form = AddGoalForm(request.POST, request.FILES)
+        add_goal_form = AddGoalForm(request.POST, request.FILES, fixture=fixture)
+        
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully added fixture!')
@@ -79,7 +79,8 @@ def edit_fixture(request, fixture_id):
             messages.error(request, 'Failed to add fixture. Please ensure the form is valid.')
     else:
         form = EditFixtureForm(instance=fixture)
-        add_goal_form = AddGoalForm(initial={'fixture': fixture})
+        add_goal_form = AddGoalForm(fixture=fixture, initial={'fixture': fixture})
+
 
 
     template = 'fixtures/edit_fixture.html'
@@ -103,7 +104,8 @@ def add_goal(request):
 
     fixture = get_object_or_404(Fixture, pk=request.POST['fixture'])
     goals = Goal.objects.filter(fixture=fixture)
-    add_goal_form = AddGoalForm(request.POST, request.FILES)
+    add_goal_form = AddGoalForm(request.POST, request.FILES, fixture=fixture)
+
     form = EditFixtureForm(instance=fixture)
 
     if request.method == 'POST':
@@ -114,19 +116,13 @@ def add_goal(request):
         if add_goal_form.is_valid:
             goal_id = customFunctions.createRandomPK()
 
-            if team == messi_ankles:
-                goal_scorer = get_object_or_404(Player, pk=request.POST['goal_scorer'])
-                assist_maker = get_object_or_404(Player, pk=request.POST['assist_maker'])
-                goal = Goal(goal_id=goal_id, team=team, goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
-                goal.save()
-                messages.success(request, 'Goal has been Saved!')
-                return redirect(reverse('edit_fixture', kwargs={'fixture_id':fixture.id}))
-            else:
-                goal = Goal(goal_id=goal_id, team=team, goal_scorer=None, assist_maker=None, fixture=fixture)
-                goal.save()
-                messages.success(request, 'Goal has been Saved!')
+            goal_scorer = get_object_or_404(Player, pk=request.POST['goal_scorer'])
+            assist_maker = get_object_or_404(Player, pk=request.POST['assist_maker'])
+            goal = Goal(goal_id=goal_id, team=team, goal_scorer=goal_scorer, assist_maker=assist_maker, fixture=fixture)
+            goal.save()
+            messages.success(request, 'Goal has been Saved!')
+            return redirect(reverse('edit_fixture', kwargs={'fixture_id':fixture.id}))
 
-                return redirect(reverse('edit_fixture', kwargs={'fixture_id':fixture.id}))
         else:
             return messages.error(request, 'Sorry, form is invalid please check your form.')
 

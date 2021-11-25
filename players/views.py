@@ -8,7 +8,7 @@ from .forms import PlayerForm
 
 def squad(request):
     ''' A view to return a list of all the players. '''
-    players = customFunctions.add_no_image(Player.objects.all())
+    players = customFunctions.add_no_image(Player.objects.filter(team=1))
 
     context = {
         'players': players
