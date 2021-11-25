@@ -13,11 +13,16 @@
 1. Be able to book tickets.
 2. Be able to see when games are and the scores of previouse games.
 3. See player stats.
+4. Not have to put in my details every time I pay for tickets.
+5. Not have to create an account to use the service.
+6. See my previously booked tickets.
 
 ### My Goals:
 
 1. Have a responsive website.
 2. Player carosel on home page.
+3. Base functionality eg. creating edditing and deleting data works without any problems.
+
 
 
 
@@ -36,7 +41,7 @@
 
 * Footer has email for contact info and links to social accounts so that the user can easily find out more about us or contact us.
 
-* Toasts popup in the bottom left displaying any message the server has for the user, the toasts are color coded depending on the type of message.
+* Toasts popup in the bottom right displaying any message the server has for the user, the toasts are color coded depending on the type of message.
 
     | Message | Color  |
     | ------- | ------ |
@@ -105,15 +110,173 @@
 
 * The card info is automatically validated by stripe. before being sent off to be processed.
 
-* If the checkout is complete then the user will be taken to a success page with their order information
+* If the checkout is complete then the user will be taken to a success page with their order information and an email sent to there email account.
 
-* The checkout page will also show a loading sign whilst waiting for stripe to respond.
+* The checkout page also has a loading sign whilst waiting for stripe to respond.
+
+### Profile Page
+
+* The profile page has a list of the users orders
+
+* There is also a small form to save info to prefill the checkout form.
+
+### Login/ Logout/ Create an Account Page
+
+* Login/ Create an account page have links to each other to easily swith if user does or doesn't have an account.
+
+* Logout doubble checks to make sure if you do want to logout to avoid mistakes.
+
 ## Technologies Used
 
 ## Testing
 
-admin login page does not exist fix https://stackoverflow.com/questions/9736975/django-admin-doesnotexist-at-admin
+### Testing User Goals
 
+* Have a Website that tells people about the club.
+
+* "Be able to save data about games and players."
+    The database I have created has models for Teams, Players, Fixtures, Goals, Tickets, and Users. All of these have a table where they get saved to after being created.
+    The Teams and Players have been loaded in through fixtures that I created using [Mockaroo](https://www.mockaroo.com/) which generates random json files with custom fields you put in.
+    everything else is created within the app using Djangos models and `.save()` method.
+
+
+
+    fixtures/models.py
+    ```
+    class Fixture(models.Model):
+
+    home_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home_team', null=False, blank=False)
+    away_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away_team', null=False, blank=False)
+    date = models.DateField()
+    time = models.TimeField()
+    game_played = models.BooleanField(default=False, null=False, blank=False)
+
+
+    def __str__(self):
+        return f'{self.date}: {self.home_team} v {self.away_team}'
+
+    def home_team_goals(self):
+        goals = Goal.objects.filter(fixture=self, team=self.home_team)
+        return goals
+
+    def away_team_goals(self):
+        goals = Goal.objects.filter(fixture=self, team=self.away_team)
+        return goals
+    ```
+
+    This is my fixtures model, the data saved to it are the home team, away team, date of the fixture, time of the fixture and weather or not the game has been played. The goals in the fixture are class methods because it means that when you want to look up the number of goals in the fixture each goal is linked with a goal object which will decrease the amount of error across all tables with linked data such as goals or assists or clean sheets as there is no physical data linked to the objects.
+
+
+
+    fixtures/models.py
+    ```
+    class Goal(models.Model):
+
+    goal_id = models.CharField(max_length=100, primary_key=True)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, null=False, blank=False, related_name='team_goals')
+    goal_scorer = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='goals' , null=True, blank=True)
+    assist_maker = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='assists', null=True, blank=True)
+    fixture = models.ForeignKey(Fixture, on_delete=models.CASCADE, null=False, blank=False)
+
+    def __str__(self):
+        return f'Goal: {self.team}, {self.fixture}'
+
+    ``` 
+
+    This is my Goal class it contains the id of the goal, the team which scored, the goal scorer, assist maker and which fixture the goal was scored in. with all this information linked to the goal it makes it easy to make queries about the goals in certain fixtures or by ceertain teams or even by players throughout the app.
+
+
+
+    players/models.py
+
+    ```
+    class Player(models.Model):
+
+        name = models.CharField(max_length=254)
+        number = models.IntegerField(null=False)
+        position = models.CharField(max_length=15)
+        team = models.ForeignKey(Team, on_delete=models.CASCADE, null=False, blank=False, related_name='team_players')
+        image_url = models.CharField(
+            max_length=100,
+            null=True,
+            blank=True
+            )
+
+        def __str__(self):
+            return str(self.name)
+
+        def appearances(self):
+            appearances = 0
+            fixtures = self.team.home_team.all() | self.team.away_team.all()
+            for fixture in fixtures:
+                if fixture.game_played == True:
+                    appearances += 1
+
+            return appearances
+
+        def clean_sheets(self):
+            clean_sheets = 0
+            home_fixtures = self.team.home_team.all()
+            for fixture in home_fixtures:
+                if fixture.game_played == True:
+                    if len(fixture.away_team_goals()) == 0:
+                        clean_sheets += 1
+
+            away_fixtures = self.team.away_team.all()
+            for fixture in away_fixtures:
+                if fixture.game_played == True:
+                    if len(fixture.home_team_goals()) == 0:
+                        clean_sheets += 1
+
+            return clean_sheets
+
+    ```
+
+    This is my Player class it saves the name of the player, their shirt number, their position the team they play for and the url for their image that I use on the app.
+    Data about the players performance is gotten through class methods for the same reason as the Fixture class because it means mistakes are less likley and keeps things consistent across the database. You can edit the features of the Messi Ankles ankles players, such as shirt number or position or name through the app, admins have access via an edit player button to change the values of these fields.  The players that belong to other teams I don't think need the ability to be changed in the app as it is a Messi Ankles website. But if you do wish you can edit them through the Django admin or if you wish to change which team the websites for just change which team is being filtered in the queries and you will be able to acces these other players but as it is filler data that is not directly related to the users of the website theres no need to access them through the app.
+
+
+    Here is the method of how to save fixtures and goals:
+
+    1. Go to the fixtures tab and at the bottom click add fixture and fill out the form and click add fixture.
+
+        ![Add Fixtures form](media/README/testing/save-fixture-1.jpg)
+
+    2. Then to add a goal click edit fixture next to the fixture youve just added on the table. 
+
+        ![Fixtures table with new fixture added](media/README/testing/save-fixture-2.jpg)
+
+    3. Click add goal and then fill out the team, goal_scorer and assist maker of the goal and click add goal.
+
+        ![Add goal form](media/README/testing/save-fixture-3.jpg)
+
+    4. This has saved the goal and you will be able to see it in the edit fixtures view.
+
+        ![Edit Fixture view with new goal added](media/README/testing/save-fixture-4.jpg)
+
+    5. You can then see that it has been changed in the admin view too.
+
+        ![Admin view of both goal and fixture object.](media/README/testing/save-fixture-5.jpg)
+
+
+
+    Here is how you edit a player:
+
+    1. Go to the players tab and then click on the player you want to edit.
+
+        ![Player profile view](media/README/testing/edit-player-1.jpg)
+
+    2. Then you can edit what you want and click update player.
+
+        ![Player edit view](media/README/testing/edit-player-2.jpg)
+
+    3. You can then see the changes in the player view.
+
+        ![Player Profile showing changes made](media/README/testing/edit-player-3.jpg)
+
+    4. Here are the changes in the admin view.
+
+        ![admin view of changes to player object](media/README/testing/edit-player-4.jpg)
 
 ## Future Ideas
 
@@ -363,3 +526,4 @@ Fixed footer - https://stackoverflow.com/questions/40853952/bootstrap-footer-at-
 CSRF cookie code - https://stackoverflow.com/questions/43606056/proper-django-csrf-validation-using-fetch-post-request
 
 
+admin login page does not exist fix https://stackoverflow.com/questions/9736975/django-admin-doesnotexist-at-admin

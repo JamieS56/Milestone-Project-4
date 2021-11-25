@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -121,7 +121,7 @@ def handle_checkout(request):
                 context={
                     'ticket': ticket
                 }
-                return render(request, 'tickets/success.html', context)
+                return redirect('success', ticket_id=ticket.ticket_id)
             else:
                 print('user not logged in')
                 ticket = Ticket(
@@ -138,7 +138,7 @@ def handle_checkout(request):
                 context = {
                     'ticket': ticket
                 }
-                return render(request, 'tickets/success.html', context)
+                return redirect('success', ticket=ticket.ticket_id)
 
         else:
             messages.error(request, 'There was an error with your form. \
@@ -146,10 +146,14 @@ def handle_checkout(request):
             return redirect(reverse('checkout'))
 
 
-def success_url(request):
+def success_url(request, ticket_id):
     ''' Succesful purchase page.'''
+    ticket = get_object_or_404(Ticket, pk=ticket_id)
+    if not ticket:
+        messages.error('Checkout error, there is no ticket.')
+        return redirect('home')
 
-    ticket = get_object_or_404(Ticket, ticket_id=ticket_id)
+
 
     context = {
         'ticket': ticket

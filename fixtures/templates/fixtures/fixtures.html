@@ -50,8 +50,9 @@
 
 
 
+    {% if user.is_superuser %}
     <a id="add-fixture-btn" class="btn custom-btn" href="{% url 'add_fixture' %}"> Add Fixture</a>
-    <a id="table-btn" class="btn custom-btn" href="{% url 'table' %}"> Table</a>
+    {% endif %}
 
 </div>
 
