@@ -1,7 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from tickets.models import Ticket
-from django.contrib.auth.models import User
 from .forms import ProfileDataForm
 
 
@@ -19,6 +18,7 @@ def profile_page(request):
         form = ProfileDataForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
+            messagees.success('Profile saved successfully!')
 
     template = 'profiles/profiles.html'
     context = {

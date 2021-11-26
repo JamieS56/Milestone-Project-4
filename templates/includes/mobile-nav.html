@@ -39,22 +39,22 @@
     <div class="offcanvas-body">
         <ul class="">
             <li class="side-menu-item">
-                <a class="text-uppercase" aria-current="page" href="{% url 'home' %}">Home</a>
+                <a class="" aria-current="page" href="{% url 'home' %}">Home</a>
             </li>
             <li class="side-menu-item">
                 <a class="" href="{% url 'players' %}">Players</a>
             </li>
             <li class="side-menu-item">
-                <a class="text-uppercase" href="{% url 'fixtures' %}">Fixtures</a>
+                <a class="" href="{% url 'fixtures' %}">Fixtures</a>
             </li>
             <li class="side-menu-item">
-                <a class="text-uppercase" href="{% url 'table' %}">Table</a>
+                <a class="" href="{% url 'table' %}">Table</a>
             </li>
             <li class="side-menu-item">
-                <a class="text-uppercase" href="{% url 'tickets' %}">Tickets</a>
+                <a class="" href="{% url 'tickets' %}">Tickets</a>
             </li>
             <li class="side-menu-item">
-                <a class="text-uppercase" href="{% url 'profile' %}">Profile</a>
+                <a class="" href="{% url 'profile' %}">Profile</a>
             </li>
 
         </ul>
@@ -62,18 +62,18 @@
         <ul id="account-side-menu-box" class="">
             {% if user.is_authenticated %}
             <li class="account-side-menu-item center">
-                <a class="text-uppercase" href="{% url 'account_logout' %}">Logout</a>
+                <a class="" href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
             <div class="row">
             <div class="col-6">
                 <li class="account-side-menu-item center">
-                    <a class="text-uppercase" href="{% url 'account_login' %}">Login</a>
+                    <a class="" href="{% url 'account_login' %}">Login</a>
                 </li>
             </div>
             <div class="col-6">
                 <li class="account-side-menu-item">
-                    <a class="text-uppercase" href="{% url 'account_signup' %}">Create Account</a>
+                    <a class="" href="{% url 'account_signup' %}">Create Account</a>
                 </li>
             </div>
         </div>

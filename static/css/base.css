@@ -79,8 +79,11 @@ footer{
 .fab{
   padding:5px;
 }
-.social-links > span:hover{
+.social-links > a:hover{
   color:#ffde45;
+}
+.social-links > a{
+  color:white;
 }
 #footer-email{
   padding-left: 20px;
