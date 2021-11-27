@@ -570,11 +570,32 @@
 
 * "Have a responsive website."
 
+    All pages have been tested across desktop, iPhone 7, iPhone 10, Samsung Galaxy S20, laptop, and also in the browsers development mode where you can change the screen size. All of them function and are styled coreectly.
+
 * "Player carousel on home page."
+
+    The Bootstrap carousel is a great feature of the home page it looks goood and works on desktop tablet and mobile. 
 
 * "Base functionality e.g. creating editing and deleting data works without any problems."
 
+    I have tested creat
+
 * "Sending an automatic email on ticket bookings."
+
+    The user recieves an email when creating a booking and confirms all the details of the booking for the user.
+
+    tickets/views.py
+    ```
+    send_mail(
+        f'Booking Confirmation <{ticket.ticket_id}>',
+        f'Hello {full_name},\n\n Your tickets for {str(ticket.fixture)} are confirmed.\n Total: ${ticket.price}.\n\n We hope you enjoy the game!\n The Messi Ankles Team',
+        settings.DEFAULT_FROM_EMAIL,
+        [ticket.email],
+        fail_silently=False
+    )
+    ```
+
+### Futh
 
 ## Future scope/ Ideas
 
