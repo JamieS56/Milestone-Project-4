@@ -580,7 +580,11 @@
 
     I have tested creating fixtures and tickets and it all works, all the form validation stops empty forms being submitted and invalid data being entered.
 
-    Edditing fixtures also has been tested thouroughly again all the form validation works and stops invalid info being entered. There is a bug when changing teams, go to the known bugs section for more info. 
+    Editing fixtures also has been tested thouroughly again all the form validation works and stops invalid info being entered. I had a bug when changing teams, go to the known bugs section for more info (now fixed). Deleting fixtures also works completley and when you delete a fixture it deletes all goals within the fixture too.
+
+    All creating and deleting goal functions have been tested thoroughly. Since there is such little information needing input into goals, it's quicker to just delete the goal object and make a new one.
+
+    Player editing updates correctly in the database. There is no player creation as it was loaded through a fixture and no player deletion as players do not change within the season.
 
 * "Sending an automatic email on ticket bookings."
 
@@ -604,9 +608,9 @@
 * Changing teams when editing fixtures
     When edditing a fixture and you want to change the team it will call the function delete all goals to delete all the goals for that team related to the current fixture. This is so there aren't any goals belonging to teams in that fixture. During the execution of this function the the new team is meant to be saved to the fixture so when the page is rendered again it shows the old team.
 
-    Fixed: I changed where the location of the `location.reload()` so that when the `deleteallgoals()` function responds it reloads rather than reloading after the function was called.
+    Fixed: I changed where the location of the `location.reload()` so that when the `deleteallgoals()` function responds it reloads rather than reloading after the function was called. The problem was the page was reloading to quickly.
 
-    #### New Code:
+    #### New Code
 
     edit-fixture.js
     ```
