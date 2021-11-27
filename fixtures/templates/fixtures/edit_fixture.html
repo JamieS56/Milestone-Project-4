@@ -89,10 +89,14 @@
 
 
 <div class="text-right">
-    <a class="btn btn-outline-black rounded-0" href="{% url 'fixtures' %}">Cancel</a>
-    <button id="edit-fixture" class="btn btn-black rounded-0" type="">Save Fixture</button>
+    <a class="btn btn-outline-black custom-btn rounded-0" href="{% url 'fixtures' %}">Cancel</a>
+    <button id="edit-fixture" class="btn btn-black custom-btn rounded-0" type="">Save Fixture</button>
+    <a href="{% url 'delete_fixture' fixture.id %}" class="btn btn-black custom-btn rounded-0">Delete Fixture</a>
+
 </div>
 </form>
+
+
 
 <div class="modal fade" id="add-goal-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="add-goal-form" aria-hidden="true">

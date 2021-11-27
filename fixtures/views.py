@@ -73,7 +73,7 @@ def edit_fixture(request, fixture_id):
         
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfully added fixture!')
+            messages.success(request, 'Successfully updated fixture!')
             return redirect('fixtures')
         else:
             messages.error(request, 'Failed to add fixture. Please ensure the form is valid.')
@@ -92,6 +92,24 @@ def edit_fixture(request, fixture_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_fixture(request, fixture_id):
+    """ Delete a fixture on the fixture list. """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin can do that.')
+        return redirect(reverse('home'))
+
+    fixture = get_object_or_404(Fixture, pk=fixture_id)
+
+    fixture.delete()
+
+    messages.success(request, 'Fixture deleted!')
+
+    return redirect('fixtures')
+
 
 
 @login_required

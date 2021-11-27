@@ -606,7 +606,7 @@
 
     Fixed: I changed where the location of the `location.reload()` so that when the `deleteallgoals()` function responds it reloads rather than reloading after the function was called.
 
-    #### New Code
+    #### New Code:
 
     edit-fixture.js
     ```
