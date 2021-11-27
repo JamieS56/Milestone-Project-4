@@ -578,11 +578,13 @@
 
 * "Base functionality e.g. creating editing and deleting data works without any problems."
 
-    I have tested creat
+    I have tested creating fixtures and tickets and it all works, all the form validation stops empty forms being submitted and invalid data being entered.
+
+    Edditing fixtures also has been tested thouroughly again all the form validation works and stops invalid info being entered. There is a bug when changing teams, go to the known bugs section for more info. 
 
 * "Sending an automatic email on ticket bookings."
 
-    The user recieves an email when creating a booking and confirms all the details of the booking for the user.
+    The user recieves an email when creating a booking and confirms all the details of the booking for the user. I used Djangos email module to send the email.
 
     tickets/views.py
     ```
@@ -595,7 +597,34 @@
     )
     ```
 
-### Futh
+### Futher Tesiting
+
+## Known Bugs
+
+* Changing teams when editing fixtures
+    When edditing a fixture and you want to change the team it will call the function delete all goals to delete all the goals for that team related to the current fixture. This is so there aren't any goals belonging to teams in that fixture. During the execution of this function the the new team is meant to be saved to the fixture so when the page is rendered again it shows the old team.
+
+    Fixed: I changed where the location of the `location.reload()` so that when the `deleteallgoals()` function responds it reloads rather than reloading after the function was called.
+
+    #### New Code
+
+    edit-fixture.js
+    ```
+    async function delete_all_team_goals(data){
+        let csrftoken = getCookie('csrftoken')
+        response = await fetch(`/fixtures/delete_team_goals/`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+               "X-CSRFToken": csrftoken 
+            },
+            body: JSON.stringify(data),
+            credentials: 'same-origin',
+        }).then((data) =>{
+            location.reload();
+        })
+    }
+    ```
 
 ## Future scope/ Ideas
 

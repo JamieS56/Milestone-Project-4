@@ -26,6 +26,8 @@ async function delete_all_team_goals(data){
         },
         body: JSON.stringify(data),
         credentials: 'same-origin',
+    }).then((data) =>{
+        location.reload();
     })
 }
 
@@ -94,24 +96,7 @@ $(document).ready(function(){
             }
             delete_all_team_goals(data)
             console.log(data)
-            location.reload();
         }
     })
 
-
-    // $('#add-goal-submit-btn').click(function(e){
-    //     if($('#id_team option:selected').val() == 1){
-    //         e.preventDefault();
-    //         console.log('hi')
-    //         if($('#id_goal_scorer option:selected').val() == ''){
-    //             goalPopover.show()
-    //             return
-    //         }
-    //         if($('#id_assist_maker option:selected').val() == ''){
-    //             assistPopover.show();
-    //             return
-    //         }
-    //     }
-    //     $('#add_goal_form').submit()
-    // })
 });

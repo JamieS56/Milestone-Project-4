@@ -171,4 +171,5 @@ def delete_team_goals(request):
         fixture.save(update_fields=['away_team'])
         messages.success(request, 'Successfully deleted all away goals!')
     
+    print('redirecting')
     return redirect(reverse('edit_fixture', kwargs={'fixture_id':fixture.id}))
