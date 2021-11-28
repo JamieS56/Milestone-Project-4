@@ -5,6 +5,7 @@
 }
 .hero-outer{
     position:relative;
+    max-width:1300px;
 }
 .hero-image-row{
     background-color: black;
