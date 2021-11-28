@@ -23,7 +23,7 @@
                 <form method="POST" action="{% url 'checkout' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-input">
-                        <label class='form-label' for='fixture'>Choose Fixture</label>
+                        <label class='form-label' for='id_fixture'>Choose Fixture</label>
                         {{ form.fixture }}
                     </div>
                     <div class="pricing">
@@ -31,7 +31,7 @@
                          <div class='price-element'>Total: $<span id='total-price'>0</span></div>
                     </div>
                     <div class="form-input">
-                        <label class='form-label' for='number_of_tickets'>Number of tickets</label>
+                        <label class='form-label' for='id_number_of_tickets'>Number of tickets</label>
                         {{ form.number_of_tickets }}
                     </div>
                     <button class='btn custom-btn' type='submit'>Checkout</button>

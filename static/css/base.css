@@ -37,6 +37,9 @@ h1, h2,h3, h4, h5, h6{
 .no-underline{
   text-decoration: none;
 }
+a{
+  text-decoration: none;
+}
 .custom-btn{
   color:white;
   background-color: black;
@@ -54,7 +57,7 @@ h1, h2,h3, h4, h5, h6{
   max-width: 100px;
   margin-left:2rem;
 }
-#club-title{
+.club-title{
   font-size: 30px;
   font-weight: bold;
   padding-left: 1.7rem;

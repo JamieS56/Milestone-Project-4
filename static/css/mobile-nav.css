@@ -32,12 +32,15 @@
     text-align: center;
     width: 25%;
 }
-
-
-
 .offcanvas{
     background-color:black;
     color: #ffde45;
+}
+.offcanvas-title{
+    color: #ffde45;
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 1.7rem;
 }
 .offcanvas-body > ul{
     list-style: none;
@@ -63,8 +66,9 @@
     justify-content: center;
     padding: 1rem;
     font-size: 15px;
+    color:black;
 }
-.account-side-menu-item > a{
+.account-side-menu-item > div > div > a{
     color: black;
     font-weight: bold;
     text-decoration: none;

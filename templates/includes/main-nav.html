@@ -6,69 +6,84 @@
 
 <div class="row top-row g-0">
 
-  <div class="col-3 col-xl-4 logo-title-div">  
-    <div class=""><img id="club-logo" class="club-logo" src="{{ MEDIA_URL }}ma-badge.png"></div>
-    <div class=""><h1 id="club-title" class="align-middle nav-title">MESSI ANKLES</h1></div>
+  <div class="col-3 col-xl-4 logo-title-div">
+    <div class=""><img id="club-logo" alt="club badge" class="club-logo" src="{{ MEDIA_URL }}ma-badge.png"></div>
+    <div class="">
+      <h1 class="club-title align-middle nav-title">MESSI ANKLES</h1>
+    </div>
   </div>
-
 
   <div class="col-6 nav-custom">
 
-      <ul class="nav justify-content-center">
+    <ul class="nav justify-content-center">
+      <li>
         <a class="active" aria-current="page" href="{% url 'home' %}">
-          <li class="nav-item menu-item d-flex align-items-center justify-content-center ">
+          <div class="nav-item menu-item d-flex align-items-center justify-content-center ">
             <span class='nav-link'>Home</span>
-          </li>
+          </div>
         </a>
+      </li>
+      <li>
         <a class="" href="{% url 'players' %}">
-          <li class="nav-item menu-item d-flex align-items-center justify-content-center ">
+          <div class="nav-item menu-item d-flex align-items-center justify-content-center ">
             <span class='nav-link'>Players</span>
-          </li>
+          </div>
         </a>
+      </li>
+      <li>
         <a class="" href="{% url 'fixtures' %}">
-          <li class="nav-item menu-item d-flex align-items-center justify-content-center ">
+          <div class="nav-item menu-item d-flex align-items-center justify-content-center ">
             <span class='nav-link'>Fixtures</span>
-          </li>
+          </div>
         </a>
+      </li>
+      <li>
         <a class="" href="{% url 'table' %}">
-          <li class="nav-item menu-item d-flex align-items-center justify-content-center ">
+          <div class="nav-item menu-item d-flex align-items-center justify-content-center ">
             <span class='nav-link'>Table</span>
-          </li>
+          </div>
         </a>
+      </li>
+      <li>
         <a class="" href="{% url 'tickets' %}">
-          <li id="book-tickets" class="nav-item menu-item d-flex align-items-center justify-content-center  trapezoid">
+          <div id="book-tickets" class="nav-item menu-item d-flex align-items-center justify-content-center  trapezoid">
             <span class='nav-link trapezoid-text'>Tickets</span>
-          </li>
+          </div>
         </a>
-
-
-      </ul>
-
-      <ul id="login-list" class="nav justify-content-center">
-        {% if user.is_authenticated %}
+      </li>
+    </ul>
+    <ul id="login-list" class="nav justify-content-center">
+      {% if user.is_authenticated %}
+      <li>
         <a class="" href="{% url 'profile' %}">
-          <li class="nav-item login-item d-flex align-items-center justify-content-center">
+          <div class="nav-item login-item d-flex align-items-center justify-content-center">
             <span class='nav-link'>Profile</span>
-          </li>
+          </div>
         </a>
+      </li>
+      <li>
         <a class="" href="{% url 'account_logout' %}">
-          <li class="nav-item login-item d-flex align-items-center justify-content-center">
+          <div class="nav-item login-item d-flex align-items-center justify-content-center">
             <span class='nav-link'>Logout</span>
-          </li>
+          </div>
         </a>
-        {% else %}
+      </li>
+      {% else %}
+      <li>
         <a class="" href="{% url 'account_login' %}">
-          <li class="nav-item login-item d-flex align-items-center justify-content-center ">
+          <div class="nav-item login-item d-flex align-items-center justify-content-center ">
             <span class='nav-link'>Login</span>
-          </li>
+          </div>
         </a>
+      </li>
+      <li>
         <a class="" href="{% url 'account_signup' %}">
-          <li class="nav-item login-item d-flex align-items-center justify-content-center">
+          <div class="nav-item login-item d-flex align-items-center justify-content-center">
             <span class='nav-link'>Create Account</span>
-          </li>
+          </div>
         </a>
-        {% endif %}
-
-      </ul>
+      </li>
+      {% endif %}
+    </ul>
   </div>
 </div>

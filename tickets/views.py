@@ -113,12 +113,15 @@ def handle_checkout(request):
                     )
                 ticket.save()
                 request.session['order_details'] = {}
+                email_message = (
+                    f'Hello {full_name},\n\n'
+                    f'Your tickets for {str(ticket.fixture)} are confirmed.'
+                    f'\nTotal: ${ticket.price}.\n\n'
+                    f'We hope you enjoy the game!\n The Messi Ankles Team'
+                    )
                 send_mail(
                     f'Booking Confirmation <{ticket.ticket_id}>',
-                    f'Hello {full_name},\n\n' +
-                    f'Your tickets for {str(ticket.fixture)} are confirmed.' +
-                    f'\nTotal: ${ticket.price}.\n\n' +
-                    'We hope you enjoy the game!\n The Messi Ankles Team', +
+                    email_message,
                     settings.DEFAULT_FROM_EMAIL,
                     [ticket.email],
                     fail_silently=False

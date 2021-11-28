@@ -12,7 +12,7 @@
 {% block content %}
 <div class="container">
 
-    
+
     <div class="row center">
         <div class="col-8 col-lg-6 player-profile-pic">
             <img src="{{ MEDIA_URL }}{{ player.image_url }}" class="" alt="{{ player.name }}">
@@ -26,17 +26,22 @@
             <div class="stat-block appearences-stat">
                 <h3 class="stat-title">Appearances
                     <span class="stat-number">{{ appearances }}</span>
-                    </h2>
+                </h3>
             </div>
             <div class="stat-block goals-stat">
-                <h3 class="stat-title">Goals <span class="stat-number">{{ player.goals.count }}</span>
-                    </h2>
+                <h3 class="stat-title">Goals
+                    <span class="stat-number">{{ player.goals.count }}</span>
+                </h3>
             </div>
             <div class="stat-block assists-stat">
-                <h3 class="stat-title">Assists <span class="stat-number">{{ player.assists.count }}</span></h2>
+                <h3 class="stat-title">Assists
+                    <span class="stat-number">{{ player.assists.count }}</span>
+                </h3>
             </div>
             <div class="stat-block clean-sheets-stat">
-                <h3 class="stat-title">Clean Sheets <span class="stat-number">{{ clean_sheets }}</span></h2>
+                <h3 class="stat-title">Clean Sheets 
+                    <span class="stat-number">{{ clean_sheets }}</span>
+                </h3>
             </div>
             <a class="back-button" href="{% url 'players' %}">
                 <i class="fas fa-arrow-left"></i> Back

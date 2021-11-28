@@ -40,35 +40,33 @@
                 {% for fields in form %}
                 {{ fields | as_crispy_field  }}
                 {% endfor %}
-                <fieldset class="px-3">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-                    <!-- A Stripe card element will go here -->
-                    <div class="mb-3" id="card-element"></div>
-                    <!-- Used to display form errors -->
-                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                    <!-- Pass the client secret to the view so we can get the payment intent id -->
-                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                </fieldset>
+            </fieldset>
+            <fieldset class="px-3">
+                <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                <!-- A Stripe card element will go here -->
+                <div class="mb-3" id="card-element"></div>
+                <!-- Used to display form errors -->
+                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                <!-- Pass the client secret to the view so we can get the payment intent id -->
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
+            </fieldset>
 
-                <div class="submit-button text-right mt-5 mb-2">
-                    <a href="{% url 'tickets' %}" class="btn btn-outline-black rounded-0">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="font-weight-bold">Back</span>
-                    </a>
-                    <button id='submit-button' class='btn custom-btn' type="submit">Checkout</button>
-                    <p class="small text-danger my-0">
-                        <span class="icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </span>
-                        <span>Your card will be charged <strong>${{ order_details.grand_total }}</strong></span>
-                    </p>
-
-
-
+            <div class="submit-button text-right mt-5 mb-2">
+                <a href="{% url 'tickets' %}" class="btn btn-outline-black rounded-0">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="font-weight-bold">Back</span>
+                </a>
+                <button id='submit-button' class='btn custom-btn' type="submit">Checkout</button>
+                <p class="small text-danger my-0">
+                    <span class="icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </span>
+                    <span>Your card will be charged <strong>${{ order_details.grand_total }}</strong></span>
+                </p>
+            </div>
         </form>
-
     </div>
 </div>
 </div>
@@ -76,7 +74,7 @@
     <h1 class="text-light logo-font loading-spinner">
         <div class="spinner-border text-warning" role="status">
             <span class="visually-hidden">Loading...</span>
-          </div>
+        </div>
     </h1>
 </div>
 

@@ -13,27 +13,29 @@
 {% block content %}
 <div class="container center">
 
-
+    <h2 class=''>Table</h2>
 
     <table class="table table-dark table-striped col-8 center">
 
-            <h2 class=''>Table</h2>
+
 
         <thead>
-            <th>Team</th>
-            <th>W-D-L</th>
-            <th>+/-</th>
-            <th>points</th>
+            <tr>
+                <th>Team</th>
+                <th>W-D-L</th>
+                <th>+/-</th>
+                <th>Points</th>
+            </tr>
         </thead>
 
         <tbody>
             {% for team in teams %}
-                <tr class="">
-                    <th>{{ team.name }}</th>
-                    <td>{{ team.get_wins }}-{{ team.get_draws }}-{{ team.get_losses }}</td>
-                    <td>{{ team.goal_difference }}</td>
-                    <td>{{ team.get_points }}</td>
-                </tr>
+            <tr class="">
+                <th>{{ team.name }}</th>
+                <td>{{ team.get_wins }}-{{ team.get_draws }}-{{ team.get_losses }}</td>
+                <td>{{ team.goal_difference }}</td>
+                <td>{{ team.get_points }}</td>
+            </tr>
             {% endfor %}
 
         </tbody>

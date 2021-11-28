@@ -6,11 +6,13 @@
 <div class="row top-row g-0 vertical-center">
 
     <div class="col-6 logo-title-div d-none d-sm-flex">
-        <div> <img id="" class="mobile-club-logo club-logo" src="{{ MEDIA_URL }}ma-badge.png"></div>
-        <div><h1 id="club-title" class="align-middle nav-title">MESSI ANKLES</h1></div>
+        <div> <img alt="club logo" class="mobile-club-logo club-logo" src="{{ MEDIA_URL }}ma-badge.png"></div>
+        <div>
+            <h1 class="club-title align-middle nav-title">MESSI ANKLES</h1>
+        </div>
     </div>
     <div class='club-logo-xs col-2'>
-         <img  class="mobile-club-logo club-logo " src="{{ MEDIA_URL }}ma-badge.png">
+        <img alt="club logo" class="mobile-club-logo club-logo " src="{{ MEDIA_URL }}ma-badge.png">
     </div>
 
     <div class="col-sm-6 mobile-nav-bar">
@@ -28,56 +30,58 @@
                 <button id="mobile-nav-btn" class="btn btn-primary warning" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-bars"></i></button>
             </li>
+        </ul>
     </div>
 
 </div>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Messi Ankles</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="">
+        <ul >
             <li class="side-menu-item">
-                <a class="" aria-current="page" href="{% url 'home' %}">Home</a>
+                <a  aria-current="page" href="{% url 'home' %}">Home</a>
             </li>
             <li class="side-menu-item">
-                <a class="" href="{% url 'players' %}">Players</a>
+                <a  href="{% url 'players' %}">Players</a>
             </li>
             <li class="side-menu-item">
-                <a class="" href="{% url 'fixtures' %}">Fixtures</a>
+                <a  href="{% url 'fixtures' %}">Fixtures</a>
             </li>
             <li class="side-menu-item">
-                <a class="" href="{% url 'table' %}">Table</a>
+                <a  href="{% url 'table' %}">Table</a>
             </li>
             <li class="side-menu-item">
-                <a class="" href="{% url 'tickets' %}">Tickets</a>
+                <a  href="{% url 'tickets' %}">Tickets</a>
             </li>
             <li class="side-menu-item">
-                <a class="" href="{% url 'profile' %}">Profile</a>
+                <a  href="{% url 'profile' %}">Profile</a>
             </li>
 
         </ul>
 
-        <ul id="account-side-menu-box" class="">
+        <ul id="account-side-menu-box" >
             {% if user.is_authenticated %}
             <li class="account-side-menu-item center">
-                <a class="" href="{% url 'account_logout' %}">Logout</a>
+                <a  href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
-            <div class="row">
-            <div class="col-6">
-                <li class="account-side-menu-item center">
-                    <a class="" href="{% url 'account_login' %}">Login</a>
-                </li>
-            </div>
-            <div class="col-6">
-                <li class="account-side-menu-item">
-                    <a class="" href="{% url 'account_signup' %}">Create Account</a>
-                </li>
-            </div>
-        </div>
+
+            <li class="account-side-menu-item center">
+                <div class="row">
+                    <div class="col-6">
+                        <a  href="{% url 'account_login' %}">Login</a>
+                    </div>
+                    <div class="col-6">
+                        <a  href="{% url 'account_signup' %}">Create Account</a>
+                    </div>
+                </div>
+            </li>
             {% endif %}
-        </ul>
+         </ul>
     </div>
 </div>
+
