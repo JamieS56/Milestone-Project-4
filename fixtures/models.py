@@ -6,7 +6,7 @@ from players.models import Player
 class Fixture(models.Model):
 
     """
-    Stores a fixture that contains the teems that played in it, the date and
+    Stores a fixture that contains the teams that played in it, the date and
     the time of the fixture. Includes methods to retrieve goals in the
     fixture for both teams.
     """

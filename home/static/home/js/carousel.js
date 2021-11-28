@@ -1,13 +1,13 @@
 // Bootstrap js for the carousel on the home page.
 
-var myCarousel = document.querySelector('#player-carousel')
+var myCarousel = document.querySelector('#player-carousel');
 var carousel = new bootstrap.Carousel(myCarousel, {
   interval: false,
   wrap: true
-})
+});
 
-var myMobileCarousel = document.querySelector('#mobile-player-carousel')
+var myMobileCarousel = document.querySelector('#mobile-player-carousel');
 var mobileCarousel = new bootstrap.Carousel(myMobileCarousel, {
   interval: false,
   wrap: true
-})
+});
