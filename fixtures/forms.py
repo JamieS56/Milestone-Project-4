@@ -1,15 +1,15 @@
 from django import forms
-from django.forms import BaseModelFormSet
 from django.db.models import Q
-from .models import Fixture, Goal
 from teams.models import Team
 from players.models import Player
-from helpers import customFunctions
 
-from datetime import date
+from .models import Fixture, Goal
 
 
 class FixtureForm(forms.ModelForm):
+    """
+    Fixture form used on the add fixtures page.
+    """
 
     class Meta:
         model = Fixture
@@ -42,7 +42,9 @@ class FixtureForm(forms.ModelForm):
 
 
 class EditFixtureForm(forms.ModelForm):
-
+    """
+    Edit fixture form used on the edit fixtures page.
+    """
 
     class Meta:
         model = Fixture
@@ -80,19 +82,21 @@ class EditFixtureForm(forms.ModelForm):
     )
 
 
-
 class AddGoalForm(forms.ModelForm):
+    """
+    Add goal form used on the edit fixtures page.
+    """
 
     def __init__(self, *args, **kwargs):
 
         self.fixture = kwargs.pop('fixture')
         super(AddGoalForm, self).__init__(*args, **kwargs)
 
-        query_set = Player.objects.filter(Q(team=self.fixture.home_team) | Q(team=self.fixture.away_team))
+        query_set = Player.objects.filter(
+            Q(team=self.fixture.home_team) | Q(team=self.fixture.away_team)
+            )
         self.fields['goal_scorer'].queryset = query_set
         self.fields['assist_maker'].queryset = query_set
-
-
 
     class Meta:
         model = Goal
@@ -123,5 +127,3 @@ class AddGoalForm(forms.ModelForm):
         required=True,
         queryset=Player.objects.all()
     )
-
-

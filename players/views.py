@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from helpers import customFunctions, playerStats
+from helpers import customFunctions
 from .models import Player
 from .forms import PlayerForm
 
@@ -20,13 +20,13 @@ def squad(request):
 def player_profile(request, player_id):
     """ A view to show individual players stats """
 
-    player = customFunctions.add_no_image(get_object_or_404(Player, pk=player_id))
+    player = customFunctions.add_no_image(get_object_or_404(
+                                            Player,
+                                            pk=player_id
+                                            ))
 
-    goals = len(player.goals.all())
-    assists = len(player.goals.all())
     clean_sheets = player.clean_sheets()
     appearances = player.appearances()
-
 
     context = {
         'player': player,
@@ -45,7 +45,10 @@ def edit_player(request, player_id):
         messages.error(request, 'Sorry, only admins can do that.')
         return redirect(reverse('home'))
 
-    player = customFunctions.add_no_image(get_object_or_404(Player, pk=player_id))
+    player = customFunctions.add_no_image(get_object_or_404(
+                                            Player,
+                                            pk=player_id
+                                            ))
 
     if request.method == 'POST':
         form = PlayerForm(request.POST, request.FILES, instance=player)
@@ -54,7 +57,10 @@ def edit_player(request, player_id):
             messages.success(request, 'Successfully updated player!')
             return redirect(reverse('player_profile', args=[player.id]))
         else:
-            messages.error(request, 'Failed to update player. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to update player. Please ensure the form is valid.'
+                )
     else:
         form = PlayerForm(instance=player)
         messages.info(request, f'You are editing {player.name}')

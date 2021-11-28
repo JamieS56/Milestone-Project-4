@@ -4,7 +4,9 @@ from django import forms
 
 class ProfileDataForm(forms.ModelForm):
 
-    """ The form used to update the profile info from the users profile page. """
+    """
+    The form used to update the profile info from the users profile page.
+    """
 
     class Meta:
         model = User

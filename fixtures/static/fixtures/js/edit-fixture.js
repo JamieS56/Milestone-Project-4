@@ -1,5 +1,8 @@
+// Gets the fixture id from the page so it can be sent in the delete all goals function.
 var fixture_id = $('#id_fixture_id').text();
 
+
+// Gets the csrftoken so that a POST request can be sent to Django. Code taken from https://stackoverflow.com/questions/43606056/proper-django-csrf-validation-using-fetch-post-request.
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -15,7 +18,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-// calls python function to delete all team goals if team is changed
+// Calls python function to delete all team goals if team is changed
 async function delete_all_team_goals(data){
     let csrftoken = getCookie('csrftoken')
     response = await fetch(`/fixtures/delete_team_goals/`, {
@@ -31,36 +34,18 @@ async function delete_all_team_goals(data){
     })
 }
 
-function display_goal_involvement(){
-    if($('#id_team').val() == 1){
-        $('#div_id_goal_scorer').show()
-        $('#div_id_assist_maker').show()
-    }else{
-        $('#div_id_goal_scorer').hide()
-        $('#div_id_assist_maker').hide()
-    }
-}
+
 
 $(document).ready(function(){
     var optionVal 
-    var goalPopover = new bootstrap.Popover($('#id_goal_scorer'), {
-        container: 'body',
-        title:'Error',
-        content: 'Please input a player.',
-        placement: 'bottom'
-    })
-    var assistPopover = new bootstrap.Popover($('#id_assist_maker'), {
-        container: 'body',
-        title:'Error',
-        content: 'Please input a player.',
-        placement: 'bottom'
-    })
 
+    // Adds the options to the bottom of the teams crispy form input 
     $('#id_team').append(`
         <option></option>
         <option></option>
     `)
 
+    // Triggers when the teams input is updated because i couldn't get what teams were seleced from inside forms.py
     $('#add-goal-btn').click(function(){
 
         // Gets what teams are selected up at the top of the page
@@ -79,11 +64,14 @@ $(document).ready(function(){
 
     })
 
+
+    // Finds oout what team is gunna get changed
     $('.team-select').focus(function(){
         optionVal = $(this).val()
-
     })
 
+
+    // Confirms that the team does want to be changed and goals deleted
     $('.team-select').change(function(){
         confirmation = confirm('Are you sure you want to change teams, if you change teams it deletes all goalsin this fixture for this team.')
         if(confirmation == false){

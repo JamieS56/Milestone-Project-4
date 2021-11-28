@@ -3,7 +3,9 @@ from .models import Player
 
 
 class PlayerForm(forms.ModelForm):
-    """ This is the form used to edit players. """
+    """
+    This is the form used to edit players.
+    """
 
     class Meta:
         model = Player

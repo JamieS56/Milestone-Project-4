@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.conf import settings
+import stripe
+from fixtures.models import Fixture
+from helpers import customFunctions
+
 from .forms import TicketOrderForm, CheckoutForm
 from .models import Ticket
-from fixtures.models import Fixture
-from django.conf import settings
-from helpers import customFunctions
-import stripe
-import os
 
 
 def tickets_page(request):
@@ -22,7 +22,10 @@ def tickets_page(request):
 
 
 def checkout_page(request):
-    '''A view for the checkout page where the user inputs there card info and purchasing details.'''
+    '''
+    A view for the checkout page where the user
+    inputs there card info and purchasing details.
+    '''
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -38,8 +41,7 @@ def checkout_page(request):
 
     request.session['order_details'] = order_details
 
-
-    # Trying to prefill the checkout form if the user is logged in and has there data saved.
+    # Prefilling the checkout form if user data is saved.
     if request.user.is_authenticated:
         try:
             profile = User.objects.get(username=request.user)
@@ -97,7 +99,7 @@ def handle_checkout(request):
 
         if checkout_form.is_valid():
 
-            # If user is logged in it will add the account to the ticket info if not just there name and email.
+            # Adding the available info to the ticket object.
             if request.user.is_authenticated:
                 user = request.user
                 ticket = Ticket(
@@ -113,14 +115,15 @@ def handle_checkout(request):
                 request.session['order_details'] = {}
                 send_mail(
                     f'Booking Confirmation <{ticket.ticket_id}>',
-                    f'Hello {full_name},\n\n Your tickets for {str(ticket.fixture)} are confirmed.\n Total: ${ticket.price}.\n\n We hope you enjoy the game!\n The Messi Ankles Team',
+                    f'Hello {full_name},\n\n' +
+                    f'Your tickets for {str(ticket.fixture)} are confirmed.' +
+                    f'\nTotal: ${ticket.price}.\n\n' +
+                    'We hope you enjoy the game!\n The Messi Ankles Team', +
                     settings.DEFAULT_FROM_EMAIL,
                     [ticket.email],
                     fail_silently=False
                 )
-                context={
-                    'ticket': ticket
-                }
+
                 return redirect('success', ticket_id=ticket.ticket_id)
             else:
                 print('user not logged in')
@@ -135,9 +138,6 @@ def handle_checkout(request):
                     )
                 ticket.save()
                 request.session['order_details'] = {}
-                context = {
-                    'ticket': ticket
-                }
                 return redirect('success', ticket=ticket.ticket_id)
 
         else:
@@ -150,10 +150,8 @@ def success_url(request, ticket_id):
     ''' Succesful purchase page.'''
     ticket = get_object_or_404(Ticket, pk=ticket_id)
     if not ticket:
-        messages.error('Checkout error, there is no ticket.')
+        messages.error(request, 'Checkout error, there is no ticket.')
         return redirect('home')
-
-
 
     context = {
         'ticket': ticket
@@ -162,9 +160,7 @@ def success_url(request, ticket_id):
     return render(request, 'tickets/success.html', context)
 
 
-
 def cancel_url(request):
     ''' Canceled purchase page.'''
 
-    return render(request, 'tickets/cancel.html', context)
-
+    return render(request, 'tickets/cancel.html')

@@ -10,6 +10,3 @@ class TeamsConfig(AppConfig):
 class GoalsConfig(AppConfig):
     name = 'cmdbox.goals'
     verbose_name = _('goals')
-
-    def ready(self):
-        import cmdbox.goals.signals  # noqa

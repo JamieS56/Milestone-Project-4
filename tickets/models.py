@@ -1,13 +1,16 @@
+from django.contrib.auth.models import User
 from django.db import models
 from fixtures.models import Fixture
-from django.contrib.auth.models import User
+
 
 # Create your models here.
 
 
 class Ticket(models.Model):
     """
-    Model for customer tickets.
+    Model for customer tickets containing ticket id,
+    the user connected to the ticket, the fixture, the number of tickets,
+    the price, name and email of the customer.
     """
     ticket_id = models.CharField(
         max_length=40,

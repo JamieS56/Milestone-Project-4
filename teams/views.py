@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from .models import Team
 
-
-
 # Create your views here.
 
 
@@ -10,7 +8,6 @@ def table_page(request):
     ''' A view to return the current league table '''
 
     teams = Team.objects.all()
-
 
     for team in teams:
         team.goal_difference = team.get_goal_difference()
@@ -23,4 +20,3 @@ def table_page(request):
         'teams': teams
     }
     return render(request, 'teams/table.html', context)
-

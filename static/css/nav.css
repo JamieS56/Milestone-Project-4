@@ -13,7 +13,9 @@
   justify-content: space-between;
 }
 #book-tickets{
-  width:6.75rem;
+  width: 6.75rem;
+  padding-right: 12px;
+  margin-right: -20px;
 }
 .menu-item {
     width: 6rem;

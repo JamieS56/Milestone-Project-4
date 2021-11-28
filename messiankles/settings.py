@@ -27,8 +27,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'hrceu5rubtftt7gtvb6rbfttt')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
 
+DEBUG = True
 
 ALLOWED_HOSTS = ['messi-ankles.herokuapp.com', 'localhost']
 
@@ -211,7 +212,10 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_CURRENCY = 'usd'
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'] = dj_database_url.config(
+                            conn_max_age=600,
+                            ssl_require=True
+                            )
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
