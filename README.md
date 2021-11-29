@@ -997,6 +997,27 @@ This is how I deployed my project to GitHub and Heroku and set up Amazon web ser
 30. Run `git add .`, `git commit -m` and `git push` in the terminal to push the changes to Heroku and static files to s3. You will know it has worked if when you look at the build log on Heroku it will say static files copied. Also if you go onto s3 you will see the static files in your bucket.
 
 
+### Forking the repository
+
+1. Go to GitHub and either login in or create an account.
+
+2. Go to [my project repository](https://github.com/JamieS56/Milestone-Project-4) and click on fork in the top right corner.
+
+3. Click on the green GitPod button and it will open up the repository in GitPod.
+
+
+### Cloning the repository. 
+
+1. Go to [my project repository](https://github.com/JamieS56/Milestone-Project-4) and click on the "code" button.
+
+2. Click the copy button next to the html link.
+
+3. open up Git Bash in the terminal and change your current working directory to the one your in.
+
+4. Type `git clone` and paste in the link you coppied earlier so it looks like this, `git clone https://github.com/JamieS56/Milestone-Project-4.git`.
+
+5. Finally press enter and you will have a local clone.
+
 ## Notes
 
 Throughout the development process I commited the django secret key and database url to git hub by mistake, after I realised this I made sure to change them both. Any occurances of the Django secret key or DATABASE_URL found in my commits were temporary and not the ones used in the live version.
