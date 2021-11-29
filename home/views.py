@@ -1,6 +1,6 @@
 from datetime import date
 from django.shortcuts import render
-from helpers import customFunctions
+from helpers import custom_functions
 from players.models import Player
 from fixtures.models import Fixture
 
@@ -8,7 +8,7 @@ from fixtures.models import Fixture
 def index(request):
     ''' A view to return the index page '''
 
-    players = customFunctions.add_no_image(
+    players = custom_functions.add_no_image(
                 Player.objects.filter(team=1)
                 )
     fixture = Fixture.objects.filter(

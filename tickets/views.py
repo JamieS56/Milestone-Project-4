@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.conf import settings
 import stripe
 from fixtures.models import Fixture
-from helpers import customFunctions
+from helpers import custom_functions
 
 from .forms import TicketOrderForm, CheckoutForm
 from .models import Ticket
@@ -94,7 +94,7 @@ def handle_checkout(request):
         }
 
         checkout_form = CheckoutForm(form_data)
-        ticket_id = str(customFunctions.createRandomPK())
+        ticket_id = str(custom_functions.createRandomPK())
         full_name = form_data['first_name']+' '+form_data['last_name']
 
         if checkout_form.is_valid():

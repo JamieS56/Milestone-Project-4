@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from teams.models import Team
 from players.models import Player
-from helpers import customFunctions
+from helpers import custom_functions
 import json
 
 from .models import Fixture, Goal
@@ -145,7 +145,7 @@ def add_goal(request):
         team = get_object_or_404(Team, pk=request.POST['team'])
 
         if add_goal_form.is_valid:
-            goal_id = customFunctions.createRandomPK()
+            goal_id = custom_functions.createRandomPK()
 
             goal_scorer = get_object_or_404(
                             Player,

@@ -630,6 +630,93 @@
     }
     ```
 
+
+### Testing validation
+
+* HTML - [W3 validator](https://validator.w3.org/)
+
+    * [Home](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2F)
+    * [Squad Page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Fplayers%2F)
+    * [Player Profile](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Fplayers%2F6%2F)
+    * [Player Edit](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Fplayers%2Fedit%2F6%2F)
+    * [Fixture Page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Ffixtures%2F)
+    * [Edit Fixtures](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Ffixtures%2Fedit%2F9%2F)
+    * [Add Fixtures](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Ffixtures%2Fadd%2F)
+    * [Table](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Fteams%2Ftable%2F)
+    * [Profile](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Fprofile%2F)
+    * [Logout](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Faccounts%2Flogout%2F)
+    * [Login](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Faccounts%2Flogin%2F)
+    * [Signup](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Faccounts%2Fsignup%2F)
+    * [Tickets](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Ftickets%2F)
+    * [Checkout]()
+
+
+* CSS - [jigsaw W3C](https://jigsaw.w3.org/css-validator/)
+    * All of the links include base.css, nav.css, mobile.css and all external css files. All of my css passes the validator the only errors are from the font awesome css. 
+    * [home.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmessi-ankles.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    * [squad.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Fplayers%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    * [player_profile.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Fplayers%2F8%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    * [fixture.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Ffixtures%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    * [table.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Fteams%2Ftable%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    * [profile.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Fprofile%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    * [tickets.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmessi-ankles.herokuapp.com%2Ftickets%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    * [checkout.css]()
+
+
+* JavaScript - [jshint](https://jshint.com/)
+
+    * edit-fixtures.js
+
+        ![edit-fixtures.js validation](media/README/validation/edit-fixture-js.png)
+
+    * carousel.js
+
+        ![carousel.js validation](media/README/validation/carousel-js.png)
+
+    * toasts.js
+
+        ![toasts.js validation](media/README/validation/toast-js.png)
+
+    * stripe_element.js
+
+        ![stripe_element.js validation](media/README/validation/stripe-element-js.png)
+
+    * tickets.js
+
+        ![tickets.js validation](media/README/validation/tickets-js.png)
+
+
+* Python - [PEP8 online](http://pep8online.com/)
+
+    * home/
+
+        ![home folder python validation](media/README/validation/home-python.png)
+
+    * fixtures/
+
+        ![fixtures folder validation](media/README/validation/fixture-python.png)
+
+    * players/
+
+        ![players folder validation](media/README/validation/players-python.png)
+
+    * profiles/
+
+        ![profiles folder validation](media/README/validation/profiles-python.png)
+
+    * teams/
+
+        ![teams folder validation](media/README/validation/teams-python.png)
+
+    * tickets/
+
+        ![tickets folder validation](media/README/validation/tickets-python.png)
+
+    * settings/
+
+        ![general files validation](media/README/validation/settings-files-python.png)
+
+
 ## Future scope/ Ideas
 
 * The ability to search through previous tickets.
@@ -870,6 +957,7 @@ This is how I deployed my project to GitHub and Heroku and set up Amazon web ser
     ```
 
 31. Then run `git add .`, `git commit -m` and `git push` in the terminal to push the changes to Heroku and static files to s3. You will know it has worked if when you look at the build log on Heroku it will say static files copied. Also if you go onto s3 you will see the static files in your bucket.
+
 
 ## Acknowledgements/ Links
 
