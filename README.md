@@ -45,7 +45,7 @@
 
     Changes in final design:
 
-    * Pretty quickly I decided to abort the idea of a global stats editing page. This is because it made more sense to edit stats individually which could be achieved, similar to the player profiles, by going into individual fixtures from the fixture list. Also player stats are dynamically gotten by querying the goal and fixture objects, rather than saving them to the player object. Therefore there is no need for a player stats page to edit..
+    * Pretty quickly I decided to abort the idea of a global stats editing page. This is because it made more sense to edit stats individually which could be achieved, similar to the player profiles, by going into individual fixtures from the fixture list. Also player stats are dynamically gotten by querying the goal and fixture objects, rather than saving them to the player object. Therefore there is no need for a player stats page to edit.
 
     * I also added a table page that shows a league table based on fixtures in the database. This will allow a user to see where any team is placed in the league, which is useful information. Plus it represents all the fixture data clearly.
 
@@ -247,7 +247,7 @@
 
 * Footer has email for contact info and links to social accounts so that the user can easily find out more about us or contact us.
 
-* Toasts popup in the bottom right displaying any message the server has for the user. The toasts are color coded depending on the type of message.
+* Toasts popup in the bottom right displaying any message the server has for the user. The toasts are color coded depending on the type of message. This gives instant feedback to the user about any valuable information like CRUD operations.
 
     | Message | Color  |
     | ------- | ------ |
@@ -319,6 +319,8 @@
 * The checkout form will be prefilled with info if the user is logged in and has the details saved to their profile. If the user is not logged in, they will have to fill out their first and last name and email as well as their card info.
 
 * The card info is automatically validated by stripe, before being sent off to be processed.
+
+* If the card info is invalid no tickets will be created and a message will appear for the user telling them the specific error, e.g. insufficient funds or card not authenticated.
 
 * If the checkout is complete then the user will be taken to a success page with their order information and an email sent to their email account.
 
@@ -610,7 +612,7 @@
 
     All creating and deleting goal functions have been tested thoroughly. Since there is such little information needing input into goals, it's quicker to just delete the goal object and make a new one.
 
-    Player editing updates correctly in the database. There is no player creation as it was loaded through a fixture and no player deletion as players do not change within the season.
+    All player data functions work aswell. I have tested creating editing and deleting players and all work without any problems.
 
 * "Sending an automatic email on ticket bookings."
 
@@ -743,6 +745,15 @@
 
         ![general files validation](media/README/validation/settings-files-python.png)
 
+
+* Lighthouse Testing - google dev tools.
+
+    Desktop Lighthouse test
+    ![Desktop Lighthouse testing](media/README/validation/desktop-lighthouse.png)
+
+
+    Mobile Lighthouse test
+    ![Mobile Lighthouse testing](media/README/validation/mobile-lighthouse.png)
 
 ## Future scope/ Ideas
 
