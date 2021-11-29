@@ -628,7 +628,7 @@
 
         ![New player on player page.](media/README/testing/fixure-player-edditing/add-player-3.png)
 
-    4. This player doesn't have an image but in the future i would like to add the ability to add this from here for now it will have to be added through AWS.
+    4. This player doesn't have an image but in the future I would like to add the ability to add this from here for now it will have to be added through AWS.
         You can now delete this player by clicking the delet button.
 
         ![New players profile.](media/README/testing/fixure-player-edditing/add-player-4.png)
@@ -787,7 +787,7 @@
 
 * I would like to include more data connected to the fixtures and players. For example, possession, time of goal, tackles made. All to build out a more detailed picture of what has happened in a match or how well a player is performing.
 
-* I would like to add uploading player photos from within the player edit page rather than having to do it manually in the aws bucket.
+* I would like to add uploading player photos from within the player edit page rather than having to do it manually through the AWS bucket.
 
 ## Deployment
 This is how I deployed my project to GitHub and Heroku and set up Amazon web services.
@@ -1059,8 +1059,8 @@ Throughout the development process I commited the django secret key and database
 ### Content
 
 * All images were created/ taken by me.
-* Picture of messi used for the badge was taken from [lionel-messi.eu](https://www.lionel-messi.eu/2020/09/10/6-times-lionel-messi-has-won-a-match-all-by-himself-oh-my/)
-* The picture of the monty python foot was taken from [montypython.fandom.com](https://montypython.fandom.com/wiki/The_Foot_of_Cupid)
+* Picture of Messi used for the badge was taken from [lionel-messi.eu](https://www.lionel-messi.eu/2020/09/10/6-times-lionel-messi-has-won-a-match-all-by-himself-oh-my/)
+* The picture of the Monty Python foot was taken from [montypython.fandom.com](https://montypython.fandom.com/wiki/The_Foot_of_Cupid)
 
 
 ### Acknowledgements

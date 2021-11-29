@@ -68,6 +68,11 @@
     font-size: 15px;
     color:black;
 }
+.account-side-menu-item > a{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
 .account-side-menu-item > div > div > a{
     color: black;
     font-weight: bold;
