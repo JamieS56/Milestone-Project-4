@@ -9,12 +9,17 @@ def table_page(request):
 
     teams = Team.objects.all()
 
-    for team in teams:
-        team.goal_difference = team.get_goal_difference()
-        team.points = team.get_points()
+    # for team in teams:
+    #     team.goal_difference = team.get_goal_difference()
+    #     team.points = team.get_points()
 
     teams = sorted(teams, key=lambda a: a.get_goal_difference(), reverse=True)
     teams = sorted(teams, key=lambda a: a.get_points(), reverse=True)
+
+    
+    for team in teams:
+        fixture_list = team.home_team.all() | team.away_team.all()
+        print(f'{team} {team.get_points()} {len(fixture_list)}')
 
     context = {
         'teams': teams

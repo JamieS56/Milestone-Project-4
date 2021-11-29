@@ -4,26 +4,25 @@
 
 ### Owner Goals:
 
-1. Be able to save data about games and players.
-2. Have an easily accessible and easy to use ticket system.
+1. Have a Website that tells people about the club.
+2. Be able to save data about games and players.
+3. Have an easily accessible and easy to use ticket system.
 
 ### Customer Goals:
 
 1. Be able to book tickets.
-2. Be able to see the dates and times of games.
+2. Be able to see when games are and the scores of previous games.
 3. See player stats.
 4. Not have to put in my details every time I pay for tickets.
 5. Not have to create an account to use the service.
 6. See my previously booked tickets.
-7. Be able to view the scores of previous games.
 
 ### My Goals:
 
 1. Have a responsive website.
 2. Player carousel on home page.
-3. Base functionality e.g. creating, editing and deleting data works without any problems.
+3. Base functionality e.g. creating editing and deleting data works without any problems.
 4. Automatic email on booking. 
-
 
 
 ## UX
@@ -39,15 +38,15 @@
 
     ![Diagram of the websites structure](media/README/wireframes/website-structure.jpg)
 
-    The website structure is pretty straightforward. All pages are accessible through the nav bar and then editing players is linked from the player profiles page and other stats are updated through an update stats admin page.
+    The website structure is pretyy simple. all pages are accessible through the nav bar and then edditing players is linked from the player profiles page and other stats are updated throughan update stas admin page.
 
     Changes in final design:
 
-    * Pretty quickly I decided to abort the idea of a global stats editing page. This is because it made more sense to edit stats individually which could be achieved, similar to the player profiles, by going into individual fixtures from the fixture list. Also player stats are dynamically gotten by querying the goal and fixture objects, rather than saving them to the player object. Therefore there is no need for a player stats page to edit.
+    * Pretty quickly I decided to scrap the idea of a global stats editting page because it made more sense to edit stats individually which could be done, similar to the player profiles, by going into individual fixtures from the fixture list. Also player stats are dynamically gotten by querying the goal and fixture objes=cts rather than saving them to the player object so there is no need for a player stats page to edit.
 
-    * I also added a table page that shows a league table based on fixtures in the database. This will allow a user to see where any team is placed in the league, which is useful information. Plus it represents all the fixture data clearly.
+    * I also added a table page that shows a league table based on fixtures in the database so that a user can see where any team is placed in the league which is usefull information for the user, plus it represents all the fixture data nicely.
 
-    * The final version of the 'My Profile' combines the profile page and the my orders page. With this information all in one place it means the user doesn't have to switch pages.
+    * The final version of the my profile combines the profile page and the my orders page so it's all in one place as there was no reason to seperate them as it's all content related to the user profile and means the user doesn't have to keep switching pages. 
 
 * Home Page
 
@@ -55,24 +54,24 @@
 
     ![Home page wireframe on desktop](media/README/wireframes/home-desktop.jpg)
 
-    The home screen, being the first page the user sees, has a photogrph of the team in full kit. This highlights what the website represents. On the hero image it gives the user the next fixture, as that is what a returning user is most likley going to want to know when visiting the site.
+    The home screen being the first page the user sees if its there first time on the site you want to show what were about, so there is a picture of the team in full kit showing we are a football team. On the hero image it gives the user the next fixture as that is what a returning user is most likley gunna want to know when visiting the site.
 
-    At the bottom is a player carousel that links to player profiles and displays more indepth stats about the players. It shows three cards at once because it balances out the page better than one or two and doesn't overcrowd the space with 4 on smaller devices where you would still have the larger carousel. 
+    At the bottom is a player carousel that links to player profiles and show more indeth stats about the players. It shows three cards at once because it balances out the page better than one or two and doesn't overcrowd the space with 4 on smaller devices where you would still have the larger carousel. 
 
     Changes in final design:
 
-    * The final home page is very similar to the original wire frame with the addition of a book tickets button under the fixture tab on the hero image. One of the owner goals was to make the  tickets page easily accessible and having a button meets this criteria
+    * The final home page is very similar to the original wire frame with the addition of a book tickets button under the fixture tab on the hero image, This is because one of the owner goals was to make the  tickets page easily accessible and having a button here does that.
 
 
     #### Mobile
 
     ![Home page wireframe on mobile](media/README/wireframes/home-mobile.jpg)
 
-    The mobile design shortens the carousel to one player image at a time to cater to the smaller screen size. Also, the fixtures tab has been taken off the hero image so it doesn't block it on the smaller sized screen.
+    The mobile design shortens the carousel to one player image at a time to cater to the smaller screen size. Also the fixtures tab has been taken off of the hero image so it doesn't block it on the smaller sized screen.
 
     Changes in final design:
 
-    * The design and basic layout of the page has been consistent throughout development of having the block for the hero image and then a block for the player carousel. However, in the final design, I have added the fixtures and booking tickets button above the hero image, as these were important features for users to have access to. Also it doesn't block off the hero image as it would, if it were layered ontop. I did experiment with having different numbers of player pictures at the bottom, but 2 looked unbalanced and at 3 the pictures looked too small.
+    * Again the design and basic layout of the page has been consistent throughout development of having the block for the hero image and then a block for the player carousel, but in the final design above the hero image i have added a block that includes the fixture and book tickets buttons as these were importantfeatures for users to have access too and it doesn't block off the hero image like it would if it were layered ontop. I did experiment with having different number of player pictures at the bottom but 2 looked unbalanced and at 3 the pictures looked too small.
 
 
 * Squad Page
@@ -81,24 +80,24 @@
 
     ![Squad page wireframe on Desktop](media/README/wireframes/squad-desktop.jpg)
 
-    The goal of the squad page is just to show all the players and a link to their profile page.
+    The goal of the squad page is just to show all the players and link to there profile page so thats wht it does display player cards.
 
     Changes in final design:
 
-    * In the final design the players are split in to their positions and because of the use of Bootstrap columns it gives off the formation the team plays on the field which looks good.
+    * In the final design the players are split in to there positions and because of the use of bootstrap collumns it gives off the formation the team plays on the field which is quite cool.
 
-    * Also in the final design I added the player number to the player card because it looks good and gives that extra bit of info to identify a player.
+    * Also in the final design i added the player number to the player card because it looks good and gives that exra bit of info to identify a player.
 
 
     #### Mobile
 
     ![Squad page wireframe on mobile](media/README/wireframes/squad-mobile.jpg)
 
-    Mobile is the same as desktop it's just one player card per row so as not to condence any elements on the page.
+    Mobile is the same as desktop its just one player card per row to not squash any elements on the page.
 
     Changes in final design:
 
-    * The only change on mobile is the headers for the player positions to separate out the players.
+    * The only change on mobile is the headers of the positions to seperate out the players.
 
 
 * Player Profile
@@ -107,11 +106,11 @@
 
     ![Player profile page wireframe on desktop](media/README/wireframes/player-profile-desktop.jpg)
 
-    The layout for the player profile was to have half the screen a picture of the player and then the other half displaying information about the player such as goals, assists and clean sheets.
+    The layout for the player profile was to have haf the screen a picture of the player and then the other half displaying information about the player such as goals, assists and clean sheets.
 
     Changes in final design:
 
-    * Instead of having the stats in a block of text they are individually separated out into their own tabs coming off of the player picture. The tabs are the same shape as the nav bar and follows the style of how info is blocked as on the home page, keeping the styling consistent throughout the website.
+    * Instead of having the stats in a block of text they are individually seperated out into there owntabs comming off of the player picture. The tabs are the same shape as the nav bar and follows the style of how info is blocked like on the home page, keeping consistent styling throughout the website.
 
     * The final version also included an edit button for admin to edit the player at the bottom of the page and a back button to take you back to the squad page.
 
@@ -120,11 +119,11 @@
 
     ![Player profile page wireframe on mobile](media/README/wireframes/player-profile-mobile.jpg)
 
-    The mobile view has the same components as the desktop, other than the layout is vertical instead of horizontal to fit it all on the page.
+    The mobile view has the same components as the desktop just the layout is vertical instead of horizontal to fit it all on the page.
 
     Changes in final design:
 
-    * The style of the stat tabs used in the final desktop view are the same in mobile. However, they have been moved below the picture and come out from the left hand side of the page, rather than the player image.
+    * The style of the stat tabs used in the final desktop view are same in mobile but instead they come out of the left hand side of the page instead of the player image.
 
 
 * Fixtures Page
@@ -134,22 +133,22 @@
 
     ![Fixture page wireframe on desktop](media/README/wireframes/fixtures-desktop.jpg)
 
-    The Fixtures page consists of  table with both previouse and future fixtures. Each fixture displays the time and date of the fixture, the score if it had been played and the teams.
+    The Fixtures page just consists of the table of fixtures for people to view. It would include both future and previouse fixtures on it. Each fixture displays the time and date of the fixture, the score if it had been played and the teams.
 
     Changes in final design:
     
-    * The final design included an add fixture button at the bottom. Additionally along the right hand side a column for an edit fixture button to allow the updating of individual fixture.
+    * The final design included an add fixture button at the bottom and along the right hand side a column for an edit fixture button to edit each individual fixture.
 
 
     #### Mobile
 
     ![Fixture page wireframe on mobile](media/README/wireframes/fixtures-mobile.jpg)
 
-    Displays the same as the desktop view just slimmer to fit the screen size.
+    Displays the same as the desktop view just thiner to fit the screen size.
 
     Changes in final design:
 
-    * In the final design it was a bit too much content to fit on a small screen, so I removed the date and time as that was the least relevant information to the fixture. For the admin the edit fixture button is in the row below.
+    * In the final design it was a bit too much content to fit on a small screen so i removed the date and time as that was the least relevant information to the fixture and for adming moved the edit fixture button into a row below.
 
 
 * Edit Fixture
@@ -158,22 +157,22 @@
 
     ![Edit fixture page wireframe on desktop](media/README/wireframes/edit-fixture-desktop.jpg)
 
-    The update stats page is a form that lets you manipulate fixture, objects and data. At the top is dropdown that let's you select the fixture you want to edit. Then a list of messi ankles players which you can select to show if they made an appearance. Underneath is a button to add a goal and list of all the goals in the fixture. There is one for the home team and one for the away team, and then a submit at the bottom. The top goal for this page was functionality.
+    On the update stats page it's all a form that lets you manipulate fixture objects and data. At the top is dropdown that let's you select the fixture you want to edit. then a list of messi ankles players which you can select to show if they made an appearance. Underneath is a buttonto add a goal and list of all the goals in the fixture, one for the home team and one for the away team, and then a submit at the bottom. The top goal for this page was functionality.
 
 
     Changes in final design:
 
-    * Due to the way the models were set up there was no need for the appearances check boxes.
-    Also there is only one add goal button, not two separate buttons, although I did keep the two separate tables.
+    * Due to the way the models were set up there was no need for the appearences check boxes.
+    Also there is only one add goal button not two seperate buttons also due to the way the models are set up, although i did keep the two seperate tables.
 
-    * The fixture also now includes the time and date which are fields that are editable in a form beneath the goal tables. Also there is a checkbox for whether the game has been played yet.
+    * The fixture also now includes the time and date which are fields that are editable in this form beneath the goal tables aswell as a checkbox for weather the game has been played yet.
 
 
     #### Mobile
 
     ![Edit fixture page wireframe on mobile](media/README/wireframes/edit-fixture-mobile.jpg)
 
-    The mobile version of the page is just the same as desktop but scaled down.
+    The mobile version of the page is just the same as desktop just scaled down.
 
     Changes in final design:
 
@@ -183,11 +182,11 @@
 
     ![Add goal form wireframe](media/README/wireframes/add-goal-form.jpg)
 
-    The add goal form also was just designed for functionality. It has a dropdown menu for the players scoring and assisting and an input for the time of goal.
+    The add goal form also was just designed for functionality. with a dropdown for the players scoring and assisting and an input for the time of goal.
 
     Changes in final design:
 
-    * In the final design there is only one form for both teams and a select box at the top to choose the team. This is instead of two buttons, and allows for quicker change if the wrong team is chosen. I didn't include time of goal as a data included in the goal as I didn't have anywhere I was going to display it, however if I make a more indepth fixtures page where you can look at each individual fixture I could add it in then.
+    * In the final design theres only one form for both teams and a select box uptop to choose which team it's for insted of two seperate buttons as it meant you can change it quicker if you select the wrong team. I didn't include time of goal as a data included in the goal as I didn't have anywhere I was going to display it, but if I make a more indepth fixtures page where you can look at each individual fixture I could add it in then.
 
 
 * Book Tickets
@@ -196,18 +195,18 @@
     #### Desktop
     ![Book tickets page wireframe on mobile](media/README/wireframes/book-tickets-desktop.jpg)
 
-    The book tickets page is meant to be a simple process, but also inviting as you want the user to be excited when they are booking tickets for the match. So on the left is a picture to make the page more interesting and on the right the form to fill out what tickets the user wants.
+    The book tickets page is meant to be a simple process but also not boring as you want the user to be excited therre booking tickets for the match. So on the left is a picture to make the page more interesting and on the right the form to fill out what tickets the user wants.
 
     Changes in final design:
 
     * Currently don't have an image that fits the tickets page but do want to add one.
 
-    * There's no choice for child tickets just one standard price for all. This is because there's no way to check the users age without entering a valid id which is offputting and makes booking tickets harder. You don't want to be turning away customers on game day because they have the wrong ticket. The total price value is also shown above the number of tickets.
+    * Theres no choice for child tickets just one standard price for all because theres no way to check the users age without entering a vlid id which is offputting and makes booking tickets harder and you don't want to be turning away customers on game day because they have the wrong ticket. The total price value is also shown above the number of tickets.
 
     #### Mobile
     ![Book tickets page wireframe on mobile](media/README/wireframes/book-tickets-mobile.jpg)
 
-    The mobile tickets page doesn't have a picture due to the lack of space.
+    The mobile tickets page gets rid of the picture as there isn't really a good place to put it because although you do want a picture the form is the main part of the page and needs to be seen  first.
 
     Changes in final design:
 
@@ -219,31 +218,31 @@
     #### Desktop
     ![Checkout page wireframe on desktop](media/README/wireframes/checkout-desktop.jpg)
 
-    The checkout page is designed for ease of inputting card info. It shows a small form with the required info to send them a ticket by email, also an order confirmation tab so they can check what they are ordering before clicking buy.
+    The checkout page wants to make them putting there card info in as easy as possible so it shows a small form with the required info to send them a ticket by email and also an order confirmation tab so they can check what they are ordering before clicking buy.
 
     Changes in final design:
 
-    * In the final design the order confirmation is above the checkout form. It is only 3 lines of info, the fixture the number of tickets and the price, so you don't need to take up half the page's space. It is on top because logically you check it before you confirm payment.
+    * In the final design the order confirmation is above the checkout form because theres only 3 lines of info, the fixture the number of tickets and the price, so you don't need to take up half the pages space with that. Also it is ontop because logically you check it before you confirm payment.
 
     #### Mobile
     ![Checkout page wireframe on mobile](media/README/wireframes/checkout-mobile.jpg)
 
-    Mobile includes the same content but just vertically stacked so that nothing is condensed.
+    Mobile includes the same content but just vertically stacked so nothing is squashed.
 
     Changes in final design:
 
-    * Only change is order confirmation is on top because logically you check it before you confirm payment.
+    * Only change is order confirmation is ontop because logically you check it before you confirm payment.
 
 ## Features
 ### General UI:
 
-* A dynamically changing nav bar that looks good across all devices, on mobile has an off canvas side menu that displays all the same tabs that would be shown on desktop.
+* A dynamically changing nav bar that looks good across all devices, on mobile has an offcanvas side menu that displays all the same tabs that would be shown on desktop.
 
-* Nav bar is styled in a trapezoid shape so it lines up nicely with the right hand side of the page and keeps that sharp lined design I'm aiming for for.
+* Nave bar is styled in a trapezoid shape so it lines up nicely with the right and side of the page and keeps that sharp lined design I'm going for.
 
 * Footer has email for contact info and links to social accounts so that the user can easily find out more about us or contact us.
 
-* Toasts popup in the bottom right displaying any message the server has for the user. The toasts are color coded depending on the type of message.
+* Toasts popup in the bottom right displaying any message the server has for the user, the toasts are color coded depending on the type of message.
 
     | Message | Color  |
     | ------- | ------ |
@@ -254,43 +253,43 @@
 
 ### Home Page:
 
-* The hero image is displayed on the home page, and therefore users can instantly see the whole team and recognise that this is a website about a sports team.
+* The hero image is displayed on the home page so users can instantly see the whole team and instantly recognise that this is a website about a sports team.
 
-* The Fixtures tab on the Home page is visible as soon as you load the page. This has the most important information, such as the teams next fixture and also a link to buy tickets for that fixture.
+* The Fixtures tab on the Home page is visible as soon as you load the page as it has the most important information on it of the teams next fixture and also a link to buy tickets for that fixture.
 
 * A player carousel at the bottom of the page that links to player stats and shows off the team. It is functional on both desktop and mobile. 
 
 ### Players Page:
 
-* Each individual player has their own player card with their name and shirt number. The players are sorted into position for user ease of looking through the players and also creates a nice layout for the page.
+* Each individual player has their own player card with their name and shirt number. The players are sorted into position for user ease of looking through the players and also forms a nice layout for the page.
 
-* Each card links to the individual players profile with stats about the player that the user can read and also keep a record for the club.
+* Each card links to the individual players profile with stats about the player that the user can find out and also keep a record for the club.
 
 ### Players Profile Page:
 
-* The profile page has a picture of the player and the stats of the player. The stats are generated through functions making sure that each goal or assist is linked to an instance of the Goal model saved in the database. This is the same for clean sheets and appearances, with the Fixtures model. This design means that when you create a goal you don't have to manually update player stats as well.
+* The profile page has a picture of the player and the stats of the player. The stats are generated through functions making sure that each goal or assist is linked to an instance of the Goal model saved in the database. This is the same for clean sheets and appearances, with the Fixtures model. Because the stats are set up this way it means that when you create a goal you don't have to manually update player stats as well.
 
 * The page is also viewable across all screen sizes and will automatically change layout if needed.
 
-* Admin can edit the players name, number and position, but is unable to change goals assists, appearances or clean sheets without creating the Fixture or Goal instance to go along with it.
+* Admin can edit the players name number and position but are unable to change goals assists, appearances or clean sheets without creating the Fixture or Goal instance to go along with it.
 
 * There’s also a back button to take you back to the players page.
 
 ### Fixtures Page:
 
-* The fixtures table shows all fixtures that are in the database. This includes the date and time of the fixture, the home and away team and also the score if the game has been played. The fixtures are displayed in date order.
+* The fixtures table shows all fixtures that are in the database, this includes the date and time of the fixture, the home and away team and also the score if the game has been played. The fixtures are displayed in date order.
 
 * For admin users there is an edit fixture button next to each fixture to make it obvious which fixture you’re editing and an add fixture button at the bottom of the page.
 
-* The add fixtures form lets the admin input the home team, away team, the date, and time of the fixture. It does not include goals of the fixture or whether the fixture has been played yet because the fixtures should be put up in advance of the match and then you can edit them afterwards to add goals and change the game played status.
+* The add fixtures form lets the admin input the home team, away team, the date, and time of the fixture. It does not include goals of the fixture or whether the fixture has been played yet because the fixtures should be put up in advance of the match and then you can edit them after to add goals and change the game played status.
 
 * There is also a cancel button to go back in case the admin didn't want to add a fixture.
 
 * The edit fixture page is similar to the add fixture page except it has the option to add goals and change the game played status. The form is already filled out with the info about the fixture that is saved on the data base.
 
-* The add goals form on the edit fixtures form creates instances of goals linked to the currently editing fixture. If the team that is selected to have scored is Messi Ankles, then you also get the option to add a goal scorer and assist maker which will also be saved to the goal object. This then gets displayed in a table underneath the team name which displays all the goals, and a button to delete the goal if it was a mistake.
+* The add goals form on the edit fixtures form creates instances of goals linked to the currently editing fixture. If the team that is selected to have scored is Messi Ankles, then you also get the option to add a goal scorer and assist maker which will also be saved to the goal object. This then gets displayed in a table underneath the team name which displays all the goals. and a button to delete the goal if it was a mistake.
 
-* If you need to change teams there would still be goals of the previous teams linked to the fixture. When you change team, a popup will appear letting you know what’s going to happen and whether you want to continue or not. If you do want to continue it will delete all goals in the fixture related to that team.
+* If you change teams there would still be goals of the previous teams linked to the fixture so when you change team a popup will appear letting you no what’s going to happen and whether you want to continue or not. if you do want to continue it will delete all goals in the fixture related to that team.
 
 ### Table: 
 
@@ -298,9 +297,9 @@
 
 ### Tickets Page:
 
-* The Tickets page has a select input of all the fixtures that haven't been played yet, to buy tickets for, as you don't want people buying tickets for games that have already been played.
+* The Tickets page has a select input of all the fixtures that haven't been played yet to buy tickets for as you don't want people buying tickets for games that have already been played.
 
-* It also has a number input that lets the user purchase as many tickets as they want which then changes a total box on screen, displaying the final price.
+* it also has a number input that lets the user put in how many tickets they want which then changes a total box on screen displaying the final price.
 
 * The ticket form will make sure that nothing is empty before you continue onto the checkout page and validate the data being put in.
 
@@ -310,7 +309,7 @@
 
 * The checkout form will be prefilled with info if the user is logged in and has the details saved to their profile. If the user is not logged in, they will have to fill out their first and last name and email as well as their card info.
 
-* The card info is automatically validated by stripe, before being sent off to be processed.
+* The card info is automatically validated by stripe. before being sent off to be processed.
 
 * If the checkout is complete then the user will be taken to a success page with their order information and an email sent to their email account.
 
@@ -354,12 +353,12 @@
         * dj_databases_url
         * psycopg2-binary
 5. Amazon Web Services
-    * Amazon web services is how I store my static files, specifically using s3 buckets and IAM to set it up. Some packages I need to connect Django and AWS.
+    * Amazon web services is how I store my static files specifically using s3 buckets and IAM to set it up. Some packages I need to connect Django and AWS.
         * boto3
         * django-storages
 
 6. Stripe
-    * Used to handle the payment and a checkout system for purchasing tickets.
+    * Used to handle the payment and checkout system for purchasing tickets.
 7. Google Fonts
     * Styles the fonts throughout the website.
 8. FontAwesome
@@ -375,11 +374,13 @@
 
 ### Testing User Goals:
 
+* Have a website that tells people about the club.
+
 * "Be able to save data about games and players."
 
-    The database I have created has models for Teams, Players, Fixtures, Goals, Tickets, and Users. All of these have a table where they are saved to after being created.
+    The database I have created has models for Teams, Players, Fixtures, Goals, Tickets, and Users. All of these have a table where they get saved to after being created.
     The Teams and Players have been loaded in through fixtures that I created using [Mockaroo](https://www.mockaroo.com/) which generates random json files with custom fields you put in.
-    Everything else is created within the app using Django’s models and `.save()` method.
+    everything else is created within the app using Django’s models and `.save()` method.
 
 
     fixtures/models.py
@@ -404,7 +405,7 @@
         return goals
     ```
 
-    This is my fixtures model, the data saved to it are the home team, away team, date of the fixture, time of the fixture and whether or not the game has been played. The goals in the fixture are class methods, because it means that when you want to look up the number of goals in the fixture each goal is linked with a goal object. This will decrease the amount of errors across all tables with linked data such as goals, assists or clean sheets as there is no physical data linked to the objects.
+    This is my fixtures model, the data saved to it are the home team, away team, date of the fixture, time of the fixture and whether or not the game has been played. The goals in the fixture are class methods because it means that when you want to look up the number of goals in the fixture each goal is linked with a goal object which will decrease the amount of error across all tables with linked data such as goals or assists or clean sheets as there is no physical data linked to the objects.
 
 
     fixtures/models.py
@@ -422,7 +423,7 @@
 
     ``` 
 
-    This is my Goal class it contains the id of the goal, the team which scored, the goal scorer, assist maker and which fixture the goal was scored in. With all this information linked to the goal, it makes it easy to build queries about the goals in certain fixtures or by certain teams or even by players throughout the app.
+    This is my Goal class it contains the id of the goal, the team which scored, the goal scorer, assist maker and which fixture the goal was scored in. with all this information linked to the goal it makes it easy to make queries about the goals in certain fixtures or by certain teams or even by players throughout the app.
 
 
     players/models.py
@@ -470,8 +471,8 @@
 
     ```
 
-    This is my Player class. It saves the name of the player, their shirt number, their position, the team they play for and the URL for their image that I use on the app.
-    Data about the players performance is retrieved through the class methods for the same reason as the Fixture class because it means mistakes are less likely and keeps things consistent across the database. You can edit the features of the Messi Ankles players, such as shirt number or position or name through the app. Admins have access via an edit player button to change the values of these fields. The players that belong to other teams I don't think need the ability to be changed in the app as it is a Messi Ankles website,  However if you do wish you can edit them through the Django admin. If you wish to change which team the website is for just change which team is being filtered in the queries and you will be able to access these other players but as it is filler data that is not directly related to the users of the website there’s no need to access them through the app.
+    This is my Player class it saves the name of the player, their shirt number, their position the team they play for and the URL for their image that I use on the app.
+    Data about the players performance is gotten through class methods for the same reason as the Fixture class because it means mistakes are less likely and keeps things consistent across the database. You can edit the features of the Messi Ankles players, such as shirt number or position or name through the app, admins have access via an edit player button to change the values of these fields. The players that belong to other teams I don't think need the ability to be changed in the app as it is a Messi Ankles website. But if you do wish you can edit them through the Django admin or if you wish to change which team the websites for just change which team is being filtered in the queries and you will be able to access these other players but as it is filler data that is not directly related to the users of the website there’s no need to access them through the app.
 
     Here is the method of how to save fixtures and goals:
 
@@ -502,7 +503,7 @@
 
         ![Player profile view](media/README/testing/fixure-player-edditing/edit-player-1.jpg)
 
-    2. You can then edit the details and click update player.
+    2. Then you can edit what you want and click update player.
 
         ![Player edit view](media/README/testing/fixure-player-edditing/edit-player-2.jpg)
 
@@ -523,7 +524,7 @@
     "Not have to create an account to use the service."
 
 
-    When creating the ticket system, I implemented 'easy to use' by making it a minimum two-step process. First choose the ticket and then then checkout. For extra ease you can create an account that saves your info to make checking out quicker. This is not necessary to purchase a ticket for users who "don't want to create an account". To make the tickets 'easily accessible' across all devices the tickets button is directly visible in the nav bar and also visible through a banner on the home page when you first load the webpage.
+    When creating the ticket system, I implemented 'easy to use' by making it a minimum two-step process. First choose the ticket and then then checkout. For extra ease you can create an account that saves your info to make checking out quicker, but it is not necessary to purchasing a ticket for users who "don't want to create an account". and to make the tickets 'easily accessible' across all devices the tickets button is directly visible in the nav bar and also visible through a banner on the home page when you first load the webpage.
 
     Here is what the navbar and home page look like across different pages:
 
@@ -545,11 +546,11 @@
 
         ![Ticket booking page choosing the tickets](media/README/testing/tickets-system/ticket-purchasing-1.jpg)
 
-    2. Fill out your details, if you have your profile details saved it will be prefilled for you and you just have to enter your card details otherwise just enter your name, email and card info.
+    2. Fill out your details, if you have your profile details saved it will be prefilled for you and you just have to enter your card details otherwise just enter your name a, email and card info.
 
         ![Ticket checkout page](media/README/testing/tickets-system/ticket-purchasing-2.jpg)
 
-    3. Click checkout and if your card is authorised, you will be taken to the success page. and sent a booking confirmation email.
+    3. Click checkout and if your card is good, you will be taken to the success page. and sent a booking confirmation email.
 
         ![Booking success page](media/README/testing/tickets-system/ticket-purchasing-3.jpg)
         ![Booking confirmation email](media/README/testing/tickets-system/ticket-purchasing-4.jpg)
@@ -565,31 +566,21 @@
 
     ![Profile page](media/README/testing/profile/profile-page.jpg)
 
-*   "Be able to see the dates and times of games."
-    "Be able to view the scores of previous games."
-
-
-    On the fixtures page you can see the date and the time of all the fixtures in the first column  on the left. Also on the front page is the date and time of the next fixture.
-
-    The previouse scores of matches are shown on the fixtures table at the top in date order.
-
-    ![Fixtures table](media/README/testing/fixure-player-edditing/save-fixture-2.jpg)
-
 ### My Goals:
 
 * "Have a responsive website."
 
-    All pages have been tested across desktop, iPhone 7, iPhone 11, Samsung Galaxy S20, laptop, and also in the browsers development mode where you can change the screen size. All of them function and are styled corectly.
+    All pages have been tested across desktop, iPhone 7, iPhone 10, Samsung Galaxy S20, laptop, and also in the browsers development mode where you can change the screen size. All of them function and are styled coreectly.
 
 * "Player carousel on home page."
 
     The Bootstrap carousel is a great feature of the home page it looks goood and works on desktop tablet and mobile. 
 
-* "Base functionality e.g. creating, editing and deleting data works without any problems."
+* "Base functionality e.g. creating editing and deleting data works without any problems."
 
-    I have tested creating fixtures and tickets and it all works. All the form validation stops empty forms being submitted and invalid data being entered.
+    I have tested creating fixtures and tickets and it all works, all the form validation stops empty forms being submitted and invalid data being entered.
 
-    Editing fixtures also has been tested thouroughly. All the form validation works and stops invalid info being entered. I had a bug when changing teams, go to the known bugs section for more info (now fixed). Deleting fixtures also works completly and when you delete a fixture it deletes all goals within the fixture too.
+    Editing fixtures also has been tested thouroughly again all the form validation works and stops invalid info being entered. I had a bug when changing teams, go to the known bugs section for more info (now fixed). Deleting fixtures also works completley and when you delete a fixture it deletes all goals within the fixture too.
 
     All creating and deleting goal functions have been tested thoroughly. Since there is such little information needing input into goals, it's quicker to just delete the goal object and make a new one.
 
@@ -615,7 +606,7 @@
 ## Known Bugs
 
 * Changing teams when editing fixtures
-    When editing a fixture and you want to change the team it will call the function delete all goals to delete all the goals for that team related to the current fixture. This is so there aren't any goals belonging to teams in that fixture. During the execution of this function the the new team is meant to be saved to the fixture so when the page is rendered again it shows the old team.
+    When edditing a fixture and you want to change the team it will call the function delete all goals to delete all the goals for that team related to the current fixture. This is so there aren't any goals belonging to teams in that fixture. During the execution of this function the the new team is meant to be saved to the fixture so when the page is rendered again it shows the old team.
 
     Fixed: I changed where the location of the `location.reload()` so that when the `deleteallgoals()` function responds it reloads rather than reloading after the function was called. The problem was the page was reloading to quickly.
 
@@ -645,14 +636,14 @@
 
 * Be able to filter fixtures shown on the fixtures table by Team and date.
 
-* For the league table, currently the fixtures need to be part of my database. In the future it would be good to use an api to get the data off of a central league database that all the teams update. Therefore each website doesn't have to keep a database of all the fixtures and just keep their own, or even just get the ones they need from this central db.
+* For the league table, currently the fixtures need to be part of my database, in the future it would be good to use an api to get the data off of a central league database that all the teams update so that each website doesn't have to keep a database of all the fixtures and just keep their own, or even just get what ones they need from this central db.
 
 * I would like to have an indicator if a goal is an own goal or not.
 
-* I would like to include more data connected to the fixtures and players. For example, possession, time of goal, tackles made. All to build out a more detailed picture of what has happened in a match or how well a player is performing.
+* I would like to include more data connected to the fixtures and players. for example, possession, time of goal, tackles made. All to build out a more detailed picture of what has happened in a match or how well a player is performing.
 
 ## Deployment
-This is how I deployed my project to GitHub and Heroku and set up amazon web services.
+This is how I deployed my project to GitHub and Heroku and set up Amazon web services.
 
 ### GitHub & Heroku:
 
@@ -761,17 +752,17 @@ This is how I deployed my project to GitHub and Heroku and set up amazon web ser
 
 1. Go to https://aws.amazon.com/ and create an account.
 
-2. You will need to enter a credit card number which will get charged if you go over the service limit for this project you will not go over the limit.
+2. Then you will need to enter a credit card number which will get charged if you go over the service limit for this project you will not go over the limit.
 
 3. Go back to https://aws.amazon.com/ and login and go to AWS management console under my account.
 
-4. Search s3 in the services search bar.
+4. then search s3 in the services search bar.
 
-5. You want to click on create bucket and give your bucket the name your heroku app and select your closest region. Also untick block all public access and check the box that aknowledges you know that your bucket will be public and then click create.
+5. Then you want to click on create bucket and give your bucket the name your heroku app and select your closest region. Also untick block all public access and check the box that aknowledges you know that your bucket will be public and then click create.
 
-6. Go to the properties tab and turn on static website hosting and fill in the index doceument and error document with index.html and error.html as we will not use them and click save.
+6. Then go to the properties tab and turn on static website hosting and fill in the index doceument and error document with index.html and error.html as we will not use them and click save.
 
-7. On the permissions tab go to CORS configuration and paste in 
+7. Then on the permissions tab go to CORS configuration and paste in 
     ```
     [
       {
@@ -790,13 +781,13 @@ This is how I deployed my project to GitHub and Heroku and set up amazon web ser
     ```
     and save it.
 
-8. Go to the bucket policy tab and select policy generator to create a security policy.
+8. Then go to the bucket policy tab and select policy generator to create a security policy.
 
 9. The policy type will be an S3 bucket policy, in principals put '*',  and in actions select GET object.
 
-10. Go back to the permissions tab and copy the ARN code to paste into the ARN box.
+10. Then go back to the permissions tab and copy the ARN code to paste into the ARN box.
 
-11. Click add statement and then generate policy and copy the policy into the bucket policy editor.
+11. Then click add statement and then generate policy and copy the policy into the bucket policy editor.
 
 12. Before saving add /* on to the end of the resource key to allow access to all resources in the bucket. Then click save and done.
 
@@ -806,29 +797,29 @@ This is how I deployed my project to GitHub and Heroku and set up amazon web ser
 
 15. First click on groups and create group and call it name it so you know what app it's for e.g. yourappname-manager.
 
-16. Click next step twice as we don’t have a policy to attach to it yet. And then click create group.
+16. Then click next step twice as we don’t have a policy to attach to it yet. And then click create group.
 
-17. On the left side menu click policies and create policies. then click on the json tab and click import policy.
+17. Then on the left side menu click policies and create policies. then click on the json tab and click import policy.
 
 18. Search for s3 then click on AmazonS3FullAccess and import it.
 
 19. Next you will want to get your bucket ARN from the bucket policies tab again and paste it twice into the resource section as a list and after the second one adds a '/*' to the end so it selects all.
 
-20. Click on review policy and give it a name and short description to do with your app. and then click create policy.
+20. Then click on review policy and give it a name and short description to do with your app. and then click create policy.
 
-21. Go back to the group you created. select attach policy, search, and select the policy you just created and attach it.
+22. Then go back to the group you created. select attach policy, search, and select the policy you just created and attach it.
 
-22. Next you’ll want to add a user so click add user at the top and give the user a name like 'myapp-static-files-user' give them programmatic access and then click next.
+23. Next you’ll want to add a user so click add user at the top and give the user a name like 'myapp-static-files-user' give them programmatic access and then click next.
 
-23. Add the user to the group and click next through to the end and then create user.
+24. then add the user to the group and click next through to the end and then create user.
 
-24. You then need to download the csv file which contains the access key you need to give to your Django app.
+25. You then need to download the csv file which contains the access key you need to give to your Django app.
 
-25. Go over to your Django app and use `pip3 install ...` to install `boto3` and `django-storages`. And freeze them into requirements.txt.
+26. Go over to your Django app and use `pip3 install ...` to install `boto3` and `django-storages`. And freeze them into requirements.txt.
 
-26. In settings add storages into the installed apps.
+27. in settings add storages into the installed apps.
 
-27. At the bottom of your settings file add
+28. Then at the bottom of your settings file add
 
     settings.py
     ```
@@ -861,9 +852,9 @@ This is how I deployed my project to GitHub and Heroku and set up amazon web ser
 
     and add your AWS variables to the env.py file.
 
-28. Add your AWS keys to your config variables on your Heroku app. and remove the DISABLE_COLLECTSTATIC variable as the static files should go to S3.
+29. Add your AWS keys to your config variables on your Heroku app. and remove the DISABLE_COLLECTSTATIC variable as the static files should hopefully go to S3.
 
-29. Next you will want to create a file called custom_storages.py and set it up like this.
+30. Next you will want to create a file called custom_storages.py and set it up like this.
 
     custom_storages.py
     ```
@@ -878,7 +869,7 @@ This is how I deployed my project to GitHub and Heroku and set up amazon web ser
     
     ```
 
-30. Run `git add .`, `git commit -m` and `git push` in the terminal to push the changes to Heroku and static files to s3. You will know it has worked if when you look at the build log on Heroku it will say static files copied. Also if you go onto s3 you will see the static files in your bucket.
+31. Then run `git add .`, `git commit -m` and `git push` in the terminal to push the changes to Heroku and static files to s3. You will know it has worked if when you look at the build log on Heroku it will say static files copied. Also if you go onto s3 you will see the static files in your bucket.
 
 ## Acknowledgements/ Links
 

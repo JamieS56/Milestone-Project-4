@@ -26,7 +26,7 @@ class Player(models.Model):
         )
 
     def __str__(self):
-        return str(self.name)
+        return f'{self.name}, {self.team}'
 
     def appearances(self):
         appearances = 0

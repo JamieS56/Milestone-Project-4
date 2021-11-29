@@ -40,8 +40,8 @@
                     {% for goal in fixture.home_team_goals %}
                     <tr class="table-dark">
                         <th class="table-first">{{ forloop.counter }}</th>
-                        <td class="table-dark">{{ goal.goal_scorer }}</td>
-                        <td class="table-dark" >{{ goal.assist_maker }}</td>
+                        <td class="table-dark">{{ goal.goal_scorer.name }}</td>
+                        <td class="table-dark" >{{ goal.assist_maker.name }}</td>
                         <td class="table-dark"><a href='{% url "delete_goal" goal.goal_id %}'><button type="button" class="btn-close btn-close-white close" aria-label="Close"></button></a></td>
                         <td class="visually-hidden table-dark"><input id='' value='{{ goal.goal_id }}' class="visually-hidden goal-id"></input></td>
                     </tr>
@@ -70,8 +70,8 @@
 
                 <tr class="table-dark">
                     <th class="table-first">{{ forloop.counter }}</th>
-                    <td class="table-dark">{{ goal.goal_scorer }}</td>
-                    <td class="table-dark" >{{ goal.assist_maker }}</td>
+                    <td class="table-dark">{{ goal.goal_scorer.name }}</td>
+                    <td class="table-dark" >{{ goal.assist_maker.name }}</td>
                     <td class="table-dark"><a href='{% url "delete_goal" goal.goal_id %}'><button type="button"  class="btn-close btn-close-white close" aria-label="Close"></button></a></td>
                     <td class="visually-hidden table-dark"><input id='' value='{{ goal.goal_id }}' class="visually-hidden goal-id"></input></td>
                 </tr>

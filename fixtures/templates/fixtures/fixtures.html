@@ -39,9 +39,11 @@
                     <td class="d-none d-md-table-cell"><a class="btn custom-btn" href="{% url 'edit_fixture' fixture.id %}"> Edit Fixture</a></td>
                     {% endif %}
                 </tr>
+                {% if user.is_superuser %}
                 <tr class="d-table-row d-md-none">
                     <td colspan="6"><a class="btn custom-btn" href="{% url 'edit_fixture' fixture.id %}"> Edit Fixture</a></td>
                 </tr>
+                {% endif %}
             {% endfor %}
 
         </tbody>

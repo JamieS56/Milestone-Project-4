@@ -33,7 +33,7 @@ class Team(models.Model):
             if fixtures.game_played is True:
                 home_goals = fixtures.home_team_goals()
                 away_goals = fixtures.away_team_goals()
-                if len(home_goals) > len(away_goals):
+                if len(away_goals) > len(home_goals):
                     wins = wins + 1
                 else:
                     pass
@@ -48,7 +48,7 @@ class Team(models.Model):
             if fixtures.game_played is True:
                 home_goals = fixtures.home_team_goals()
                 away_goals = fixtures.away_team_goals()
-                if len(home_goals) > len(away_goals):
+                if len(away_goals) > len(home_goals):
                     losses = losses + 1
                 else:
                     pass
@@ -76,7 +76,7 @@ class Team(models.Model):
             if fixtures.game_played is True:
                 home_goals = fixtures.home_team_goals()
                 away_goals = fixtures.away_team_goals()
-                if len(home_goals) > len(away_goals):
+                if len(home_goals) == len(away_goals):
                     draws = draws + 1
                 else:
                     pass
@@ -105,6 +105,6 @@ class Team(models.Model):
         for fixtures in away_fixture_list:
             home_goals = fixtures.home_team_goals()
             away_goals = fixtures.away_team_goals()
-            goals += len(home_goals) - len(away_goals)
+            goals += len(away_goals) - len(home_goals)
 
         return goals
