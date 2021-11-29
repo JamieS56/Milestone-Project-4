@@ -9,9 +9,16 @@ class Player(models.Model):
     A Model that represents players at the club.
     """
 
+    POSITIONS = [
+        ('Goalkeeper', 'Goalkeeper'),
+        ('Defender', 'Defender'),
+        ('Midfield', 'Midfield'),
+        ('Forward', "Forward")
+        ]
+
     name = models.CharField(max_length=254)
     number = models.IntegerField(null=False)
-    position = models.CharField(max_length=15)
+    position = models.CharField(max_length=15, choices=POSITIONS)
     team = models.ForeignKey(
             Team,
             on_delete=models.CASCADE,
@@ -40,14 +47,12 @@ class Player(models.Model):
     def clean_sheets(self):
         clean_sheets = 0
         home_fixtures = self.team.home_team.all()
-        print(home_fixtures)
         for fixture in home_fixtures:
             if fixture.game_played is True:
                 if len(fixture.away_team_goals()) == 0:
                     clean_sheets += 1
 
         away_fixtures = self.team.away_team.all()
-        print(away_fixtures)
         for fixture in away_fixtures:
             if fixture.game_played is True:
                 if len(fixture.home_team_goals()) == 0:

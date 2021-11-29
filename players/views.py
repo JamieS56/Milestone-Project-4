@@ -72,3 +72,54 @@ def edit_player(request, player_id):
         }
 
     return render(request, template, context)
+
+
+@login_required
+def add_player(request):
+    """
+    Add a player
+    """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = PlayerForm(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            form.save()
+            messages.success(request, 'Successfully added player!')
+            return redirect('players')
+        else:
+            messages.error(
+                request,
+                'Failed to add player. Please ensure the form is valid.'
+                )
+    else:
+        form = PlayerForm()
+
+    template = 'players/add_player.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_player(request, player_id):
+    """ Delete a player. """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admin can do that.')
+        return redirect(reverse('home'))
+
+    player = get_object_or_404(Player, pk=player_id)
+
+    player.delete()
+
+    messages.success(request, 'Player deleted!')
+
+    return redirect('players')

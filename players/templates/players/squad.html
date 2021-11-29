@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="conainer">
+<div class="conainer center">
     <div class="row  g-0">
         <div class="row g-0"><h2 class="center">Goalkeeper</h2></div>
         <div class="row center g-0">
@@ -67,5 +67,14 @@
         {% endfor %}
         </div>
     </div>
+
+{% if user.is_superuser %}
+    <a id="add-player-btn" class="btn custom-btn" href="{% url 'add_player' %}"> Add Player</a>
+{% endif %}
+
 </div>
+
+
+
+
 {% endblock %}

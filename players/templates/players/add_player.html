@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'players/css/player_profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="POST" action="{% url 'add_player' %}" class="form mb-2" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.name != 'image_url' %}
+                {{ field | as_crispy_field }}
+            {% else %}
+                {{ field }}
+            {% endif %}
+        {% endfor %}
+        <div class="text-right">
+            <a class="btn btn-outline-black rounded-0 custom-btn" href="{% url 'players' %}">Cancel</a>
+            <button class="btn btn-black rounded-0 custom-btn" type="submit">Add Player</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
