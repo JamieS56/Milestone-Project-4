@@ -14,7 +14,6 @@ def table_page(request):
 
     for team in teams:
         fixture_list = team.home_team.all() | team.away_team.all()
-        print(f'{team} {team.get_points()} {len(fixture_list)}')
 
     context = {
         'teams': teams

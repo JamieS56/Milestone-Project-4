@@ -129,7 +129,6 @@ def handle_checkout(request):
 
                 return redirect('success', ticket_id=ticket.ticket_id)
             else:
-                print('user not logged in')
                 ticket = Ticket(
                     ticket_id=ticket_id,
                     ticket_holder=None,

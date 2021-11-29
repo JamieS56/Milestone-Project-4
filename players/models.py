@@ -29,7 +29,7 @@ class Player(models.Model):
 
     image_url = models.CharField(
         max_length=100,
-        blank=True
+        blank=True,
         )
 
     def __str__(self):
@@ -58,5 +58,4 @@ class Player(models.Model):
                 if len(fixture.home_team_goals()) == 0:
                     clean_sheets += 1
 
-        print(clean_sheets)
         return clean_sheets

@@ -189,7 +189,6 @@ def delete_goal(request, goal_id):
 
     goal = get_object_or_404(Goal, goal_id=goal_id)
 
-    print(goal)
     fixture = goal.fixture
     goal.delete()
     messages.success(request, 'Successfully deleted goal!')
@@ -214,8 +213,6 @@ def delete_team_goals(request):
     old_team = get_object_or_404(Team, pk=data['old_team'])
     new_team = get_object_or_404(Team, pk=data['new_team'])
 
-    print(f'{fixture}, {old_team}, {new_team}')
-
     goals = Goal.objects.filter(team=old_team, fixture=fixture)
 
     goals.delete()
@@ -229,5 +226,4 @@ def delete_team_goals(request):
         fixture.save(update_fields=['away_team'])
         messages.success(request, 'Successfully deleted all away goals!')
 
-    print('redirecting')
     return redirect(reverse('edit_fixture', kwargs={'fixture_id': fixture.id}))

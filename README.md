@@ -24,7 +24,7 @@
 
 1. Have a responsive website.
 2. Player carousel on home page.
-3. Base functionality e.g. creating editing and deleting data works without any problems.
+3. Base functionality e.g. all CRUD operations.
 4. Automatic email on booking. 
 
 
@@ -614,6 +614,26 @@
 
     All player data functions work aswell. I have tested creating editing and deleting players and all work without any problems.
 
+    Here is how you add and delete players.
+
+    1. Click on the players tab and scroll to the bottom and click on add player.
+
+        ![Add player button at the bottom of player page.](media/README/testing/fixure-player-edditing/add-player-1.png)
+
+    2. Fill out the players form and click add player.
+
+        ![Add player form.](media/README/testing/fixure-player-edditing/add-player-2.png)
+    
+    3. The player is now created, because this player is part of Messi Ankles their player card is shown if it was another team it wouldn't.
+
+        ![New player on player page.](media/README/testing/fixure-player-edditing/add-player-3.png)
+
+    4. This player doesn't have an image but in the future i would like to add the ability to add this from here for now it will have to be added through AWS.
+        You can now delete this player by clicking the delet button.
+
+        ![New players profile.](media/README/testing/fixure-player-edditing/add-player-4.png)
+        
+
 * "Sending an automatic email on ticket bookings."
 
     The user recieves an email when creating a booking and confirms all the details of the booking for the user. I used Djangos email module to send the email.
@@ -766,6 +786,8 @@
 * I would like to have an indicator if a goal is an own goal or not.
 
 * I would like to include more data connected to the fixtures and players. For example, possession, time of goal, tackles made. All to build out a more detailed picture of what has happened in a match or how well a player is performing.
+
+* I would like to add uploading player photos from within the player edit page rather than having to do it manually in the aws bucket.
 
 ## Deployment
 This is how I deployed my project to GitHub and Heroku and set up Amazon web services.
@@ -1022,12 +1044,28 @@ This is how I deployed my project to GitHub and Heroku and set up Amazon web ser
 
 Throughout the development process I commited the django secret key and database url to git hub by mistake, after I realised this I made sure to change them both. Any occurances of the Django secret key or DATABASE_URL found in my commits were temporary and not the ones used in the live version.
 
-## Acknowledgements/ Links
+## Credits
 
-CSS Shapes - https://css-tricks.com/the-shapes-of-css/
+### Code
 
-Fixed footer - https://stackoverflow.com/questions/40853952/bootstrap-footer-at-the-bottom-of-the-page/40854221
+* [Bootstrap](https://getbootstrap.com/) provided all responsive coding elements, the carousel and the mobile nav bar.
 
-CSRF cookie code - https://stackoverflow.com/questions/43606056/proper-django-csrf-validation-using-fetch-post-request
+* [CSS Tricks](https://css-tricks.com/the-shapes-of-css/) Provided the css to make the trapezoid shape of the nav bar. 
 
-admin login page does not exist fix https://stackoverflow.com/questions/9736975/django-admin-doesnotexist-at-admin
+* I fixed the footer not staying at the bottom of the page with help from [this](https://stackoverflow.com/questions/40853952/bootstrap-footer-at-the-bottom-of-the-page/40854221) stack overflow page
+
+* To be able to make POST request to Django you need a CSRF token so  found how to get it from a js file [here](https://stackoverflow.com/questions/43606056/proper-django-csrf-validation-using-fetch-post-request).
+
+### Content
+
+* All images were created/ taken by me.
+* Picture of messi used for the badge was taken from [lionel-messi.eu](https://www.lionel-messi.eu/2020/09/10/6-times-lionel-messi-has-won-a-match-all-by-himself-oh-my/)
+* The picture of the monty python foot was taken from [montypython.fandom.com](https://montypython.fandom.com/wiki/The_Foot_of_Cupid)
+
+
+### Acknowledgements
+* My Mentor Akshat for continuous helpful feedback.
+
+* Tutor support at Code Institute for their support.
+
+* My family for helping test the website.

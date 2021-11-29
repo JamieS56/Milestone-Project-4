@@ -78,7 +78,6 @@ $(document).ready(function(){
                 'fixture': fixtureId
             };
             deleteAllTeamGoals(data);
-            console.log(data);
         }
     });
 
