@@ -88,7 +88,7 @@
 {{ form.game_played | as_crispy_field }}
 
 
-<div class="text-right">
+<div class="text-right center">
     <a class="btn btn-outline-black custom-btn rounded-0" href="{% url 'fixtures' %}">Cancel</a>
     <button id="edit-fixture" class="btn btn-black custom-btn rounded-0" type="">Save Fixture</button>
     <a href="{% url 'delete_fixture' fixture.id %}" class="btn btn-black custom-btn rounded-0">Delete Fixture</a>
